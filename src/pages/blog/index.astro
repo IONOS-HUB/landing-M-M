@@ -1,23 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Icon from '../../components/Icon.astro';
 import SiteHeader from '../../components/SiteHeader.astro';
 import SiteFooter from '../../components/SiteFooter.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { sortedPosts, formatDate, readingTime } from '../../data/posts';
-
-const [lead, ...rest] = sortedPosts;
-const counts = {
-  Todas: sortedPosts.length,
-  Familia: sortedPosts.filter((p) => p.category === 'Familia').length,
-  Civil: sortedPosts.filter((p) => p.category === 'Civil').length,
-};
+import PostList from '../../components/PostList.astro';
 ---
 <Base
   title="Blog: guías de derecho de familia y civil | Mira & Montesdeoca, Ibarra"
   description="Guías claras sobre divorcio, pensión de alimentos, tenencia, herencias y compra de inmuebles en Ecuador, del Estudio Jurídico Mira & Montesdeoca de Ibarra."
 >
-  <SiteHeader current="/blog/" />
+  <SiteHeader current="/#blog" />
 
   <main id="contenido">
     <header class="page-head indigo">
@@ -34,40 +26,7 @@ const counts = {
 
     <section class="section cotton blog-list" aria-label="Artículos">
       <div class="wrap">
-        <div class="filters" role="group" aria-label="Filtrar por área">
-          {Object.entries(counts).map(([cat, n], i) => (
-            <button class="chip-btn" type="button" data-filter={cat} aria-pressed={i === 0 ? 'true' : 'false'}>
-              {cat} <span class="chip-count">{n}</span>
-            </button>
-          ))}
-        </div>
-
-        <article class="post-feature" data-cat={lead.category}>
-          <div class="post-feature-weft weft" aria-hidden="true"></div>
-          <div class="post-feature-body">
-            <p class="post-cat" data-cat={lead.category}>{lead.category} · Lo más reciente</p>
-            <h2><a href={`/blog/${lead.slug}/`}>{lead.title}</a></h2>
-            <p class="post-excerpt">{lead.excerpt}</p>
-            <p class="post-meta">{formatDate(lead.date)} · {readingTime(lead)} min de lectura</p>
-            <a class="link-thread link-dark" href={`/blog/${lead.slug}/`} aria-hidden="true" tabindex="-1">
-              Leer la guía <Icon name="arrow" class="ico" />
-            </a>
-          </div>
-        </article>
-
-        <ul class="post-list">
-          {rest.map((post) => (
-            <li class="post-item" data-cat={post.category}>
-              <p class="post-cat" data-cat={post.category}>{post.category}</p>
-              <div>
-                <h2><a href={`/blog/${post.slug}/`}>{post.title}</a></h2>
-                <p class="post-excerpt">{post.excerpt}</p>
-              </div>
-              <p class="post-meta post-meta-split"><span>{formatDate(post.date)}</span> <span>{readingTime(post)} min de lectura</span></p>
-            </li>
-          ))}
-        </ul>
-        <p class="post-empty" data-empty hidden>No hay artículos en esta área todavía.</p>
+        <PostList />
       </div>
     </section>
 
@@ -79,22 +38,4 @@ const counts = {
 
   <SiteFooter />
 
-  <script>
-    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-    const items = document.querySelectorAll<HTMLElement>('.post-feature, .post-item');
-    const empty = document.querySelector<HTMLElement>('[data-empty]');
-    buttons.forEach((btn) =>
-      btn.addEventListener('click', () => {
-        const cat = btn.dataset.filter;
-        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-        let shown = 0;
-        items.forEach((el) => {
-          const show = cat === 'Todas' || el.dataset.cat === cat;
-          el.hidden = !show;
-          if (show) shown++;
-        });
-        if (empty) empty.hidden = shown > 0;
-      })
-    );
-  </script>
 </Base>

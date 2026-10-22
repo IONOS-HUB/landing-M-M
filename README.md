@@ -12,12 +12,12 @@ El diseño se llama **Telar de Imbabura**: fondo de algodón índigo con hilos d
 4. **Cómo trabajamos**: el proceso en 5 pasos.
 5. **Testimonios**: de ejemplo, marcados como placeholders.
 6. **Reconocimientos**: espacios para logos de clientes y premios.
-7. **Guías**: los 3 artículos más recientes del blog.
+7. **Guías (blog)**: todas las guías con filtro por área. Al hacer clic, el artículo se abre dentro de la misma sección, con botón «Todas las guías» para volver, índice, CTA y guía anterior/siguiente. Cada guía tiene enlace directo (`/#guia-<slug>`) y funciona con el botón atrás del navegador.
 8. **Agende su consulta**: formulario de contacto.
 9. **Ubicación**: mapa de Ibarra, dirección, horario y contacto.
 10. **Cierre**: llamado final a WhatsApp.
 
-Además, el sitio tiene un **blog** en `/blog/`, con filtro por área (Familia / Civil) y una página por artículo en `/blog/<slug>/`. Cada artículo incluye índice, CTA lateral y artículos relacionados.
+Las guías también existen como páginas propias en `/blog/` y `/blog/<slug>/` (útiles para buscadores y para compartir); desde el lector se pueden abrir con «Abrir en página aparte».
 
 ## Requisitos
 
