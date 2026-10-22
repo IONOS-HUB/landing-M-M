@@ -2,56 +2,24 @@
 import Base from '../layouts/Base.astro';
 import Isotipo from '../components/Isotipo.astro';
 import Icon from '../components/Icon.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { site, partners, areas, steps, testimonials, recognitions, awards, waLink } from '../data/site';
+import { sortedPosts, formatDate, readingTime } from '../data/posts';
+import { ph, stripBrackets } from '../lib/ph';
 
 const bbox = [site.map.lon - 0.012, site.map.lat - 0.008, site.map.lon + 0.012, site.map.lat + 0.008].join(',');
 const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${site.map.lat},${site.map.lon}`;
 const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site.map.lon}#map=17/${site.map.lat}/${site.map.lon}`;
 
-const nav = [
-  { href: '#estudio', label: 'El estudio' },
-  { href: '#areas', label: 'Áreas' },
-  { href: '#proceso', label: 'Cómo trabajamos' },
-  { href: '#testimonios', label: 'Testimonios' },
-  { href: '#ubicacion', label: 'Ubicación' },
-];
-
-// Marca entre corchetes como placeholder visible.
-const ph = (text: string) =>
-  text.replace(/\[([^\]]+)\]/g, '<span class="ph" title="Dato por confirmar">$1</span>');
 ---
 <Base
   title="Abogados de familia y civil en Ibarra | Estudio Jurídico Mira & Montesdeoca"
   description="Estudio jurídico en Ibarra, Ecuador. Divorcios, pensión de alimentos, tenencia, herencias y contratos. Escríbanos por WhatsApp y agende su consulta."
 >
-  <a class="skip" href="#contenido">Saltar al contenido</a>
-
-  <header class="site-header" data-header>
-    <div class="wrap header-row">
-      <a class="lockup" href="#top" aria-label="Estudio Jurídico Mira & Montesdeoca, inicio">
-        <img class="lockup-img" src="/brand/horizontal-blanco.png" width="900" height="232" alt="" />
-        <span class="lockup-m" aria-hidden="true">
-          <img src="/brand/isotipo-blanco.svg" width="880" height="680" alt="" />
-          <span><small>Estudio Jurídico</small>Mira&amp;Montesdeoca</span>
-        </span>
-      </a>
-      <nav class="site-nav" id="site-nav" aria-label="Principal">
-        <ul>
-          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-        </ul>
-      </nav>
-      <div class="header-actions">
-        <a class="btn btn-wa btn-sm" href={waLink()} target="_blank" rel="noopener">
-          <Icon name="whatsapp" class="ico" />
-          <span>WhatsApp</span>
-        </a>
-        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
-          <span class="menu-lines" aria-hidden="true"></span>
-          <span class="sr-only">Menú</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <SiteHeader />
 
   <main id="contenido">
     <!-- HERO -->
@@ -68,8 +36,8 @@ const ph = (text: string) =>
               <Icon name="whatsapp" class="ico" />
               <span>Escríbanos por WhatsApp</span>
             </a>
-            <a class="link-thread" href="#proceso">
-              Cómo trabajamos <Icon name="arrow" class="ico" />
+            <a class="link-thread" href="#consulta">
+              Agendar una consulta <Icon name="arrow" class="ico" />
             </a>
           </div>
           <p class="hero-note" set:html={ph('Primera consulta: [condiciones por confirmar]')} />
@@ -110,6 +78,14 @@ const ph = (text: string) =>
                 <p class="partner-focus">{p.focus}</p>
                 <p class="partner-reg" set:html={ph(p.registry)} />
                 <p class="partner-bio" set:html={ph(p.bio)} />
+                <a
+                  class="link-thread link-dark partner-cta"
+                  href={waLink(`Hola, quisiera agendar una consulta con ${stripBrackets(p.name)}.`)}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Escribir a {stripBrackets(p.name)} <Icon name="arrow" class="ico" />
+                </a>
               </div>
             </li>
           ))}
@@ -218,7 +194,10 @@ const ph = (text: string) =>
       </div>
     </section>
 
-    <div class="weft weft-thin" aria-hidden="true"></div>
+    <CtaBand
+      title="¿Su situación se parece a alguna de estas?"
+      text="Cuéntenos su caso. La primera conversación es para escucharle y explicarle sus opciones."
+    />
 
     <!-- RECONOCIMIENTOS -->
     <section class="section cotton recon" aria-labelledby="recon-title">
@@ -240,6 +219,57 @@ const ph = (text: string) =>
             <li class="ghost ghost-logo"><span class="ghost-label">{r.label.replace(/[[\]]/g, '')}</span></li>
           ))}
         </ul>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- BLOG -->
+    <section class="section cotton blog-teaser" id="blog" aria-labelledby="blog-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="blog-title">Guías para entender su caso.</h2>
+          <p>Artículos breves, en lenguaje claro, sobre las dudas que más escuchamos en la oficina.</p>
+        </div>
+        <div class="teaser-grid">
+          {sortedPosts.slice(0, 3).map((post, i) => (
+            <article class={`post-row ${i === 0 ? 'post-row-lead' : ''}`}>
+              <p class="post-cat" data-cat={post.category}>{post.category}</p>
+              <h3><a href={`/blog/${post.slug}/`}>{post.title}</a></h3>
+              {i === 0 && <p class="post-excerpt">{post.excerpt}</p>}
+              <p class="post-meta">{formatDate(post.date)} · {readingTime(post)} min de lectura</p>
+            </article>
+          ))}
+        </div>
+        <a class="link-thread link-dark" href="/blog/">Ver todas las guías <Icon name="arrow" class="ico" /></a>
+      </div>
+    </section>
+
+    <!-- CONSULTA -->
+    <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
+      <div class="wrap consulta-grid">
+        <div class="consulta-copy">
+          <h2 id="consulta-title">Agende su consulta.</h2>
+          <p class="consulta-lede">
+            Déjenos sus datos y una frase sobre su caso. Le respondemos en horario de oficina para
+            coordinar una cita.
+          </p>
+          <ol class="consulta-next">
+            <li><span><strong>Revisamos su mensaje</strong> y vemos qué abogado del estudio es el indicado.</span></li>
+            <li><span><strong>Le contactamos</strong> por WhatsApp o por llamada, como usted prefiera.</span></li>
+            <li><span><strong>Agendamos la cita</strong> en la oficina o en línea.</span></li>
+          </ol>
+          <div class="consulta-direct">
+            <p>¿Prefiere hablar ya?</p>
+            <a class="link-thread" href={waLink()} target="_blank" rel="noopener">
+              <Icon name="whatsapp" class="ico" /> WhatsApp directo
+            </a>
+            <a class="link-thread" href={site.phoneHref}>
+              <Icon name="phone" class="ico" /> <span set:html={ph(site.phoneDisplay)} />
+            </a>
+          </div>
+        </div>
+        <ContactForm />
       </div>
     </section>
 
@@ -303,55 +333,15 @@ const ph = (text: string) =>
           <Icon name="whatsapp" class="ico" />
           <span>Escríbanos por WhatsApp</span>
         </a>
+        <a class="link-thread" href="#consulta">o llene el formulario de consulta <Icon name="arrow" class="ico" /></a>
         <p class="close-small">Respuesta en horario de oficina. Su consulta es confidencial.</p>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer indigo-deep">
-    <div class="wrap footer-grid">
-      <div class="footer-brand">
-        <img class="footer-logo" src="/brand/horizontal-blanco.png" width="900" height="232" alt="Estudio Jurídico Mira & Montesdeoca" loading="lazy" />
-        <p>Derecho de familia y civil · {site.city}</p>
-      </div>
-      <ul class="footer-nav">
-        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-      </ul>
-      <p class="footer-legal">
-        © {new Date().getFullYear()} {site.name}. La información de este sitio es general y no constituye
-        asesoría legal para un caso concreto.
-      </p>
-    </div>
-  </footer>
-
-  <a class="wa-float" href={waLink()} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" data-wa-float>
-    <Icon name="whatsapp" class="ico" />
-    <span>Escríbanos</span>
-  </a>
+  <SiteFooter />
 
   <script>
-    const header = document.querySelector<HTMLElement>('[data-header]');
-    const float = document.querySelector<HTMLElement>('[data-wa-float]');
-    const hero = document.querySelector<HTMLElement>('.hero');
-    const onScroll = () => {
-      const y = window.scrollY;
-      header?.classList.toggle('is-solid', y > 24);
-      if (hero && float) float.classList.toggle('is-visible', y > hero.offsetHeight * 0.7);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    const menu = document.querySelector<HTMLButtonElement>('[data-menu]');
-    const nav = document.getElementById('site-nav');
-    const setMenu = (open: boolean) => {
-      menu?.setAttribute('aria-expanded', String(open));
-      nav?.classList.toggle('is-open', open);
-      document.body.classList.toggle('menu-open', open);
-    };
-    menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
-    nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
-    document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
-
     // Telar: cada paso que entra en pantalla teje su pasada de trama.
     const bands = document.querySelectorAll<HTMLElement>('[data-band]');
     const io = new IntersectionObserver(

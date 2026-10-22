@@ -1,0 +1,67 @@
+---
+import Icon from './Icon.astro';
+import { waLink } from '../data/site';
+import { nav } from '../data/nav';
+
+interface Props {
+  current?: string;
+}
+const { current } = Astro.props;
+---
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="site-header" data-header>
+  <div class="wrap header-row">
+    <a class="lockup" href="/" aria-label="Estudio Jurídico Mira & Montesdeoca, inicio">
+      <img class="lockup-img" src="/brand/horizontal-blanco.png" width="900" height="232" alt="" />
+      <span class="lockup-m" aria-hidden="true">
+        <img src="/brand/isotipo-blanco.svg" width="880" height="680" alt="" />
+        <span><small>Estudio Jurídico</small>Mira&amp;Montesdeoca</span>
+      </span>
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Principal">
+      <ul>
+        {nav.map((n) => (
+          <li>
+            <a href={n.href} aria-current={current === n.href ? 'page' : undefined}>{n.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn-wa btn-sm" href={waLink()} target="_blank" rel="noopener">
+        <Icon name="whatsapp" class="ico" />
+        <span>WhatsApp</span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
+        <span class="menu-lines" aria-hidden="true"></span>
+        <span class="sr-only">Menú</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const float = document.querySelector<HTMLElement>('[data-wa-float]');
+  const hero = document.querySelector<HTMLElement>('.hero, .page-head');
+  const onScroll = () => {
+    const y = window.scrollY;
+    header?.classList.toggle('is-solid', y > 24);
+    const threshold = hero ? hero.offsetHeight * 0.7 : 480;
+    float?.classList.toggle('is-visible', y > threshold);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const menu = document.querySelector<HTMLButtonElement>('[data-menu]');
+  const nav = document.getElementById('site-nav');
+  const setMenu = (open: boolean) => {
+    menu?.setAttribute('aria-expanded', String(open));
+    nav?.classList.toggle('is-open', open);
+    document.body.classList.toggle('menu-open', open);
+  };
+  menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+  nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
+</script>

@@ -1,0 +1,166 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+<form
+  class="cform"
+  data-cform
+  data-endpoint={site.formEndpoint}
+  data-wa={site.whatsapp}
+  novalidate
+  aria-describedby="cform-privacy"
+>
+  <div class="weft weft-thin cform-weft" aria-hidden="true"></div>
+  <div class="cform-body">
+    <div class="cform-row cform-2">
+      <div class="field">
+        <label for="cf-nombre">Nombre y apellido</label>
+        <input id="cf-nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="cf-nombre-err" />
+        <p class="field-err" id="cf-nombre-err" data-err-for="nombre"></p>
+      </div>
+      <div class="field">
+        <label for="cf-telefono">Celular o teléfono</label>
+        <input id="cf-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="099 123 4567" required aria-describedby="cf-telefono-err" />
+        <p class="field-err" id="cf-telefono-err" data-err-for="telefono"></p>
+      </div>
+    </div>
+
+    <fieldset class="field">
+      <legend>¿Sobre qué es su consulta?</legend>
+      <div class="chips" role="radiogroup">
+        <label class="chip"><input type="radio" name="area" value="Familia" required /><span>Familia</span></label>
+        <label class="chip"><input type="radio" name="area" value="Civil" /><span>Civil</span></label>
+        <label class="chip"><input type="radio" name="area" value="No estoy seguro" /><span>No estoy seguro</span></label>
+      </div>
+      <p class="field-err" data-err-for="area"></p>
+    </fieldset>
+
+    <div class="field">
+      <label for="cf-mensaje">Cuéntenos brevemente qué está pasando</label>
+      <textarea id="cf-mensaje" name="mensaje" rows="5" maxlength="800" required aria-describedby="cf-mensaje-hint cf-mensaje-err" placeholder="Por ejemplo: quiero pedir pensión de alimentos para mis dos hijos."></textarea>
+      <div class="field-foot">
+        <p class="field-err" id="cf-mensaje-err" data-err-for="mensaje"></p>
+        <p class="field-hint" id="cf-mensaje-hint"><span data-count>0</span>/800</p>
+      </div>
+    </div>
+
+    <fieldset class="field">
+      <legend>¿Cómo prefiere que le contactemos?</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="via" value="WhatsApp" checked /><span>WhatsApp</span></label>
+        <label class="chip"><input type="radio" name="via" value="Llamada" /><span>Llamada</span></label>
+      </div>
+    </fieldset>
+
+    <div class="field">
+      <label class="check">
+        <input type="checkbox" name="acepto" required />
+        <span>Autorizo al estudio a contactarme para responder mi consulta.</span>
+      </label>
+      <p class="field-err" data-err-for="acepto"></p>
+    </div>
+
+    <div class="cform-submit">
+      <button class="btn btn-solid btn-lg" type="submit" data-submit>
+        <span data-label>Enviar mi consulta</span>
+        <Icon name="arrow" class="ico" />
+      </button>
+      <p class="cform-privacy" id="cform-privacy">Su información es confidencial y solo la usamos para responderle.</p>
+    </div>
+
+    <div class="cform-status" role="status" aria-live="polite" data-status hidden></div>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-cform]');
+  if (form) {
+    const endpoint = form.dataset.endpoint || '';
+    const wa = form.dataset.wa || '';
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const submit = form.querySelector<HTMLButtonElement>('[data-submit]')!;
+    const label = form.querySelector<HTMLElement>('[data-label]')!;
+    const count = form.querySelector<HTMLElement>('[data-count]');
+    const mensaje = form.querySelector<HTMLTextAreaElement>('textarea[name="mensaje"]')!;
+
+    mensaje.addEventListener('input', () => {
+      if (count) count.textContent = String(mensaje.value.length);
+    });
+
+    const setErr = (name: string, msg: string) => {
+      const el = form.querySelector<HTMLElement>(`[data-err-for="${name}"]`);
+      if (el) el.textContent = msg;
+      form.querySelectorAll<HTMLInputElement>(`[name="${name}"]`).forEach((i) =>
+        msg ? i.setAttribute('aria-invalid', 'true') : i.removeAttribute('aria-invalid')
+      );
+    };
+
+    const validate = () => {
+      const d = new FormData(form);
+      const nombre = String(d.get('nombre') || '').trim();
+      const tel = String(d.get('telefono') || '').replace(/[^\d+]/g, '');
+      const msg = String(d.get('mensaje') || '').trim();
+      const errs: Record<string, string> = {
+        nombre: nombre.length < 3 ? 'Escriba su nombre para saber cómo dirigirnos a usted.' : '',
+        telefono: tel.replace('+', '').length < 9 ? 'Escriba un número de 9 o 10 dígitos, por ejemplo 0991234567.' : '',
+        area: d.get('area') ? '' : 'Elija un área, o «No estoy seguro» si tiene dudas.',
+        mensaje: msg.length < 10 ? 'Cuéntenos su caso en al menos una frase.' : '',
+        acepto: d.get('acepto') ? '' : 'Necesitamos su autorización para poder responderle.',
+      };
+      Object.entries(errs).forEach(([k, v]) => setErr(k, v));
+      const first = Object.keys(errs).find((k) => errs[k]);
+      if (first) form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
+      return { ok: !first, nombre, tel, msg, area: String(d.get('area') || ''), via: String(d.get('via') || '') };
+    };
+
+    form.addEventListener('input', (e) => {
+      const t = e.target as HTMLInputElement;
+      if (t.getAttribute('aria-invalid')) setErr(t.name, '');
+    });
+
+    const show = (kind: 'ok' | 'error', html: string) => {
+      status.hidden = false;
+      status.className = `cform-status is-${kind}`;
+      status.innerHTML = html;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.hidden = true;
+      const v = validate();
+      if (!v.ok) return;
+
+      const text =
+        `Hola, soy ${v.nombre}. Quisiera una consulta sobre derecho ${v.area.toLowerCase()}.\n\n` +
+        `${v.msg}\n\nPrefiero que me contacten por ${v.via} al ${v.tel}.`;
+      const waUrl = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+
+      if (!endpoint) {
+        window.open(waUrl, '_blank', 'noopener');
+        show('ok', '<strong>Abrimos WhatsApp con su mensaje listo.</strong> Solo toque «Enviar». Si no se abrió, <a href="' + waUrl + '" target="_blank" rel="noopener">ábralo aquí</a>.');
+        return;
+      }
+
+      submit.disabled = true;
+      submit.setAttribute('aria-busy', 'true');
+      label.textContent = 'Enviando…';
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ nombre: v.nombre, telefono: v.tel, area: v.area, mensaje: v.msg, via: v.via }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.reset();
+        if (count) count.textContent = '0';
+        show('ok', '<strong>Recibimos su consulta.</strong> Le contactaremos en horario de oficina.');
+      } catch {
+        show('error', '<strong>No pudimos enviar el formulario.</strong> Revise su conexión e intente de nuevo, o <a href="' + waUrl + '" target="_blank" rel="noopener">envíenos el mismo mensaje por WhatsApp</a>.');
+      } finally {
+        submit.disabled = false;
+        submit.removeAttribute('aria-busy');
+        label.textContent = 'Enviar mi consulta';
+      }
+    });
+  }
+</script>

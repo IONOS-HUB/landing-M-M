@@ -12,8 +12,12 @@ El diseño se llama **Telar de Imbabura**: fondo de algodón índigo con hilos d
 4. **Cómo trabajamos**: el proceso en 5 pasos.
 5. **Testimonios**: de ejemplo, marcados como placeholders.
 6. **Reconocimientos**: espacios para logos de clientes y premios.
-7. **Ubicación**: mapa de Ibarra, dirección, horario y contacto.
-8. **Cierre**: llamado final a WhatsApp.
+7. **Guías**: los 3 artículos más recientes del blog.
+8. **Agende su consulta**: formulario de contacto.
+9. **Ubicación**: mapa de Ibarra, dirección, horario y contacto.
+10. **Cierre**: llamado final a WhatsApp.
+
+Además, el sitio tiene un **blog** en `/blog/`, con filtro por área (Familia / Civil) y una página por artículo en `/blog/<slug>/`. Cada artículo incluye índice, CTA lateral y artículos relacionados.
 
 ## Requisitos
 
@@ -46,6 +50,16 @@ Casi todos los datos del estudio están en **`src/data/site.ts`**:
 
 Unos pocos textos están directamente en **`src/pages/index.astro`**: las condiciones de la primera consulta, el año de fundación y el número de casos.
 
+### Formulario de contacto
+
+El formulario (`src/components/ContactForm.astro`) valida los campos y, por defecto, abre WhatsApp con el mensaje ya escrito, así que no necesita servidor. Para que los mensajes lleguen por correo, cree un formulario en un servicio como [Formspree](https://formspree.io) y pegue su URL en `site.formEndpoint` (`src/data/site.ts`). En ese caso el formulario envía los datos ahí y, si algo falla, ofrece WhatsApp como alternativa.
+
+### Blog
+
+Los artículos están escritos directamente en **`src/data/posts.ts`**. Para agregar uno, copie un objeto del arreglo `posts` y cambie `slug`, `title`, `excerpt`, `category`, `date`, `author` y `body`. El cuerpo es una lista de bloques: `{ h2 }`, `{ p }`, `{ ul: [...] }` y `{ note }`.
+
+> ⚠️ Los 6 artículos incluidos son **de ejemplo**, con información general. El estudio debe revisarlos y validarlos antes de publicar.
+
 ### Placeholders
 
 Cualquier texto entre `[corchetes]` es un dato por confirmar y en la página se muestra resaltado en celeste. Al poner el dato real, quita los corchetes.
@@ -64,10 +78,13 @@ Los espacios con borde punteado son marcadores para imágenes. Coloca las imáge
 │   ├── brand/             Logos optimizados y texturas (trama, máscara del isotipo)
 │   └── favicon.svg
 ├── src/
-│   ├── components/        Isotipo.astro, Icon.astro
-│   ├── data/site.ts       Contenido editable
+│   ├── components/        Cabecera, pie, formulario, banda CTA, isotipo, iconos
+│   ├── data/              site.ts (datos del estudio), posts.ts (blog), nav.ts (menú)
 │   ├── layouts/Base.astro HTML base, fuentes y metadatos
-│   ├── pages/index.astro  La landing
+│   ├── lib/ph.ts          Utilidad para placeholders
+│   ├── pages/
+│   │   ├── index.astro    La landing
+│   │   └── blog/          Índice del blog y página de cada artículo
 │   └── styles/global.css  Estilos y tokens de diseño
 ├── PRODUCT.md             Contexto del estudio y del público
 └── DESIGN.md              Sistema visual: colores, tipografía y componentes

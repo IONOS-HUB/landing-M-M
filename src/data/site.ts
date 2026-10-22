@@ -19,6 +19,9 @@ export const site = {
   // Coordenadas aproximadas del centro de Ibarra; ajuste a la oficina real.
   map: { lat: 0.3517, lon: -78.1223 },
   founded: '[año]',
+  // Opcional: URL de un servicio de formularios (p. ej. https://formspree.io/f/xxxx).
+  // Si queda vacío, el formulario arma el mensaje y lo abre en WhatsApp.
+  formEndpoint: '',
 };
 
 export const partners = [
