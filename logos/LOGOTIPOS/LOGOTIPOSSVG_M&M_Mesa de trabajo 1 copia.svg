@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        font-family: Quattrocento, Quattrocento;
+        font-size: 56.75px;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: #f2f2f2;
+      }
+
+      .cls-5 {
+        stroke: #f2f2f2;
+      }
+
+      .cls-5, .cls-6 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        stroke: #0e2d79;
+      }
+
+      .cls-8 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-3 {
+        font-family: Quattrocento-Bold, Quattrocento;
+        font-size: 82.9px;
+        font-weight: 700;
+      }
+
+      .cls-4 {
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g>
+    <polygon class="cls-4" points="546 397 427 123 355.25 123 117 676 190.51 676 393 185 516 466 546 397"/>
+    <polygon class="cls-4" points="740.27 123 668.27 123 430.92 676 499.86 676 704 186 923.93 676 984.34 676 740.27 123"/>
+    <polygon class="cls-4" points="564 533 622.85 675 683.69 675 592 465 564 533"/>
+    <path class="cls-4" d="m681.69,686.14h-250.78c141.92,122.14,250.78,0,250.78,0Z"/>
+  </g>
+  <text class="cls-2" transform="translate(294.74 836.47)"><tspan x="0" y="0">ESTU</tspan><tspan class="cls-7" x="138.13" y="0">DI</tspan><tspan x="197.88" y="0">O JURÍ</tspan><tspan class="cls-7" x="368.98" y="0">DIC</tspan><tspan x="465.23" y="0">O</tspan></text>
+  <text class="cls-3" transform="translate(94.96 956.18)"><tspan x="0" y="0">MIRA&amp;</tspan><tspan class="cls-1" x="283.27" y="0">MO</tspan><tspan x="421.39" y="0">NTES</tspan><tspan class="cls-1" x="628.89" y="0">D</tspan><tspan x="690.66" y="0">EOC</tspan><tspan class="cls-8" x="853.31" y="0">A</tspan></text>
+  <g>
+    <line class="cls-6" x1="829" y1="822" x2="984" y2="822"/>
+    <line class="cls-6" x1="829" y1="822" x2="984" y2="822"/>
+    <line class="cls-5" x1="829" y1="822" x2="984" y2="822"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="108" y1="822" x2="263" y2="822"/>
+    <line class="cls-6" x1="108" y1="822" x2="263" y2="822"/>
+    <line class="cls-5" x1="108" y1="822" x2="263" y2="822"/>
+  </g>
+</svg>

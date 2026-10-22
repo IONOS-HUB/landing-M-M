@@ -1,0 +1,14 @@
+# dependencias y build
+node_modules/
+dist/
+.astro/
+
+# herramientas locales del editor/agentes
+.agent/
+.claude/
+.gemini/
+
+# impeccable: solo se versiona el sistema de diseño y el brief
+.impeccable/*
+!.impeccable/design.json
+!.impeccable/surfaces/

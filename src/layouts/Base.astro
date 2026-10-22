@@ -1,0 +1,33 @@
+---
+import '@fontsource/quattrocento/400.css';
+import '@fontsource/quattrocento/700.css';
+import '@fontsource/quattrocento-sans/400.css';
+import '@fontsource/quattrocento-sans/400-italic.css';
+import '@fontsource/quattrocento-sans/700.css';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+<!doctype html>
+<html lang="es-EC">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0b1f5c" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/brand/horizontal-azul.png" />
+    <meta property="og:locale" content="es_EC" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

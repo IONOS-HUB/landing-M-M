@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-22T00:00:00Z",
+  "title": "Design System: Estudio Jurídico Mira & Montesdeoca",
+  "extensions": {
+    "colorMeta": {
+      "indigo-950": {
+        "role": "neutral",
+        "displayName": "Deepest Indigo",
+        "canonical": "#050f33",
+        "tonalRamp": [
+          "#020629",
+          "#142248",
+          "#304069",
+          "#4e608b",
+          "#6e82ae",
+          "#92a5ce",
+          "#b8c9ee",
+          "#e0efff"
+        ]
+      },
+      "indigo-900": {
+        "role": "neutral",
+        "displayName": "Night Indigo",
+        "canonical": "#071746",
+        "tonalRamp": [
+          "#000330",
+          "#0f2150",
+          "#2a3f72",
+          "#485f95",
+          "#6981b7",
+          "#8ea5d6",
+          "#b4c9f5",
+          "#ddefff"
+        ]
+      },
+      "indigo-800": {
+        "role": "neutral",
+        "displayName": "Indigo Cotton",
+        "canonical": "#0b1f5c",
+        "tonalRamp": [
+          "#010039",
+          "#0a1d5a",
+          "#243d7d",
+          "#425ea1",
+          "#6480c1",
+          "#89a4df",
+          "#b1c9fd",
+          "#d9efff"
+        ]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "Brand Navy",
+        "canonical": "#093287",
+        "tonalRamp": [
+          "#030048",
+          "#00166b",
+          "#113a8f",
+          "#305cb4",
+          "#537fd6",
+          "#7ba4f3",
+          "#a4c9ff",
+          "#ceefff"
+        ]
+      },
+      "weft-cobalt": {
+        "role": "secondary",
+        "displayName": "Weft Cobalt",
+        "canonical": "#0b56c4",
+        "tonalRamp": [
+          "#01004a",
+          "#000d77",
+          "#0035a1",
+          "#1059c7",
+          "#377def",
+          "#61a3ff",
+          "#8ec9ff",
+          "#bbf0ff"
+        ]
+      },
+      "blue": {
+        "role": "secondary",
+        "displayName": "Brand Blue",
+        "canonical": "#0082ff",
+        "tonalRamp": [
+          "#000044",
+          "#001671",
+          "#0037a2",
+          "#0059d3",
+          "#007efb",
+          "#39a3ff",
+          "#6bcaff",
+          "#9ff2ff"
+        ]
+      },
+      "weft-azure": {
+        "role": "secondary",
+        "displayName": "Weft Azure",
+        "canonical": "#1aa0fb",
+        "tonalRamp": [
+          "#000535",
+          "#00235e",
+          "#00438a",
+          "#0064b9",
+          "#0087e1",
+          "#2facff",
+          "#5cd2ff",
+          "#91f8ff"
+        ]
+      },
+      "sky": {
+        "role": "primary",
+        "displayName": "Signal Sky",
+        "canonical": "#3abefd",
+        "tonalRamp": [
+          "#000c29",
+          "#00294e",
+          "#004976",
+          "#006ba1",
+          "#008eca",
+          "#28b2f0",
+          "#59d7ff",
+          "#83feff"
+        ]
+      },
+      "cotton": {
+        "role": "neutral",
+        "displayName": "Raw Cotton",
+        "canonical": "#f4f6f9",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#242527",
+          "#404244",
+          "#606164",
+          "#818285",
+          "#a3a5a8",
+          "#c7c9cc",
+          "#edeff1"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0d1733",
+        "tonalRamp": [
+          "#030823",
+          "#182341",
+          "#344161",
+          "#526182",
+          "#7382a5",
+          "#95a5ca",
+          "#bac9ec",
+          "#e1eeff"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#3c4867",
+        "tonalRamp": [
+          "#030822",
+          "#192340",
+          "#35415f",
+          "#546081",
+          "#7482a4",
+          "#96a5c8",
+          "#bac9ee",
+          "#deeeff"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Thread Line",
+        "canonical": "#d9dfea",
+        "tonalRamp": [
+          "#080b12",
+          "#21252d",
+          "#3d424b",
+          "#5c616b",
+          "#7d838c",
+          "#a0a5b0",
+          "#c3c9d4",
+          "#e9effa"
+        ]
+      },
+      "on-indigo": {
+        "role": "neutral",
+        "displayName": "On-Indigo",
+        "canonical": "#eef3ff",
+        "tonalRamp": [
+          "#080b12",
+          "#21252e",
+          "#3e424b",
+          "#5d616b",
+          "#7e828d",
+          "#a0a5b0",
+          "#c4c9d5",
+          "#e9eefa"
+        ]
+      },
+      "on-indigo-soft": {
+        "role": "neutral",
+        "displayName": "On-Indigo Soft",
+        "canonical": "#b3c3ec",
+        "tonalRamp": [
+          "#040920",
+          "#192341",
+          "#344062",
+          "#536084",
+          "#7381a7",
+          "#95a4cc",
+          "#b8c8f2",
+          "#ddeeff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only."
+      },
+      "display-index": {
+        "displayName": "Display Index",
+        "purpose": "Practice-area names as giant navy index words."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Partner names, step titles, award titles."
+      },
+      "quote": {
+        "displayName": "Quote",
+        "purpose": "Testimonials; lead quote scales up."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero and section intros."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading copy, ~36rem measure."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, link-threads, ledger terms."
+      }
+    },
+    "shadows": [
+      {
+        "name": "mark-lift",
+        "value": "drop-shadow(0 30px 40px rgb(0 0 0 / 0.35))",
+        "purpose": "Filter on the woven isotipo in the hero."
+      },
+      {
+        "name": "loom-drop",
+        "value": "0 30px 60px -30px rgb(0 0 0 / 0.7)",
+        "purpose": "The process loom."
+      },
+      {
+        "name": "header-settle",
+        "value": "0 10px 30px -18px rgb(0 0 0 / 0.6)",
+        "purpose": "Fixed header once scrolled."
+      },
+      {
+        "name": "float",
+        "value": "0 12px 28px -10px rgb(5 15 51 / 0.55)",
+        "purpose": "Floating WhatsApp button."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every transition and reveal."
+      },
+      {
+        "name": "shuttle",
+        "value": "clip-path inset(0 100% 0 0) to inset(0), 1.6s",
+        "purpose": "Weft bands and loom bands weave in left to right."
+      },
+      {
+        "name": "threads",
+        "value": "clip-path inset(100% 0 0 0) to inset(0), 1.4s",
+        "purpose": "Hero isotipo fills bottom-up."
+      },
+      {
+        "name": "rise",
+        "value": "opacity 0 + translateY(14px) to rest, 0.9s, 60ms stagger",
+        "purpose": "Hero copy entrance."
+      },
+      {
+        "name": "state",
+        "value": "0.25s",
+        "purpose": "Button and nav color changes."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "nav-tight",
+        "value": "1080px"
+      },
+      {
+        "name": "single-column",
+        "value": "960px"
+      },
+      {
+        "name": "compact",
+        "value": "680px"
+      },
+      {
+        "name": "narrow",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "WhatsApp CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The only filled button: square white face, 1px edge, dashed thread outline offset 4px. Shown on indigo.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-btn-wa\" href=\"#\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.42 9.42 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.42 9.44c0 5.2-4.23 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6-1.57a11.32 11.32 0 0 0 5.43 1.38h.01c6.25 0 11.34-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02\"/></svg><span>Escríbanos por WhatsApp</span></a></div>",
+      "css": ".ds-stage{background:#0b1f5c;padding:2rem;} .ds-ico{width:1.35em;height:1.35em;flex:none;} .ds-btn-wa{display:inline-flex;align-items:center;gap:.6rem;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);font-weight:700;font-size:1.0625rem;line-height:1;letter-spacing:.01em;text-decoration:none;padding:1.1rem 1.6rem;background:#fff;color:#0b1f5c;border:1px solid #fff;outline:1px dashed rgb(255 255 255 / .55);outline-offset:4px;border-radius:0;transition:background-color .25s cubic-bezier(.16,1,.3,1),color .25s cubic-bezier(.16,1,.3,1),outline-color .25s cubic-bezier(.16,1,.3,1);} .ds-btn-wa .ds-ico{color:#093287;} .ds-btn-wa:hover{background:#3abefd;border-color:#3abefd;color:#050f33;outline-color:#3abefd;} .ds-btn-wa:hover .ds-ico{color:#050f33;} .ds-btn-wa:active{background:#8fdaff;} .ds-btn-wa:focus-visible{outline:2px solid #3abefd;outline-offset:3px;}"
+    },
+    {
+      "name": "Floating WhatsApp",
+      "kind": "button",
+      "refersTo": "button-float",
+      "description": "Fixed bottom-right after the hero: indigo face, sky edge and dashed sky outline.",
+      "html": "<div class=\"ds-stage2\"><a class=\"ds-wa-float\" href=\"#\"><svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"currentColor\"><path d=\"M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.42 9.42 0 0 1-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.38 9.38 0 0 1 9.42 9.44c0 5.2-4.23 9.43-9.43 9.43m8.03-17.46A11.27 11.27 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.6l6-1.57a11.32 11.32 0 0 0 5.43 1.38h.01c6.25 0 11.34-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02\"/></svg><span>Escríbanos</span></a></div>",
+      "css": ".ds-stage2{background:#f4f6f9;padding:2rem;} .ds-ico{width:1.4rem;height:1.4rem;flex:none;} .ds-wa-float{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.1rem;background:#0b1f5c;color:#fff;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);font-weight:700;text-decoration:none;border:1px solid #3abefd;outline:1px dashed rgb(58 190 253 / .6);outline-offset:3px;box-shadow:0 12px 28px -10px rgb(5 15 51 / .55);transition:background-color .25s;} .ds-wa-float .ds-ico{color:#3abefd;} .ds-wa-float:hover{background:#093287;} .ds-wa-float:focus-visible{outline:2px solid #3abefd;outline-offset:3px;}"
+    },
+    {
+      "name": "Link-thread",
+      "kind": "custom",
+      "refersTo": "link-thread",
+      "description": "Secondary action: bold label on a 1px thread with arrow; thread thickens and arrow gap widens on hover.",
+      "html": "<div class=\"ds-stage3\"><a class=\"ds-link-thread\" href=\"#\">Consultar sobre familia <svg class=\"ds-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14m-5-5 5 5-5 5\"/></svg></a></div>",
+      "css": ".ds-stage3{background:#f4f6f9;padding:2rem;} .ds-ico{width:1.15em;height:1.15em;flex:none;} .ds-link-thread{display:inline-flex;align-items:center;gap:.45rem;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);font-weight:700;color:#093287;text-decoration:none;padding-block:.4rem;background:linear-gradient(currentColor,currentColor) 0 100% / 100% 1px no-repeat;transition:background-size .4s cubic-bezier(.16,1,.3,1),gap .3s cubic-bezier(.16,1,.3,1);} .ds-link-thread:hover{gap:.75rem;background-size:100% 2px;} .ds-link-thread:focus-visible{outline:2px solid #3abefd;outline-offset:3px;}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Header nav on indigo: soft text, sky thread drawn in on hover.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">El estudio</a><a href=\"#\">Áreas</a><a href=\"#\">Cómo trabajamos</a><a href=\"#\">Ubicación</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1.6rem;background:#0b1f5c;padding:1.1rem 2rem;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);} .ds-nav a{text-decoration:none;font-size:.97rem;color:#b3c3ec;padding-block:.4rem;background:linear-gradient(#3abefd,#3abefd) 0 100% / 0 1px no-repeat;transition:color .25s,background-size .35s cubic-bezier(.16,1,.3,1);} .ds-nav a:hover{color:#fff;background-size:100% 1px;} .ds-nav a:focus-visible{outline:2px solid #3abefd;outline-offset:3px;}"
+    },
+    {
+      "name": "Weft Band",
+      "kind": "custom",
+      "refersTo": "weft-band",
+      "description": "Signature section seam: woven passes navy to sky with weave tile and per-pass shading.",
+      "html": "<div class=\"ds-weft\"></div><div class=\"ds-gap\"></div><div class=\"ds-weft ds-weft-thin\"></div>",
+      "css": ".ds-weft{height:42px;background-color:#093287;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Crect width='3' height='7' fill='%23071746'/%3E%3Crect x='7' y='7' width='3' height='7' fill='%23071746'/%3E%3Crect x='3' width='1' height='7' opacity='.18'/%3E%3Crect x='10' y='7' width='1' height='7' opacity='.18'/%3E%3C/svg%3E\"),repeating-linear-gradient(180deg,rgb(255 255 255 / .16) 0,transparent 3px,rgb(0 0 0 / .2) 7px),repeating-linear-gradient(180deg,#093287 0 14px,#0b56c4 14px 21px,#0082ff 21px 28px,#1aa0fb 28px 35px,#3abefd 35px 42px);background-size:14px 14px,100% 7px,100% 42px;} .ds-weft-thin{height:14px;background-size:14px 14px,100% 7px,100% 14px;} .ds-gap{height:1.5rem;background:#f4f6f9;}"
+    },
+    {
+      "name": "Ruled Ledger",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Lists as ruled rows with a three-thread weft swatch bullet; row tints and indents on hover.",
+      "html": "<ul class=\"ds-ledger\"><li>Divorcio por mutuo acuerdo y contencioso</li><li>Pensión de alimentos: fijación, aumento y rebaja</li><li>Tenencia, patria potestad y régimen de visitas</li></ul>",
+      "css": ".ds-ledger{list-style:none;margin:0;padding:0;background:#f4f6f9;color:#0d1733;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);border-top:1px solid #d9dfea;} .ds-ledger li{position:relative;padding:.85rem 0 .85rem 1.6rem;border-bottom:1px solid #d9dfea;transition:background-color .3s cubic-bezier(.16,1,.3,1),padding .3s cubic-bezier(.16,1,.3,1);} .ds-ledger li::before{content:\"\";position:absolute;left:0;top:50%;width:.9rem;height:7px;margin-top:-3.5px;background:linear-gradient(90deg,#093287 0 3px,transparent 3px 5px,#0082ff 5px 8px,transparent 8px 10px,#3abefd 10px);} .ds-ledger li:hover{background:rgb(0 130 255 / .05);padding-left:2rem;}"
+    },
+    {
+      "name": "Ghost Cell",
+      "kind": "card",
+      "refersTo": "ghost-cell",
+      "description": "Drawn placeholder for pending media: dashed navy border, warp hatching, asset-type tag.",
+      "html": "<div class=\"ds-ghost\"><span class=\"ds-ghost-tag\">Foto profesional</span><span class=\"ds-ghost-label\">Foto de Nombre Mira</span></div>",
+      "css": ".ds-ghost{position:relative;display:grid;place-items:center;aspect-ratio:4/5;max-width:260px;border:1px dashed rgb(9 50 135 / .45);background:repeating-linear-gradient(90deg,rgb(9 50 135 / .05) 0 1px,transparent 1px 14px),rgb(0 130 255 / .03);color:#23407f;text-align:center;padding:1rem;font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);} .ds-ghost-tag{position:absolute;top:.75rem;left:.75rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#093287;} .ds-ghost-label{font-size:.92rem;}"
+    },
+    {
+      "name": "Placeholder Mark",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Inline pending data: blue wash with a 1px underline, on cotton.",
+      "html": "<p class=\"ds-p\">Ejercemos en Imbabura desde <span class=\"ds-ph\" title=\"Dato por confirmar\">año de fundación</span>.</p>",
+      "css": ".ds-p{font-family: var(--sans, 'Quattrocento Sans', 'Gill Sans', sans-serif);color:#3c4867;background:#f4f6f9;padding:1rem;margin:0;} .ds-ph{background:rgb(0 130 255 / .09);box-shadow:inset 0 -1px 0 #0082ff;color:#0a3a8f;padding:0 .22em;border-radius:1px;box-decoration-break:clone;-webkit-box-decoration-break:clone;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Telar de Imbabura",
+    "overview": "The page is a cloth being woven. Indigo cotton is the ground of the moments that carry conviction (hero, process, close, footer); cold raw cotton is the ground of the reading sections. Thin vertical warp threads are not decoration on top of the layout: they are the 12-column grid itself, drawn at each column line. Horizontal weft bands in the brand's own blues (the logo gradient, navy to sky) are woven between sections, so the separators are made of the same material as the mark.\n\nDensity is calm and editorial: generous section padding, asymmetric two-column splits, long ruled lists instead of cards. Everything is square-cornered and thread-thin: 1px rules, 1px dashed outlines, a 14px warp pitch that repeats from the weave tile to the loom to the map frame. Missing data is shown honestly as drawn ghost cells and highlighted placeholder text, never disguised as real content.\n\nMotion is the loom at work: bands reveal by clipping left to right like a shuttle passing, the isotipo reveals bottom-up like threads filling in, and the process loom gains one weft pass per step on scroll. All of it collapses to static under reduced motion.",
+    "keyCharacteristics": [
+      "Two grounds only: indigo cotton and raw cotton, with white for the CTA and framed media.",
+      "Warp threads at the 12-column lines on every indigo section.",
+      "Weft bands in the five brand blues as section seams.",
+      "Quattrocento bold for every heading; Quattrocento Sans for everything read.",
+      "Zero radius on buttons, cells and frames; 1px rules and dashed thread outlines carry structure.",
+      "Placeholders are visible, labeled, and part of the weave."
+    ],
+    "rules": [
+      {
+        "name": "The Logo Gradient Rule",
+        "body": "Every accent blue comes from the logo's own gradient (navy, cobalt, blue, azure, sky). No other hue enters the system; there is no gold, no warm accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Grounds Rule",
+        "body": "A section is either indigo cotton or raw cotton. Indigo is for conviction (hero, process, close); cotton is for reading and evidence.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Emphasis Rule",
+        "body": "Emphasis inside sans copy switches to Quattrocento bold in navy (not italics, not color alone).",
+        "section": "typography"
+      },
+      {
+        "name": "The Numeral Rule",
+        "body": "Step numbers and registry numbers use tabular figures; step numerals are display serif in sky.",
+        "section": "typography"
+      },
+      {
+        "name": "The Warp Is The Grid Rule",
+        "body": "Vertical threads on indigo grounds sit exactly on the 12 column lines of the wrap. Never draw decorative verticals off-grid.",
+        "section": "layout"
+      },
+      {
+        "name": "The 14px Pitch Rule",
+        "body": "The warp pitch (14px) is the shared module of the weave tile, loom threads, ghost-cell hatching and the map frame's graph paper.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Cloth Rule",
+        "body": "Cards, cells, lists and buttons are flat. Shadows are soft, negative-spread and dark-blue/black, reserved for the mark, the loom and fixed chrome.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep every section on one of the two grounds: indigo-800 cotton with warp, or raw cotton (#f4f6f9).",
+      "**Do** separate cotton sections with a thin (14px) weft band and open or close indigo moments with a full (42–56px) one.",
+      "**Do** draw warp threads only on the 12 column lines of the 1240px wrap.",
+      "**Do** set every heading in Quattrocento 700 with tight negative tracking; keep reading text in Quattrocento Sans.",
+      "**Do** make the white, square, dash-outlined WhatsApp button the only filled button on a surface.",
+      "**Do** show missing data as ghost cells and placeholder marks until real content exists.",
+      "**Do** honor reduced motion: weave reveals render complete and static."
+    ],
+    "donts": [
+      "**Don't** add any hue outside the logo's navy-to-sky gradient; no gold or warm accent.",
+      "**Don't** round buttons, cells or frames; the system's only radius is the 1px on focus and placeholder marks.",
+      "**Don't** wrap content in shadowed cards; use ruled ledgers and flat cells.",
+      "**Don't** present placeholder testimonials, logos or figures as real; they always carry the placeholder mark or ghost cell.",
+      "**Don't** use the dashed thread outline for decoration on static containers other than ghost cells; it marks either the CTA or pending content."
+    ]
+  }
+}

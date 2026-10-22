@@ -1,0 +1,370 @@
+---
+import Base from '../layouts/Base.astro';
+import Isotipo from '../components/Isotipo.astro';
+import Icon from '../components/Icon.astro';
+import { site, partners, areas, steps, testimonials, recognitions, awards, waLink } from '../data/site';
+
+const bbox = [site.map.lon - 0.012, site.map.lat - 0.008, site.map.lon + 0.012, site.map.lat + 0.008].join(',');
+const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${site.map.lat},${site.map.lon}`;
+const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site.map.lon}#map=17/${site.map.lat}/${site.map.lon}`;
+
+const nav = [
+  { href: '#estudio', label: 'El estudio' },
+  { href: '#areas', label: 'Áreas' },
+  { href: '#proceso', label: 'Cómo trabajamos' },
+  { href: '#testimonios', label: 'Testimonios' },
+  { href: '#ubicacion', label: 'Ubicación' },
+];
+
+// Marca entre corchetes como placeholder visible.
+const ph = (text: string) =>
+  text.replace(/\[([^\]]+)\]/g, '<span class="ph" title="Dato por confirmar">$1</span>');
+---
+<Base
+  title="Abogados de familia y civil en Ibarra | Estudio Jurídico Mira & Montesdeoca"
+  description="Estudio jurídico en Ibarra, Ecuador. Divorcios, pensión de alimentos, tenencia, herencias y contratos. Escríbanos por WhatsApp y agende su consulta."
+>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" data-header>
+    <div class="wrap header-row">
+      <a class="lockup" href="#top" aria-label="Estudio Jurídico Mira & Montesdeoca, inicio">
+        <img class="lockup-img" src="/brand/horizontal-blanco.png" width="900" height="232" alt="" />
+        <span class="lockup-m" aria-hidden="true">
+          <img src="/brand/isotipo-blanco.svg" width="880" height="680" alt="" />
+          <span><small>Estudio Jurídico</small>Mira&amp;Montesdeoca</span>
+        </span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Principal">
+        <ul>
+          {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-wa btn-sm" href={waLink()} target="_blank" rel="noopener">
+          <Icon name="whatsapp" class="ico" />
+          <span>WhatsApp</span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" data-menu>
+          <span class="menu-lines" aria-hidden="true"></span>
+          <span class="sr-only">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO -->
+    <section class="hero indigo" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">Abogados de familia en Ibarra, a su lado en cada paso.</h1>
+          <p class="hero-lede">
+            Divorcios, pensión de alimentos, tenencia, herencias y contratos. Le explicamos su caso con
+            palabras claras y lo llevamos con usted, de principio a fin.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+              <Icon name="whatsapp" class="ico" />
+              <span>Escríbanos por WhatsApp</span>
+            </a>
+            <a class="link-thread" href="#proceso">
+              Cómo trabajamos <Icon name="arrow" class="ico" />
+            </a>
+          </div>
+          <p class="hero-note" set:html={ph('Primera consulta: [condiciones por confirmar]')} />
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <div class="woven-m"></div>
+        </div>
+      </div>
+      <div class="weft weft-hero" aria-hidden="true"></div>
+    </section>
+
+    <!-- EL ESTUDIO -->
+    <section class="section cotton" id="estudio" aria-labelledby="estudio-title">
+      <div class="wrap estudio-grid">
+        <div class="estudio-intro">
+          <h2 id="estudio-title">Dos apellidos, una sola manera de trabajar.</h2>
+          <p class="big-p">
+            <strong>Mira &amp; Montesdeoca</strong> lleva los apellidos de sus socios fundadores. No es una
+            marca detrás de la que se esconde un equipo anónimo: en cada caso, usted sabe quién le atiende y
+            habla directamente con su abogado.
+          </p>
+          <p>
+            Nuestro símbolo une dos <em>M</em> —dos cumbres, como las que rodean Ibarra— sobre una balanza.
+            Dos personas que sostienen juntas el equilibrio de su caso.
+          </p>
+          <p class="muted" set:html={ph('Ejercemos en Imbabura desde [año de fundación].')} />
+        </div>
+        <ul class="partners">
+          {partners.map((p) => (
+            <li class="partner">
+              <div class="ghost ghost-portrait">
+                <span class="ghost-tag">Foto profesional</span>
+                <span class="ghost-label">Foto de {p.name.replace(/[[\]]/g, '')}</span>
+              </div>
+              <div class="partner-body">
+                <h3 set:html={ph(p.name)} />
+                <p class="partner-title" set:html={ph(p.title)} />
+                <p class="partner-focus">{p.focus}</p>
+                <p class="partner-reg" set:html={ph(p.registry)} />
+                <p class="partner-bio" set:html={ph(p.bio)} />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- ÁREAS -->
+    <section class="section cotton areas" id="areas" aria-labelledby="areas-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="areas-title">Dos áreas. Las conocemos a fondo.</h2>
+          <p>
+            Nos dedicamos al derecho de familia y al derecho civil, nada más. Así podemos darle a su caso la
+            atención y el conocimiento que necesita.
+          </p>
+        </div>
+        <div class="areas-grid">
+          {areas.map((a) => (
+            <article class="area" id={`area-${a.id}`}>
+              <h3 class="area-name">{a.name}</h3>
+              <p class="area-lead">{a.lead}</p>
+              <ul class="area-list">
+                {a.items.map((i) => <li>{i}</li>)}
+              </ul>
+              <a
+                class="link-thread link-dark"
+                href={waLink(`Hola, necesito asesoría en derecho ${a.name.toLowerCase()}.`)}
+                target="_blank"
+                rel="noopener"
+              >
+                Consultar sobre {a.name.toLowerCase()} <Icon name="arrow" class="ico" />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- CÓMO TRABAJAMOS -->
+    <section class="section indigo proceso" id="proceso" aria-labelledby="proceso-title">
+      <div class="wrap proceso-grid">
+        <div class="proceso-copy">
+          <h2 id="proceso-title">Cómo llevamos su caso.</h2>
+          <p class="proceso-lede">
+            Un proceso legal no debería ser una caja negra. Así trabajamos con cada cliente, hilo por hilo,
+            hasta cerrar su caso.
+          </p>
+          <ol class="steps">
+            {steps.map((s, i) => (
+              <li class="step" data-step={i}>
+                <span class="step-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <span class="step-weft" aria-hidden="true" style={`--i:${i}`}></span>
+                <div>
+                  <h3>{s.title}</h3>
+                  <p>{s.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+            <Icon name="whatsapp" class="ico" />
+            <span>Empezar por el paso uno</span>
+          </a>
+        </div>
+        <div class="loom-col" aria-hidden="true">
+          <div class="loom">
+            {steps.map((s, i) => (
+              <div class="loom-band" data-band={i} style={`--i:${i}`}>
+                <span class="loom-label">{String(i + 1).padStart(2, '0')} · {s.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- TESTIMONIOS -->
+    <section class="section cotton" id="testimonios" aria-labelledby="testimonios-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="testimonios-title">Lo que dicen nuestros clientes.</h2>
+          <p class="sample-note">
+            <span class="ph">Testimonios de ejemplo</span> Reemplazar por testimonios reales, con autorización
+            escrita de cada cliente.
+          </p>
+        </div>
+        <div class="quotes">
+          {testimonials.map((t, i) => (
+            <figure class={`quote quote-${i}`}>
+              <Icon name="quote" class="quote-mark" />
+              <blockquote set:html={ph(t.quote)} />
+              <figcaption>
+                <span class="quote-name" set:html={ph(t.name)} />
+                <span class="quote-meta">{t.matter} · {t.place}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- RECONOCIMIENTOS -->
+    <section class="section cotton recon" aria-labelledby="recon-title">
+      <div class="wrap recon-grid">
+        <div>
+          <h2 id="recon-title">La confianza de quienes nos eligieron.</h2>
+          <p set:html={ph('[Familias y clientes de Imbabura] que han confiado en nosotros. [Más de N] casos acompañados desde [año].')} />
+          <ul class="awards">
+            {awards.map((a) => (
+              <li>
+                <span class="award-title" set:html={ph(a.title)} />
+                <span class="award-meta" set:html={ph(`${a.by} · ${a.year}`)} />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <ul class="logo-wall" aria-label="Clientes e instituciones (por confirmar)">
+          {recognitions.map((r) => (
+            <li class="ghost ghost-logo"><span class="ghost-label">{r.label.replace(/[[\]]/g, '')}</span></li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- UBICACIÓN -->
+    <section class="section cotton" id="ubicacion" aria-labelledby="ubicacion-title">
+      <div class="wrap ubic-grid">
+        <div class="ubic-info">
+          <h2 id="ubicacion-title">Estamos en el centro de Ibarra.</h2>
+          <p>Le recibimos en nuestra oficina. Para no hacerle esperar, escríbanos antes y reservamos su hora.</p>
+          <dl class="contact-list">
+            <div>
+              <dt><Icon name="pin" class="ico" /> Dirección</dt>
+              <dd>
+                <span set:html={ph(site.address)} /><br />
+                <span set:html={ph(site.addressNote)} /><br />
+                {site.city}
+              </dd>
+            </div>
+            <div>
+              <dt><Icon name="clock" class="ico" /> Horario</dt>
+              <dd>
+                {site.hours.map((h) => (
+                  <span class="hour-row"><span>{h.days}</span> <span set:html={ph(h.time)} /></span>
+                ))}
+              </dd>
+            </div>
+            <div>
+              <dt><Icon name="phone" class="ico" /> Teléfono</dt>
+              <dd><a href={site.phoneHref} set:html={ph(site.phoneDisplay)} /></dd>
+            </div>
+            <div>
+              <dt><Icon name="mail" class="ico" /> Correo</dt>
+              <dd><span set:html={ph(site.email)} /></dd>
+            </div>
+          </dl>
+          <a class="link-thread link-dark" href={mapLink} target="_blank" rel="noopener">
+            Abrir en el mapa <Icon name="arrow" class="ico" />
+          </a>
+        </div>
+        <div class="map-frame">
+          <iframe
+            title="Mapa de la ubicación del estudio en Ibarra"
+            src={mapSrc}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <span class="map-tag ph">Ubicación aproximada: centro de Ibarra</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CIERRE -->
+    <section class="close indigo" aria-labelledby="close-title">
+      <div class="weft weft-close" aria-hidden="true"></div>
+      <div class="wrap close-inner">
+        <Isotipo variant="light" class="close-iso" />
+        <h2 id="close-title">Cuéntenos qué está pasando. <br />Empezamos por escucharle.</h2>
+        <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+          <Icon name="whatsapp" class="ico" />
+          <span>Escríbanos por WhatsApp</span>
+        </a>
+        <p class="close-small">Respuesta en horario de oficina. Su consulta es confidencial.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer indigo-deep">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img class="footer-logo" src="/brand/horizontal-blanco.png" width="900" height="232" alt="Estudio Jurídico Mira & Montesdeoca" loading="lazy" />
+        <p>Derecho de familia y civil · {site.city}</p>
+      </div>
+      <ul class="footer-nav">
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+      </ul>
+      <p class="footer-legal">
+        © {new Date().getFullYear()} {site.name}. La información de este sitio es general y no constituye
+        asesoría legal para un caso concreto.
+      </p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href={waLink()} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" data-wa-float>
+    <Icon name="whatsapp" class="ico" />
+    <span>Escríbanos</span>
+  </a>
+
+  <script>
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    const float = document.querySelector<HTMLElement>('[data-wa-float]');
+    const hero = document.querySelector<HTMLElement>('.hero');
+    const onScroll = () => {
+      const y = window.scrollY;
+      header?.classList.toggle('is-solid', y > 24);
+      if (hero && float) float.classList.toggle('is-visible', y > hero.offsetHeight * 0.7);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    const menu = document.querySelector<HTMLButtonElement>('[data-menu]');
+    const nav = document.getElementById('site-nav');
+    const setMenu = (open: boolean) => {
+      menu?.setAttribute('aria-expanded', String(open));
+      nav?.classList.toggle('is-open', open);
+      document.body.classList.toggle('menu-open', open);
+    };
+    menu?.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+    nav?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
+
+    // Telar: cada paso que entra en pantalla teje su pasada de trama.
+    const bands = document.querySelectorAll<HTMLElement>('[data-band]');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const i = Number((entry.target as HTMLElement).dataset.step);
+          entry.target.classList.add('is-active');
+          bands.forEach((b, j) => j <= i && b.classList.add('is-woven'));
+        });
+      },
+      { rootMargin: '0px 0px -40% 0px' }
+    );
+    document.querySelectorAll('[data-step]').forEach((s) => io.observe(s));
+  </script>
+</Base>

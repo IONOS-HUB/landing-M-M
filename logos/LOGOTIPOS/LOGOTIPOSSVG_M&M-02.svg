@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Degradado_sin_nombre_12);
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: url(#Degradado_sin_nombre_55);
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        fill: none;
+        stroke: #0e2d79;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-8 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-3 {
+        fill: url(#Degradado_sin_nombre_53);
+      }
+
+      .cls-4 {
+        fill: url(#Degradado_sin_nombre_50);
+      }
+
+      .cls-9 {
+        fill: #0c2a77;
+        font-family: Quattrocento-Bold, Quattrocento;
+        font-size: 82.9px;
+        font-weight: 700;
+      }
+
+      .cls-10 {
+        fill: #0e2d79;
+        font-family: Quattrocento, Quattrocento;
+        font-size: 56.75px;
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre_12" data-name="Degradado sin nombre 12" x1="108" y1="398.5" x2="537" y2="398.5" gradientUnits="userSpaceOnUse">
+      <stop offset=".63" stop-color="#093287"/>
+      <stop offset="1" stop-color="#3abefd"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_53" data-name="Degradado sin nombre 53" x1="421.92" y1="398.5" x2="975.34" y2="398.5" gradientUnits="userSpaceOnUse">
+      <stop offset=".19" stop-color="#093287"/>
+      <stop offset="1" stop-color="#3abefd"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_50" data-name="Degradado sin nombre 50" x1="555" y1="569" x2="674.69" y2="569" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0082ff"/>
+      <stop offset="1" stop-color="#3abefd"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_55" data-name="Degradado sin nombre 55" x1="421.92" y1="712.28" x2="672.69" y2="712.28" gradientUnits="userSpaceOnUse">
+      <stop offset=".31" stop-color="#093287"/>
+      <stop offset="1" stop-color="#3abefd"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <g>
+      <polygon class="cls-1" points="537 396 418 122 346.25 122 108 675 181.51 675 384 184 507 465 537 396"/>
+      <polygon class="cls-3" points="731.27 122 659.27 122 421.92 675 490.86 675 695 185 914.93 675 975.34 675 731.27 122"/>
+      <polygon class="cls-4" points="555 532 613.85 674 674.69 674 583 464 555 532"/>
+      <path class="cls-2" d="m672.69,685.14h-250.78c141.92,122.14,250.78,0,250.78,0Z"/>
+    </g>
+    <text class="cls-10" transform="translate(285.74 835.47)"><tspan x="0" y="0">ESTU</tspan><tspan class="cls-6" x="138.13" y="0">DI</tspan><tspan x="197.88" y="0">O JURÍ</tspan><tspan class="cls-6" x="368.98" y="0">DIC</tspan><tspan x="465.23" y="0">O</tspan></text>
+    <text class="cls-9" transform="translate(85.96 955.18)"><tspan x="0" y="0">MIRA&amp;</tspan><tspan class="cls-5" x="283.27" y="0">MO</tspan><tspan x="421.39" y="0">NTES</tspan><tspan class="cls-5" x="628.89" y="0">D</tspan><tspan x="690.66" y="0">EOC</tspan><tspan class="cls-8" x="853.31" y="0">A</tspan></text>
+  </g>
+  <g>
+    <line class="cls-7" x1="99" y1="817" x2="254" y2="817"/>
+    <line class="cls-7" x1="99" y1="817" x2="254" y2="817"/>
+    <line class="cls-7" x1="99" y1="817" x2="254" y2="817"/>
+  </g>
+  <g>
+    <line class="cls-7" x1="820" y1="817" x2="975" y2="817"/>
+    <line class="cls-7" x1="820" y1="817" x2="975" y2="817"/>
+    <line class="cls-7" x1="820" y1="817" x2="975" y2="817"/>
+  </g>
+</svg>
