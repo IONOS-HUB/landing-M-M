@@ -134,8 +134,11 @@ import { site } from '../data/site';
       const v = validate();
       if (!v.ok) return;
 
+      const tema = v.area === 'No estoy seguro'
+        ? 'Quisiera una consulta; todavía no sé si mi caso es de familia o civil.'
+        : `Quisiera una consulta sobre derecho ${v.area.toLowerCase()}.`;
       const text =
-        `Hola, soy ${v.nombre}. Quisiera una consulta sobre derecho ${v.area.toLowerCase()}.\n\n` +
+        `Hola, soy ${v.nombre}. ${tema}\n\n` +
         `${v.msg}\n\nPrefiero que me contacten por ${v.via} al ${v.tel}.`;
       const waUrl = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
 

@@ -254,11 +254,10 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
               </div>
               <header class="reader-head indigo">
                 <div class="reader-head-inner">
-                  <p class="reader-crumb">Guías · {post.category}</p>
                   <h3 class="reader-title" id={`rt-${post.slug}`} tabindex="-1">{post.title}</h3>
                   <p class="page-lede">{post.excerpt}</p>
                   <p class="post-byline">
-                    Por <span set:html={ph(post.author)} /> · <time datetime={post.date}>{formatDate(post.date)}</time> ·
+                    {post.category} · Por <span set:html={ph(post.author)} /> · <time datetime={post.date}>{formatDate(post.date)}</time> ·
                     {readingTime(post)} min de lectura
                   </p>
                 </div>

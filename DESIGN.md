@@ -17,6 +17,14 @@ colors:
   line: "#d9dfea"
   on-indigo: "#eef3ff"
   on-indigo-soft: "#b3c3ec"
+  indigo-glow: "#10307a"
+  ph-ink: "#0a3a8f"
+  ink-faint: "#6a7591"
+  line-strong: "#b9c3d6"
+  sky-pressed: "#8fdaff"
+  iso-mist: "#dce7ff"
+  iso-ice: "#9fd4ff"
+  error: "#b3261e"
 typography:
   display:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
@@ -63,6 +71,52 @@ typography:
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "0.01em"
+  micro:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 700
+    letterSpacing: "0.08em"
+  caption:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  small:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.55
+  deck:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  big:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  subhead:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(1.5rem, 2.6vw, 2.2rem)"
+    fontWeight: 700
+    lineHeight: 1.12
+  quote-lead:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(1.8rem, 3.2vw, 2.75rem)"
+    fontWeight: 400
+    lineHeight: 1.2
+  headline-l:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(2.2rem, 4.6vw, 4rem)"
+    fontWeight: 700
+    lineHeight: 1.04
+  page:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(2.4rem, 5vw, 4.5rem)"
+    fontWeight: 700
+    lineHeight: 1.04
+    letterSpacing: "-0.02em"
 rounded:
   none: "0"
   hairline: "1px"
@@ -155,7 +209,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ### Primary
 - **Brand Navy** (navy): the weft's base thread, the index-scale area names, ledger labels, link-thread on cotton, ghost-cell tags, scrollbar thumb.
-- **Signal Sky** (sky): the hottest thread. Focus ring, selection, CTA hover, step numerals, nav underline on hover, the floating button's border and icon.
+- **Signal Sky** (sky): the hottest thread. Focus ring on indigo grounds (on cotton, white and the form the ring is Brand Blue, since sky falls under 3:1 there), selection, CTA hover, step numerals, nav underline on hover, the floating button's border and icon.
 
 ### Secondary
 - **Brand Blue** (blue): middle weft thread, quote marks, placeholder underline on cotton, ledger row hover tint (at 5%).
@@ -170,6 +224,17 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 - **Ink** (ink) / **Soft Ink** (ink-soft): body text and secondary copy on cotton.
 - **Thread Line** (line): every 1px rule on cotton (ledgers, area dividers, map frame).
 - **On-Indigo** (on-indigo) / **On-Indigo Soft** (on-indigo-soft): text and secondary copy on indigo grounds; headings on indigo go to pure white.
+- **Indigo Glow** (indigo-glow): the soft radial light in the top-right of every indigo ground.
+- **Placeholder Ink** (ph-ink): text of placeholder marks on cotton.
+- **Faint Ink** (ink-faint): input placeholder text (4.7:1 on white).
+- **Control Edge** (line-strong): 1px edge of inputs, chips, filter buttons and the reader's back button.
+- **Pressed Sky** (sky-pressed): the white CTA's active state.
+- **Isotipo Mist / Ice** (iso-mist, iso-ice): the light end of the woven isotipo's gradient.
+
+### State
+- **Error** (error): field errors, invalid edges and the form's error status (its wash is error at 6%). The only non-blue hue, reserved for errors.
+
+Exception: the isotipo mask uses `#000` as mask luminance; it is never painted.
 
 ### Named Rules
 **The Logo Gradient Rule.** Every accent blue comes from the logo's own gradient (navy, cobalt, blue, azure, sky). No other hue enters the system; there is no gold, no warm accent.
@@ -191,12 +256,23 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 - **Quote** (400 display, clamp 1.3–1.55rem, 1.35): testimonials; the lead quote scales to clamp 1.8–2.75rem.
 - **Lede** (400 sans, clamp 1.1–1.3rem, 1.55): hero and section intros, 32–36rem measure.
 - **Body** (400 sans, 1.0625rem, 1.6; 1rem under 680px): reading copy, pretty wrap, ~36rem measure.
-- **Label** (700 sans, 1rem, 0.01em): buttons, link-threads, ledger terms, captions' names.
+- **Label** (700 sans, 1rem, 0.01em): buttons, link-threads, field labels, ledger terms.
+- **Subhead** (700 display, clamp 1.5–2.2rem): article subheads, CTA band titles, «Siga leyendo».
+- **Headline L** (700 display, clamp 2.2–4rem): the closing headline and article titles. **Page** (clamp 2.4–4.5rem): interior page titles.
+- **Big** (1.25rem): the estudio opening paragraph, prose notes (display), pager titles (display).
+- **Deck** (1.125rem): section decks, ledes inside sections, article prose, award and TOC titles (display).
+- **Small** (0.9375rem): secondary copy, navigation, chips, field errors, bylines.
+- **Caption** (0.875rem): metadata, registry numbers, hints, legal and privacy notes, loom labels.
+- **Micro** (0.75rem, 700, 0.08em, uppercase): ghost-cell tags only.
+
+Every size is a `--text-*` token; no font-size is written as a literal outside `:root`. The mobile lockup's small line is set in em (0.66em) because it reproduces the logotype's proportions.
 
 ### Named Rules
 **The Serif Emphasis Rule.** Emphasis inside sans copy switches to Quattrocento bold in navy (not italics, not color alone).
 
-**The Numeral Rule.** Step numbers and registry numbers use tabular figures; step numerals are display serif in sky.
+**The Numeral Rule.** Step numbers, registry numbers and post dates use tabular figures; step numerals are display serif in sky.
+
+**The No Kicker Rule.** Nothing sits above a heading as a label. A post's category and recency live in its meta line under the excerpt; the in-page reader puts the category at the start of the byline.
 
 ## Layout
 
@@ -249,7 +325,7 @@ Square corners everywhere: buttons, ghost cells, map frame, loom, menu button (0
 Square, white, stitched.
 - **Shape:** square (0) with a 1px solid edge and a 1px dashed outline offset 4px, the "thread border".
 - **Primary (WhatsApp CTA):** white face, indigo-800 label, navy icon, label typography, 1.1rem 1.6rem (large) or 0.7rem 1rem (small). One per section at most; it is the only filled button.
-- **Hover / Focus:** face, edge and dashed outline all turn sky with indigo-950 text (0.25s ease-out); active lightens to #8fdaff. Focus uses the global 2px sky ring offset 3px.
+- **Hover / Focus:** face, edge and dashed outline all turn sky with indigo-950 text (0.25s ease-out); active lightens to sky-pressed. Keyboard focus swaps the dashed thread for a solid 2px sky ring offset 4px, so focus is never the resting look.
 - **Floating:** indigo-800 face, white label, 1px sky edge with dashed sky outline offset 3px; hover to navy. Only below 961px (on desktop the header CTA is always present). Appears after 70% of the hero has scrolled and tucks away while the form, a CTA band, the close or the footer is on screen; the footer reserves room for it.
 
 ### Link-thread

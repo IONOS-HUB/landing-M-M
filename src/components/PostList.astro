@@ -28,10 +28,12 @@ const counts = {
   <article class="post-feature" data-cat={lead.category}>
     <div class="post-feature-weft weft" aria-hidden="true"></div>
     <div class="post-feature-body">
-      <p class="post-cat" data-cat={lead.category}>{lead.category} · Lo más reciente</p>
       <H><a href={`/blog/${lead.slug}/`} data-open={lead.slug}>{lead.title}</a></H>
       <p class="post-excerpt">{lead.excerpt}</p>
-      <p class="post-meta">{formatDate(lead.date)} · {readingTime(lead)} min de lectura</p>
+      <p class="post-meta post-meta-line">
+        <span class="post-cat" data-cat={lead.category}>{lead.category}</span>
+        <span>Lo más reciente · {formatDate(lead.date)} · {readingTime(lead)} min de lectura</span>
+      </p>
       <a class="link-thread link-dark" href={`/blog/${lead.slug}/`} data-open={lead.slug} aria-hidden="true" tabindex="-1">
         Leer la guía <Icon name="arrow" class="ico" />
       </a>
