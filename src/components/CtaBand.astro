@@ -16,7 +16,7 @@ const { title, text, message } = Astro.props;
       {text && <p class="cta-band-text">{text}</p>}
     </div>
     <div class="cta-band-actions">
-      <a class="btn btn-wa" href={waLink(message)} target="_blank" rel="noopener">
+      <a class="btn btn-wa btn-md" href={waLink(message)} target="_blank" rel="noopener">
         <Icon name="whatsapp" class="ico" />
         <span>Escribir por WhatsApp</span>
       </a>

@@ -52,7 +52,7 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     </section>
 
     <!-- EL ESTUDIO -->
-    <section class="section cotton" id="estudio" aria-labelledby="estudio-title">
+    <section class="section section-l cotton" id="estudio" aria-labelledby="estudio-title">
       <div class="wrap estudio-grid">
         <div class="estudio-intro">
           <h2 id="estudio-title">Dos apellidos, una sola manera de trabajar.</h2>
@@ -132,7 +132,7 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     <div class="weft weft-thin" aria-hidden="true"></div>
 
     <!-- CÓMO TRABAJAMOS -->
-    <section class="section indigo proceso" id="proceso" aria-labelledby="proceso-title">
+    <section class="section section-l indigo proceso" id="proceso" aria-labelledby="proceso-title">
       <div class="wrap proceso-grid">
         <div class="proceso-copy">
           <h2 id="proceso-title">Cómo llevamos su caso.</h2>
@@ -202,20 +202,20 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     />
 
     <!-- RECONOCIMIENTOS -->
-    <section class="section cotton recon" aria-labelledby="recon-title">
+    <section class="section section-s cotton recon" aria-labelledby="recon-title">
       <div class="wrap recon-grid">
-        <div>
+        <div class="recon-intro">
           <h2 id="recon-title">La confianza de quienes nos eligieron.</h2>
           <p set:html={ph('[Familias y clientes de Imbabura] que han confiado en nosotros. [Más de N] casos acompañados desde [año].')} />
-          <ul class="awards">
-            {awards.map((a) => (
-              <li>
-                <span class="award-title" set:html={ph(a.title)} />
-                <span class="award-meta" set:html={ph(`${a.by} · ${a.year}`)} />
-              </li>
-            ))}
-          </ul>
         </div>
+        <ul class="awards">
+          {awards.map((a) => (
+            <li>
+              <span class="award-title" set:html={ph(a.title)} />
+              <span class="award-meta" set:html={ph(`${a.by} · ${a.year}`)} />
+            </li>
+          ))}
+        </ul>
         <ul class="logo-wall" aria-label="Clientes e instituciones (por confirmar)">
           {recognitions.map((r) => (
             <li class="ghost ghost-logo"><span class="ghost-label">{r.label.replace(/[[\]]/g, '')}</span></li>
@@ -254,11 +254,10 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
               </div>
               <header class="reader-head indigo">
                 <div class="reader-head-inner">
-                  <p class="reader-crumb">Guías · {post.category}</p>
                   <h3 class="reader-title" id={`rt-${post.slug}`} tabindex="-1">{post.title}</h3>
                   <p class="page-lede">{post.excerpt}</p>
                   <p class="post-byline">
-                    Por <span set:html={ph(post.author)} /> · <time datetime={post.date}>{formatDate(post.date)}</time> ·
+                    {post.category} · Por <span set:html={ph(post.author)} /> · <time datetime={post.date}>{formatDate(post.date)}</time> ·
                     {readingTime(post)} min de lectura
                   </p>
                 </div>
@@ -288,7 +287,7 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     </section>
 
     <!-- CONSULTA -->
-    <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
+    <section class="section section-l indigo consulta" id="consulta" aria-labelledby="consulta-title">
       <div class="wrap consulta-grid">
         <div class="consulta-copy">
           <h2 id="consulta-title">Agende su consulta.</h2>

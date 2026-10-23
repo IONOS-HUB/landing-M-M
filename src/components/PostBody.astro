@@ -22,14 +22,14 @@ const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consult
       'h2' in b ? <H id={hid(b.h2)}>{b.h2}</H>
       : 'p' in b ? <p>{b.p}</p>
       : 'ul' in b ? <ul>{b.ul.map((li) => <li>{li}</li>)}</ul>
-      : <aside class="prose-note"><p>{b.note}</p></aside>
+      : <div class="prose-note" role="note"><p>{b.note}</p></div>
     )}
     <p class="prose-disclaimer">
       Este artículo es información general y no reemplaza la asesoría de un abogado para su caso concreto.
     </p>
   </div>
 
-  <aside class="article-aside">
+  <aside class="article-aside" aria-label="Índice y contacto">
     <div class="aside-sticky">
       {toc.length > 0 && (
         <nav class="toc" aria-label="En este artículo">

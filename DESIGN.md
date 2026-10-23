@@ -17,6 +17,14 @@ colors:
   line: "#d9dfea"
   on-indigo: "#eef3ff"
   on-indigo-soft: "#b3c3ec"
+  indigo-glow: "#10307a"
+  ph-ink: "#0a3a8f"
+  ink-faint: "#6a7591"
+  line-strong: "#b9c3d6"
+  sky-pressed: "#8fdaff"
+  iso-mist: "#dce7ff"
+  iso-ice: "#9fd4ff"
+  error: "#b3261e"
 typography:
   display:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
@@ -63,21 +71,86 @@ typography:
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "0.01em"
+  micro:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 700
+    letterSpacing: "0.08em"
+  caption:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  small:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 400
+    lineHeight: 1.55
+  deck:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 400
+    lineHeight: 1.6
+  big:
+    fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  subhead:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(1.5rem, 2.6vw, 2.2rem)"
+    fontWeight: 700
+    lineHeight: 1.12
+  quote-lead:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(1.8rem, 3.2vw, 2.75rem)"
+    fontWeight: 400
+    lineHeight: 1.2
+  headline-l:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(2.2rem, 4.6vw, 4rem)"
+    fontWeight: 700
+    lineHeight: 1.04
+  page:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(2.4rem, 5vw, 4.5rem)"
+    fontWeight: 700
+    lineHeight: 1.04
+    letterSpacing: "-0.02em"
 rounded:
   none: "0"
   hairline: "1px"
 spacing:
   warp: "14px"
   gutter: "clamp(1rem, 4vw, 3rem)"
-  section-y: "clamp(5rem, 10vw, 8.5rem)"
-  row: "1rem"
+  sp-1: "0.25rem"
+  sp-2: "0.5rem"
+  sp-3: "0.75rem"
+  sp-4: "1rem"
+  sp-5: "1.5rem"
+  sp-6: "2rem"
+  sp-7: "3rem"
+  sp-8: "4rem"
+  sp-9: "6rem"
+  sp-10: "8rem"
+  sp-11: "11rem"
+  space-datum: "{spacing.sp-1}"
+  space-pair: "{spacing.sp-2}"
+  space-group: "{spacing.sp-5}"
+  space-lede: "clamp(1rem, 1.6vw, 1.5rem)"
+  space-block: "clamp(3rem, 5vw, 4rem)"
+  space-intro: "clamp(3rem, 7vw, 6rem)"
+  section-l: "clamp(6rem, 13vw, 11rem)"
+  section-m: "clamp(4rem, 9vw, 8rem)"
+  section-s: "clamp(3rem, 6vw, 6rem)"
+  header-clear: "7rem"
 components:
   button-primary:
     backgroundColor: "{colors.white}"
     textColor: "{colors.indigo-800}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
-    padding: "1.1rem 1.6rem"
+    padding: "1.25rem 2rem"
   button-primary-hover:
     backgroundColor: "{colors.sky}"
     textColor: "{colors.indigo-950}"
@@ -85,12 +158,12 @@ components:
     backgroundColor: "{colors.white}"
     textColor: "{colors.indigo-800}"
     rounded: "{rounded.none}"
-    padding: "0.7rem 1rem"
+    padding: "0.75rem 1rem"
   button-float:
     backgroundColor: "{colors.indigo-800}"
     textColor: "{colors.white}"
     rounded: "{rounded.none}"
-    padding: "0.85rem 1.1rem"
+    padding: "0.75rem 1rem"
   button-float-hover:
     backgroundColor: "{colors.navy}"
   link-thread:
@@ -136,7 +209,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ### Primary
 - **Brand Navy** (navy): the weft's base thread, the index-scale area names, ledger labels, link-thread on cotton, ghost-cell tags, scrollbar thumb.
-- **Signal Sky** (sky): the hottest thread. Focus ring, selection, CTA hover, step numerals, nav underline on hover, the floating button's border and icon.
+- **Signal Sky** (sky): the hottest thread. Focus ring on indigo grounds (on cotton, white and the form the ring is Brand Blue, since sky falls under 3:1 there), selection, CTA hover, step numerals, nav underline on hover, the floating button's border and icon.
 
 ### Secondary
 - **Brand Blue** (blue): middle weft thread, quote marks, placeholder underline on cotton, ledger row hover tint (at 5%).
@@ -151,6 +224,17 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 - **Ink** (ink) / **Soft Ink** (ink-soft): body text and secondary copy on cotton.
 - **Thread Line** (line): every 1px rule on cotton (ledgers, area dividers, map frame).
 - **On-Indigo** (on-indigo) / **On-Indigo Soft** (on-indigo-soft): text and secondary copy on indigo grounds; headings on indigo go to pure white.
+- **Indigo Glow** (indigo-glow): the soft radial light in the top-right of every indigo ground.
+- **Placeholder Ink** (ph-ink): text of placeholder marks on cotton.
+- **Faint Ink** (ink-faint): input placeholder text (4.7:1 on white).
+- **Control Edge** (line-strong): 1px edge of inputs, chips, filter buttons and the reader's back button.
+- **Pressed Sky** (sky-pressed): the white CTA's active state.
+- **Isotipo Mist / Ice** (iso-mist, iso-ice): the light end of the woven isotipo's gradient.
+
+### State
+- **Error** (error): field errors, invalid edges and the form's error status (its wash is error at 6%). The only non-blue hue, reserved for errors.
+
+Exception: the isotipo mask uses `#000` as mask luminance; it is never painted.
 
 ### Named Rules
 **The Logo Gradient Rule.** Every accent blue comes from the logo's own gradient (navy, cobalt, blue, azure, sky). No other hue enters the system; there is no gold, no warm accent.
@@ -172,21 +256,49 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 - **Quote** (400 display, clamp 1.3–1.55rem, 1.35): testimonials; the lead quote scales to clamp 1.8–2.75rem.
 - **Lede** (400 sans, clamp 1.1–1.3rem, 1.55): hero and section intros, 32–36rem measure.
 - **Body** (400 sans, 1.0625rem, 1.6; 1rem under 680px): reading copy, pretty wrap, ~36rem measure.
-- **Label** (700 sans, 1rem, 0.01em): buttons, link-threads, ledger terms, captions' names.
+- **Label** (700 sans, 1rem, 0.01em): buttons, link-threads, field labels, ledger terms.
+- **Subhead** (700 display, clamp 1.5–2.2rem): article subheads, CTA band titles, «Siga leyendo».
+- **Headline L** (700 display, clamp 2.2–4rem): the closing headline and article titles. **Page** (clamp 2.4–4.5rem): interior page titles.
+- **Big** (1.25rem): the estudio opening paragraph, prose notes (display), pager titles (display).
+- **Deck** (1.125rem): section decks, ledes inside sections, article prose, award and TOC titles (display).
+- **Small** (0.9375rem): secondary copy, navigation, chips, field errors, bylines.
+- **Caption** (0.875rem): metadata, registry numbers, hints, legal and privacy notes, loom labels.
+- **Micro** (0.75rem, 700, 0.08em, uppercase): ghost-cell tags only.
+
+Every size is a `--text-*` token; no font-size is written as a literal outside `:root`. The mobile lockup's small line is set in em (0.66em) because it reproduces the logotype's proportions.
 
 ### Named Rules
 **The Serif Emphasis Rule.** Emphasis inside sans copy switches to Quattrocento bold in navy (not italics, not color alone).
 
-**The Numeral Rule.** Step numbers and registry numbers use tabular figures; step numerals are display serif in sky.
+**The Numeral Rule.** Step numbers, registry numbers and post dates use tabular figures; step numerals are display serif in sky.
+
+**The No Kicker Rule.** Nothing sits above a heading as a label. A post's category and recency live in its meta line under the excerpt; the in-page reader puts the category at the start of the byline.
 
 ## Layout
 
-A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections draw a warp rule at each of 12 column lines inside that wrap, plus a fine 7px-pitch fiber texture across the full bleed. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid (7 + 5 stacked). Vertical rhythm is the section padding (clamp 5–8.5rem); weft bands sit between cotton sections as seams.
+A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections draw a warp rule at each of 12 column lines inside that wrap, plus a fine 7px-pitch fiber texture across the full bleed.
 
-Responsive: at 960px every split collapses to one column, the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
+Every two-part composition sits on that same 12-column grid with **no column gap**: the space between blocks is one whole empty column, so every content edge lands on a warp thread. Placements: hero copy 1–7 / isotipo 8–12; section head title 1–7 / deck 9–12 (bottom-aligned); estudio, ubicación, consulta and recon intro 1–5 / evidence 7–12; proceso copy 1–6 / loom 8–12; testimonials lead 1–6 / stacked quotes 8–12; article prose 1–8 / aside 10–12; footer brand 1–6 / nav 8–12. Recognitions read as a register: intro 1–5, awards ledger 7–12, and a full-width strip of six ghost logo cells sharing one dashed thread.
+
+**Spacing is a 4px scale** (`--sp-1` 4px … `--sp-11` 176px) used through named roles, never raw values:
+- **datum** (4px): inside one fact (name + role, date + reading time).
+- **pair** (8px): label to field, step title to text.
+- **group** (24px): pieces of one group (form fields of one block, quote parts).
+- **lede** (16–24px): headline to its own deck. Tight on purpose: the headline and its deck are one unit.
+- **block** (48–64px): between groups within a section.
+- **intro** (48–96px): section head to its content.
+- **section** in three sizes by role: **L** 96–176px for conviction (estudio, proceso, consulta, close), **M** 64–128px for reading (áreas, testimonios, blog, ubicación), **S** 48–96px for brief evidence (recon). Bottom padding is 72% of top, so each section breathes upward into its headline.
+
+Ledgers have two densities: data ledgers (contact, awards, TOC, practice items) use 8–12px rows; prose ledgers (process steps, guides) use 32px rows. Weft bands sit between cotton sections as seams.
+
+Responsive: below 961px every grid is a single column (12-column placement only applies from 961px up). Between 961 and 1100px the partners drop below the estudio intro. At 960px the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
 
 ### Named Rules
 **The Warp Is The Grid Rule.** Vertical threads on indigo grounds sit exactly on the 12 column lines of the wrap. Never draw decorative verticals off-grid.
+
+**The Empty Column Rule.** Two-part layouts never use a gap: they leave one whole grid column empty, so the gutter is itself a unit of the weave and edges align with the warp.
+
+**The Upward Breath Rule.** More space above a heading than below it: section bottom padding is 72% of the top, article subheads get 64px above and 16px below, and a headline sits tight to its deck.
 
 **The 14px Pitch Rule.** The warp pitch (14px) is the shared module of the weave tile, loom threads, ghost-cell hatching and the map frame's graph paper.
 
@@ -213,8 +325,8 @@ Square corners everywhere: buttons, ghost cells, map frame, loom, menu button (0
 Square, white, stitched.
 - **Shape:** square (0) with a 1px solid edge and a 1px dashed outline offset 4px, the "thread border".
 - **Primary (WhatsApp CTA):** white face, indigo-800 label, navy icon, label typography, 1.1rem 1.6rem (large) or 0.7rem 1rem (small). One per section at most; it is the only filled button.
-- **Hover / Focus:** face, edge and dashed outline all turn sky with indigo-950 text (0.25s ease-out); active lightens to #8fdaff. Focus uses the global 2px sky ring offset 3px.
-- **Floating:** indigo-800 face, white label, 1px sky edge with dashed sky outline offset 3px; appears after 70% of the hero has scrolled; hover to navy.
+- **Hover / Focus:** face, edge and dashed outline all turn sky with indigo-950 text (0.25s ease-out); active lightens to sky-pressed. Keyboard focus swaps the dashed thread for a solid 2px sky ring offset 4px, so focus is never the resting look.
+- **Floating:** indigo-800 face, white label, 1px sky edge with dashed sky outline offset 3px; hover to navy. Only below 961px (on desktop the header CTA is always present). Appears after 70% of the hero has scrolled and tucks away while the form, a CTA band, the close or the footer is on screen; the footer reserves room for it.
 
 ### Link-thread
 Secondary actions as a bold label on a 1px underline thread with a trailing arrow; on hover the thread thickens to 2px and the arrow gap widens. White on indigo, navy on cotton.
