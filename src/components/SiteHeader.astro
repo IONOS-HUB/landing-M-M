@@ -54,6 +54,16 @@ const { current } = Astro.props;
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // El botón flotante se retira donde la página ya ofrece su propio contacto.
+  if (float) {
+    const near = new Set<Element>();
+    const tuck = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? near.add(e.target) : near.delete(e.target)));
+      float.classList.toggle('is-tucked', near.size > 0);
+    });
+    document.querySelectorAll('#consulta, .cta-band, .close, .site-footer').forEach((el) => tuck.observe(el));
+  }
+
   const menu = document.querySelector<HTMLButtonElement>('[data-menu]');
   const nav = document.getElementById('site-nav');
   const setMenu = (open: boolean) => {
