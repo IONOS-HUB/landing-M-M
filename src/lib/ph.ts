@@ -2,4 +2,3 @@
 export const ph = (text: string) =>
   text.replace(/\[([^\]]+)\]/g, '<span class="ph" title="Dato por confirmar">$1</span>');
 
-export const stripBrackets = (text: string) => text.replace(/[[\]]/g, '');

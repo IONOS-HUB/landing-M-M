@@ -188,7 +188,7 @@ Responsive: at 960px every split collapses to one column, the nav becomes a full
 ### Named Rules
 **The Warp Is The Grid Rule.** Vertical threads on indigo grounds sit only on the wrap edges and quarter lines. Never draw decorative verticals off-grid, and never cut the isotipo with them.
 
-**The 14px Pitch Rule.** 14px is the base module (ghost-cell hatching, map frame grid); the weave tile renders at 28px (2×) in weft bands, the loom and the blog feature, so checkers stay sparse.
+**The 14px Pitch Rule.** 14px is the base module (ghost-cell hatching, map frame grid); the weave tile renders at 28px (2×) in weft bands and the loom, so checkers stay sparse.
 
 ## Elevation & Depth
 

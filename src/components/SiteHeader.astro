@@ -44,7 +44,7 @@ const { current } = Astro.props;
 <script>
   const header = document.querySelector<HTMLElement>('[data-header]');
   const float = document.querySelector<HTMLElement>('[data-wa-float]');
-  const hero = document.querySelector<HTMLElement>('.hero, .page-head');
+  const hero = document.querySelector<HTMLElement>('.hero');
   const onScroll = () => {
     const y = window.scrollY;
     header?.classList.toggle('is-solid', y > 24);

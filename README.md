@@ -14,10 +14,9 @@ El contenido sigue el PRD del cliente (`archivos/`, fuera de git) y trata al vis
 4. **Nosotros**: historia desde 2016 y los socios Alexander Mira y Melanie Montesdeoca.
 5. **Testimonios** y **galería** del despacho: placeholders hasta recibir el material.
 6. **Preguntas frecuentes**: las 10 preguntas del cliente, con respuestas en borrador.
-7. **Guías (blog)**: se abren dentro de la misma sección (también existen en `/blog/`).
-8. **Consulta**: formulario (nombre, WhatsApp, cantón, tipo de asunto y mensaje).
-9. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
-10. **Cierre**: llamado a la primera consulta gratis.
+7. **Consulta**: formulario (nombre, WhatsApp, cantón, tipo de asunto y mensaje).
+8. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
+9. **Cierre**: llamado a la primera consulta gratis.
 
 Los botones de WhatsApp llevan el mensaje «Hola, vengo de la página web…» para que el despacho cuente los mensajes que llegan desde el sitio, y un atributo `data-track` para sumar analítica más adelante.
 
@@ -55,12 +54,6 @@ Los titulares y textos de cada sección están en **`src/pages/index.astro`**.
 
 El formulario (`src/components/ContactForm.astro`) valida los campos y, por defecto, abre WhatsApp con el mensaje ya escrito, así que no necesita servidor. Para que los mensajes lleguen por correo, cree un formulario en un servicio como [Formspree](https://formspree.io) y pegue su URL en `site.formEndpoint` (`src/data/site.ts`). En ese caso el formulario envía los datos ahí y, si algo falla, ofrece WhatsApp como alternativa.
 
-### Blog
-
-Los artículos están escritos directamente en **`src/data/posts.ts`**. Para agregar uno, copie un objeto del arreglo `posts` y cambie `slug`, `title`, `excerpt`, `category`, `date`, `author` y `body`. El cuerpo es una lista de bloques: `{ h2 }`, `{ p }`, `{ ul: [...] }` y `{ note }`.
-
-> ⚠️ Los 6 artículos incluidos son **de ejemplo**, con información general. El estudio debe revisarlos y validarlos antes de publicar.
-
 ### Placeholders
 
 Cualquier texto entre `[corchetes]` es un dato por confirmar y en la página se muestra resaltado en celeste. Al poner el dato real, quita los corchetes.
@@ -80,12 +73,10 @@ Los espacios con borde punteado son marcadores para imágenes. Coloca las imáge
 │   └── favicon.svg
 ├── src/
 │   ├── components/        Cabecera, pie, formulario, banda CTA, isotipo, iconos
-│   ├── data/              site.ts (datos del estudio), posts.ts (blog), nav.ts (menú)
+│   ├── data/              site.ts (datos del estudio), nav.ts (menú)
 │   ├── layouts/Base.astro HTML base, fuentes y metadatos
 │   ├── lib/ph.ts          Utilidad para placeholders
-│   ├── pages/
-│   │   ├── index.astro    La landing
-│   │   └── blog/          Índice del blog y página de cada artículo
+│   ├── pages/index.astro  La landing
 │   └── styles/global.css  Estilos y tokens de diseño
 ├── PRODUCT.md             Contexto del estudio y del público
 └── DESIGN.md              Sistema visual: colores, tipografía y componentes

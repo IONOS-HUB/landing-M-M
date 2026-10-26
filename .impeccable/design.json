@@ -437,7 +437,7 @@
       },
       {
         "name": "The 14px Pitch Rule",
-        "body": "14px is the base module (ghost-cell hatching, map frame grid); the weave tile renders at 28px (2×) in weft bands, the loom and the blog feature, so checkers stay sparse.",
+        "body": "14px is the base module (ghost-cell hatching, map frame grid); the weave tile renders at 28px (2×) in weft bands and the loom, so checkers stay sparse.",
         "section": "layout"
       },
       {

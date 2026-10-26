@@ -6,10 +6,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
-import PostList from '../components/PostList.astro';
-import PostBody from '../components/PostBody.astro';
 import { site, partners, areas, steps, values, faqs, testimonials, gallery, waLink } from '../data/site';
-import { sortedPosts, formatDate, readingTime } from '../data/posts';
 import { ph } from '../lib/ph';
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
@@ -277,67 +274,6 @@ const schema = {
 
     <div class="weft weft-thin" aria-hidden="true"></div>
 
-    <!-- BLOG -->
-    <section class="section cotton blog-section" id="blog" aria-labelledby="blog-title" data-blog>
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="blog-title" tabindex="-1">Guías para entender su caso.</h2>
-          <p>
-            Artículos breves, en palabras normales, sobre las dudas que más escuchamos en el despacho. Ábrelos aquí
-            mismo, sin salir de la página.
-          </p>
-        </div>
-
-        <div data-blog-list>
-          <PostList headingTag="h3" />
-        </div>
-
-        {sortedPosts.map((post, i) => {
-          const prev = sortedPosts[i - 1];
-          const next = sortedPosts[i + 1];
-          return (
-            <article class="reader" id={`guia-${post.slug}`} data-reader={post.slug} aria-labelledby={`rt-${post.slug}`} hidden>
-              <div class="reader-bar">
-                <button class="reader-back" type="button" data-close>
-                  <Icon name="arrow" class="ico" /> Todas las guías
-                </button>
-                <a class="reader-perma" href={`/blog/${post.slug}/`}>Abrir en página aparte</a>
-              </div>
-              <header class="reader-head indigo">
-                <div class="reader-head-inner">
-                  <p class="reader-crumb">Guías · {post.category}</p>
-                  <h3 class="reader-title" id={`rt-${post.slug}`} tabindex="-1">{post.title}</h3>
-                  <p class="page-lede">{post.excerpt}</p>
-                  <p class="post-byline">
-                    Por <span set:html={ph(post.author)} /> · <time datetime={post.date}>{formatDate(post.date)}</time> ·
-                    {readingTime(post)} min de lectura
-                  </p>
-                </div>
-                <div class="weft weft-thin reader-weft" aria-hidden="true"></div>
-              </header>
-              <div class="reader-body">
-                <PostBody post={post} headingTag="h4" idPrefix={`${post.slug}--`} />
-              </div>
-              <nav class="reader-pager" aria-label="Otras guías">
-                {prev ? (
-                  <a href={`/blog/${prev.slug}/`} data-open={prev.slug} class="pager-link">
-                    <span class="pager-dir">Guía anterior</span>
-                    <span class="pager-title">{prev.title}</span>
-                  </a>
-                ) : <span />}
-                {next && (
-                  <a href={`/blog/${next.slug}/`} data-open={next.slug} class="pager-link pager-next">
-                    <span class="pager-dir">Siguiente guía</span>
-                    <span class="pager-title">{next.title}</span>
-                  </a>
-                )}
-              </nav>
-            </article>
-          );
-        })}
-      </div>
-    </section>
-
     <!-- CONSULTA -->
     <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
       <div class="wrap consulta-grid">
@@ -426,84 +362,6 @@ const schema = {
   <SiteFooter />
 
   <script>
-    // Guías: abrir el artículo dentro de la sección del blog, sin salir de la página.
-    const blog = document.querySelector<HTMLElement>('[data-blog]');
-    if (blog) {
-      const list = blog.querySelector<HTMLElement>('[data-blog-list]')!;
-      const readers = blog.querySelectorAll<HTMLElement>('[data-reader]');
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let openSlug: string | null = null;
-      const toTop = () => blog.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-
-      const open = (slug: string, push = true, scroll = true) => {
-        const reader = blog.querySelector<HTMLElement>(`[data-reader="${slug}"]`);
-        if (!reader) return false;
-        list.hidden = true;
-        readers.forEach((r) => (r.hidden = r !== reader));
-        reader.classList.remove('is-entering');
-        void reader.offsetWidth;
-        reader.classList.add('is-entering');
-        openSlug = slug;
-        if (push) history.pushState({ guia: slug }, '', `#guia-${slug}`);
-        if (scroll) reader.scrollIntoView({ behavior: reduced || !push ? 'auto' : 'smooth', block: 'start' });
-        reader.querySelector<HTMLElement>('.reader-title')?.focus({ preventScroll: true });
-        return true;
-      };
-
-      const close = (push = true) => {
-        if (!openSlug) return;
-        readers.forEach((r) => (r.hidden = true));
-        list.hidden = false;
-        openSlug = null;
-        if (push) history.pushState({}, '', '#blog');
-      };
-
-      blog.addEventListener('click', (e) => {
-        const ev = e as MouseEvent;
-        const target = ev.target as HTMLElement;
-        const link = target.closest<HTMLAnchorElement>('a[data-open]');
-        if (link && !(ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button !== 0)) {
-          if (open(link.dataset.open!)) e.preventDefault();
-          return;
-        }
-        if (target.closest('[data-close]')) {
-          if (history.state?.guia) history.back();
-          else { close(false); history.replaceState({}, '', '#blog'); }
-          toTop();
-          blog.querySelector<HTMLElement>('#blog-title')?.focus({ preventScroll: true });
-          return;
-        }
-        const out = target.closest<HTMLAnchorElement>('a[data-close-to]');
-        if (out) {
-          e.preventDefault();
-          close(false);
-          const dest = document.getElementById(out.dataset.closeTo!);
-          history.pushState({}, '', `#${out.dataset.closeTo}`);
-          dest?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-        }
-      });
-
-      const sync = () => {
-        const hash = decodeURIComponent(location.hash.slice(1));
-        const m = hash.match(/^guia-(.+)$/);
-        if (m) {
-          if (openSlug !== m[1]) open(m[1], false);
-          return;
-        }
-        // Un subtítulo de una guía (índice del artículo) abre esa guía y baja hasta él.
-        const el = hash ? document.getElementById(hash) : null;
-        const reader = el?.closest<HTMLElement>('[data-reader]');
-        if (el && reader) {
-          if (openSlug !== reader.dataset.reader) open(reader.dataset.reader!, false, false);
-          el.scrollIntoView();
-          return;
-        }
-        close(false);
-      };
-      window.addEventListener('popstate', sync);
-      if (location.hash) document.fonts.ready.then(() => requestAnimationFrame(sync));
-    }
-
     // Telar: cada paso que entra en pantalla teje su pasada de trama.
     const bands = document.querySelectorAll<HTMLElement>('[data-band]');
     const io = new IntersectionObserver(
