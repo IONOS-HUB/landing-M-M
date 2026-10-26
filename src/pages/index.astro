@@ -10,7 +10,7 @@ import PostList from '../components/PostList.astro';
 import PostBody from '../components/PostBody.astro';
 import { site, partners, areas, steps, values, faqs, testimonials, gallery, waLink } from '../data/site';
 import { sortedPosts, formatDate, readingTime } from '../data/posts';
-import { ph, stripBrackets } from '../lib/ph';
+import { ph } from '../lib/ph';
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
 const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`;

@@ -102,7 +102,7 @@ components:
     height: "42px"
   weft-band-thin:
     backgroundColor: "{colors.navy}"
-    height: "14px"
+    height: "8px"
   ghost-cell:
     backgroundColor: "{colors.cotton}"
     textColor: "{colors.navy}"
@@ -116,15 +116,15 @@ components:
 
 **Creative North Star: "Telar de Imbabura"**
 
-The page is a cloth being woven. Indigo cotton is the ground of the moments that carry conviction (hero, process, close, footer); cold raw cotton is the ground of the reading sections. Thin vertical warp threads are not decoration on top of the layout: they are the 12-column grid itself, drawn at each column line. Horizontal weft bands in the brand's own blues (the logo gradient, navy to sky) are woven between sections, so the separators are made of the same material as the mark.
+The page is a cloth being woven. Indigo cotton is the ground of the moments that carry conviction (hero, process, close, footer); cold raw cotton is the ground of the reading sections. Few, thin vertical warp threads mark the wrap's edges and quarter lines; they are structure, never wallpaper. Horizontal weft bands in the brand's own blues (the logo gradient, navy to sky) are woven between sections, so the separators are made of the same material as the mark.
 
-Density is calm and editorial: generous section padding, asymmetric two-column splits, long ruled lists instead of cards. Everything is square-cornered and thread-thin: 1px rules, 1px dashed outlines, a 14px warp pitch that repeats from the weave tile to the loom to the map frame. Missing data is shown honestly as drawn ghost cells and highlighted placeholder text, never disguised as real content.
+Density is calm and editorial: generous section padding, asymmetric two-column splits, long ruled lists instead of cards. Everything is square-cornered and thread-thin: 1px rules, 1px dashed outlines, a 14px base pitch, with the weave tile drawn at 28px so the checker stays large and sparse. Missing data is shown honestly as drawn ghost cells and highlighted placeholder text, never disguised as real content.
 
-Motion is the loom at work: bands reveal by clipping left to right like a shuttle passing, the isotipo reveals bottom-up like threads filling in, and the process loom gains one weft pass per step on scroll. All of it collapses to static under reduced motion.
+Motion is the loom at work: bands reveal by clipping left to right like a shuttle passing, the isotipo reveals bottom-up, whole and solid, then catches one sheen of light, and the process loom gains one weft pass per step on scroll. All of it collapses to static under reduced motion.
 
 **Key Characteristics:**
 - Two grounds only: indigo cotton and raw cotton, with white for the CTA and framed media.
-- Warp threads at the 12-column lines on every indigo section.
+- Warp threads at the wrap edges and quarter lines on every indigo section.
 - Weft bands in the five brand blues as section seams.
 - Quattrocento bold for every heading; Quattrocento Sans for everything read.
 - Zero radius on buttons, cells and frames; 1px rules and dashed thread outlines carry structure.
@@ -181,14 +181,14 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ## Layout
 
-A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections draw a warp rule at each of 12 column lines inside that wrap, plus a fine 7px-pitch fiber texture across the full bleed. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid (7 + 5 stacked). Vertical rhythm is the section padding (clamp 5–8.5rem); weft bands sit between cotton sections as seams.
+A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections draw a warp rule at the wrap edges and each quarter line (5 rules), over a plain indigo ground with a soft radial glow; no fine fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid (7 + 5 stacked). Vertical rhythm is the section padding (clamp 5–8.5rem); weft bands sit between cotton sections as seams.
 
 Responsive: at 960px every split collapses to one column, the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
 
 ### Named Rules
-**The Warp Is The Grid Rule.** Vertical threads on indigo grounds sit exactly on the 12 column lines of the wrap. Never draw decorative verticals off-grid.
+**The Warp Is The Grid Rule.** Vertical threads on indigo grounds sit only on the wrap edges and quarter lines. Never draw decorative verticals off-grid, and never cut the isotipo with them.
 
-**The 14px Pitch Rule.** The warp pitch (14px) is the shared module of the weave tile, loom threads, ghost-cell hatching and the map frame's graph paper.
+**The 14px Pitch Rule.** 14px is the base module (ghost-cell hatching, map frame grid); the weave tile renders at 28px (2×) in weft bands, the loom and the blog feature, so checkers stay sparse.
 
 ## Elevation & Depth
 
@@ -226,7 +226,7 @@ Practice items, steps, contact rows and awards are ruled lists, not cards: 1px r
 Sans 0.97rem in on-indigo-soft over a transparent fixed header; hover goes white with a 1px sky thread drawn in from the left. The header turns solid indigo-900 (96%) after 24px of scroll. Mobile: square bordered menu button, full-screen indigo sheet with warp texture and 1.9rem display-serif links divided by faint rules.
 
 ### Weft Band (signature)
-A full-bleed horizontal band of woven passes: navy, navy, cobalt, blue, azure, sky at 7px each, shaded per pass and overlaid with the 14px weave tile. 42–56px tall as the hero and closing seam, 14px as the thin seam between cotton sections. Enters with a left-to-right shuttle clip.
+A full-bleed horizontal band of woven passes: navy, blue and sky at 14px each, shaded per pass and overlaid with the weave tile at 28px. 42–56px tall as the hero and closing seam. Between sections the seam is a plain 8px three-thread stripe (navy, blue, sky) with no checker. Enters with a left-to-right shuttle clip.
 
 ### Loom (signature)
 In the process section, a sticky loom (indigo-900 bed, 2px warp threads at 14px pitch, indigo-950 side beams and top/bottom bars edged in sky) holds five bands that weave in left to right as each step is reached, ramping from navy to sky. Each band carries a small dark label with the step number and title.
@@ -238,8 +238,9 @@ Pending content is drawn, not faked. Ghost cells: square, 1px dashed navy border
 
 ### Do:
 - **Do** keep every section on one of the two grounds: indigo-800 cotton with warp, or raw cotton (#f4f6f9).
-- **Do** separate cotton sections with a thin (14px) weft band and open or close indigo moments with a full (42–56px) one.
-- **Do** draw warp threads only on the 12 column lines of the 1240px wrap.
+- **Do** separate sections with the 8px three-thread seam and open or close indigo moments with a full (42–56px) woven band.
+- **Do** draw warp threads only on the edges and quarter lines of the 1240px wrap.
+- **Do** show the hero isotipo whole: solid brand gradient, sky halo and a single load sheen; never striped or masked by threads.
 - **Do** set every heading in Quattrocento 700 with tight negative tracking; keep reading text in Quattrocento Sans.
 - **Do** make the white, square, dash-outlined WhatsApp button the only filled button on a surface.
 - **Do** show missing data as ghost cells and placeholder marks until real content exists.
