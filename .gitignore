@@ -12,3 +12,7 @@ dist/
 .impeccable/*
 !.impeccable/design.json
 !.impeccable/surfaces/
+
+# documentos internos del cliente (PRD, cuestionarios)
+archivos/
+capturas/

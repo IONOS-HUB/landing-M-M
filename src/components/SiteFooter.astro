@@ -1,25 +1,32 @@
 ---
 import Icon from './Icon.astro';
 import { site, waLink } from '../data/site';
+import { ph } from '../lib/ph';
 import { footerNav } from '../data/nav';
 ---
 <footer class="site-footer indigo-deep">
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <img class="footer-logo" src="/brand/horizontal-blanco.png" width="900" height="232" alt="Estudio Jurídico Mira & Montesdeoca" loading="lazy" />
-      <p>Derecho de familia y civil · {site.city}</p>
+      <p>Estudio jurídico en {site.city} desde {site.since}</p>
+      <address class="footer-contact">
+        {site.address}, {site.addressNote}<br />
+        WhatsApp <a href={waLink()} target="_blank" rel="noopener">{site.whatsappDisplay}</a><br />
+        <span set:html={ph(site.email)} />
+      </address>
     </div>
     <ul class="footer-nav">
       {footerNav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
     </ul>
-    <p class="footer-legal">
+    <p class="footer-legal" id="privacidad">
       © {new Date().getFullYear()} {site.name}. La información de este sitio es general y no constituye
-      asesoría legal para un caso concreto.
+      asesoría legal para un caso concreto. Privacidad: los datos que nos envías se usan solo para responder
+      tu consulta, se tratan con confidencialidad y no se comparten con terceros.
     </p>
   </div>
 </footer>
 
 <a class="wa-float" href={waLink()} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" data-wa-float>
   <Icon name="whatsapp" class="ico" />
-  <span>Escríbanos</span>
+  <span>Escríbenos</span>
 </a>

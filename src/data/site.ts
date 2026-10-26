@@ -1,24 +1,26 @@
-// Datos del estudio. Todo valor entre corchetes es un placeholder:
-// reemplácelo por la información real antes de publicar.
+// Datos del estudio, tomados del PRD del cliente (archivos/, 2026-10-25).
+// Todo valor entre corchetes es un dato por confirmar: reemplácelo por la
+// información real antes de publicar.
 
 export const site = {
   name: 'Estudio Jurídico Mira & Montesdeoca',
   city: 'Ibarra, Imbabura, Ecuador',
-  // Número en formato internacional, sin "+" ni espacios (593 + número sin el 0 inicial).
-  whatsapp: '593900000000',
-  whatsappMessage: 'Hola, quisiera agendar una consulta con el Estudio Mira & Montesdeoca.',
-  phoneDisplay: '[(06) 000 0000]',
-  phoneHref: 'tel:+59360000000',
-  email: '[contacto@dominio.ec]',
-  address: '[Calle Bolívar 0-00 y Calle Oviedo]',
-  addressNote: '[Edificio / piso / oficina]',
-  hours: [
-    { days: 'Lunes a viernes', time: '[08:30 – 13:00 · 14:30 – 18:00]' },
-    { days: 'Sábados', time: '[Con cita previa]' },
-  ],
-  // Coordenadas aproximadas del centro de Ibarra; ajuste a la oficina real.
-  map: { lat: 0.3517, lon: -78.1223 },
-  founded: '[año]',
+  since: 2016,
+  experience: '10 años de experiencia',
+  // Número en formato internacional, sin "+" ni espacios.
+  whatsapp: '593968064619',
+  whatsappDisplay: '+593 96 806 4619',
+  // La marca «vengo de la página web» permite contar los mensajes que llegan desde el sitio.
+  whatsappMessage: 'Hola, vengo de la página web. Quisiera contarles mi caso.',
+  // Pendiente: el cliente indicó dos correos distintos (…789 y …799). Confirmar cuál se publica.
+  email: '[correo por confirmar]',
+  address: 'Calle Bolívar y Oviedo',
+  addressNote: 'Edificio SAUD, segundo piso',
+  hours: [{ days: 'Horario de atención', time: '[por confirmar]' }],
+  mapQuery: 'Calle Bolívar y Oviedo, Ibarra, Ecuador',
+  cantons: ['Ibarra', 'Antonio Ante', 'Otavalo', 'Cotacachi', 'Urcuquí'],
+  freeConsult: 'Primera consulta en línea gratis',
+  freeConsultTerms: '[duración y medio por confirmar]',
   // Opcional: URL de un servicio de formularios (p. ej. https://formspree.io/f/xxxx).
   // Si queda vacío, el formulario arma el mensaje y lo abre en WhatsApp.
   formEndpoint: '',
@@ -26,111 +28,138 @@ export const site = {
 
 export const partners = [
   {
-    name: '[Nombre] Mira',
-    title: 'Abogado/a · Socio/a fundador/a',
-    registry: 'Matrícula Foro de Abogados [N.º 00-0000-0000]',
-    focus: 'Derecho de familia',
-    bio: '[Breve trayectoria: universidad, años de ejercicio y el tipo de casos que más acompaña.]',
+    name: 'Alexander Mira',
+    title: 'Socio',
+    degree: '[Título, universidad y año]',
+    bio: '[Breve trayectoria y áreas en las que más trabaja.]',
   },
   {
-    name: '[Nombre] Montesdeoca',
-    title: 'Abogado/a · Socio/a fundador/a',
-    registry: 'Matrícula Foro de Abogados [N.º 00-0000-0000]',
-    focus: 'Derecho civil',
-    bio: '[Breve trayectoria: universidad, años de ejercicio y el tipo de casos que más acompaña.]',
+    name: 'Melanie Montesdeoca',
+    title: 'Socia',
+    degree: '[Título, universidad y año]',
+    bio: '[Breve trayectoria y áreas en las que más trabaja.]',
   },
 ];
 
-export const areas = [
-  {
-    id: 'familia',
-    name: 'Familia',
-    lead: 'Cuando lo que está en juego son sus hijos, su pareja o su hogar.',
-    items: [
-      'Divorcio por mutuo acuerdo y contencioso',
-      'Pensión de alimentos: fijación, aumento y rebaja',
-      'Tenencia, patria potestad y régimen de visitas',
-      'Unión de hecho: reconocimiento y terminación',
-      'Reconocimiento e impugnación de paternidad',
-      'Disolución y liquidación de sociedad conyugal',
-    ],
-  },
-  {
-    id: 'civil',
-    name: 'Civil',
-    lead: 'Cuando se trata de sus bienes, sus contratos o una herencia.',
-    items: [
-      'Herencias, testamentos y posesión efectiva',
-      'Partición de bienes entre herederos',
-      'Compraventa e inscripción de inmuebles',
-      'Prescripción adquisitiva de dominio',
-      'Contratos de arriendo, promesa y compraventa',
-      'Cobro de deudas y obligaciones',
-    ],
-  },
-];
-
+// Lo que diferencia al estudio, en el orden en que una misma persona acompaña el caso.
 export const steps = [
   {
-    title: 'Nos escribe',
-    text: 'Por WhatsApp o por teléfono nos cuenta, en pocas palabras, qué está pasando. Le respondemos y coordinamos una cita.',
+    title: 'Te escuchamos',
+    text: 'La primera conversación la tienes con quien va a llevar tu caso. No con una recepción ni con un departamento.',
   },
   {
-    title: 'Le escuchamos',
-    text: 'En la primera consulta revisamos su situación y sus documentos con calma. Le explicamos sus opciones sin tecnicismos.',
+    title: 'Estudiamos tu caso completo',
+    text: 'No aplicamos recetas. Leemos tu situación en su contexto antes de proponerte nada.',
   },
   {
-    title: 'Acordamos por escrito',
-    text: 'Recibe una propuesta clara: qué haremos, cuánto tiempo puede tomar y cuáles son los honorarios. Sin sorpresas.',
+    title: 'Te explicamos los caminos',
+    text: 'En palabras normales: qué está en juego, qué opciones hay y cuál conviene. Una decisión que no se entiende es una apuesta.',
   },
   {
-    title: 'Llevamos su caso',
-    text: 'Preparamos escritos, le acompañamos a audiencias y trámites, y le informamos de cada avance sin que tenga que preguntar.',
+    title: 'Te defendemos desde el primer día',
+    text: 'La estrategia se prepara en serio desde el inicio, y la misma persona la sostiene en cada trámite y audiencia.',
   },
   {
-    title: 'Cerramos juntos',
-    text: 'Le entregamos la resolución y los documentos finales, y le explicamos qué sigue para usted y su familia.',
+    title: 'Te contamos cómo va',
+    text: 'Te llamamos para informarte del avance. No tienes que perseguir a nadie para saber qué pasa con lo tuyo.',
   },
 ];
 
-// Testimonios de EJEMPLO: no son reales. Reemplácelos solo con testimonios
-// autorizados por escrito por los clientes.
+export const values = [
+  { title: 'Discreción absoluta', text: 'Lo que nos cuentas queda entre tú y tu abogado.' },
+  { title: 'Honestidad', text: 'Te decimos también lo que no te conviene oír.' },
+  { title: 'Defensa preparada', text: 'Trabajamos tu caso en serio desde el primer día.' },
+];
+
+// Pendiente: el cliente atiende «todas las áreas del derecho» pero no envió la
+// lista. Estas áreas son una propuesta para confirmar con los socios.
+export const areas = [
+  { name: 'Familia', items: 'Divorcios, pensión de alimentos, tenencia, visitas, unión de hecho' },
+  { name: 'Herencias y patrimonio', items: 'Posesión efectiva, partición, testamentos, protección de bienes' },
+  { name: 'Civil y contratos', items: 'Contratos, compraventa de inmuebles, deudas, arriendos' },
+  { name: 'Penal', items: 'Denuncias, defensa, citaciones y notificaciones' },
+  { name: 'Laboral', items: 'Despidos, liquidaciones, reclamos ante el empleador' },
+  { name: 'Negocios', items: 'Constitución de compañías, contratos comerciales, cobros' },
+];
+
+// Preguntas frecuentes tal como las dio el cliente. Las respuestas son
+// borradores generales: los socios deben validarlas antes de publicar.
+export const faqs = [
+  {
+    q: '¿Vale la pena demandar o mejor llego a un acuerdo?',
+    a: 'Depende de lo que está en juego, de las pruebas que tengas y de lo que estés dispuesto a sostener en el tiempo. En la primera consulta revisamos tu situación y te explicamos con honestidad las ventajas y los riesgos de cada camino.',
+  },
+  {
+    q: '¿Cuánto me va a costar y cuánto tiempo va a tomar?',
+    a: 'Cada caso es distinto, por eso no publicamos precios. Los honorarios y los tiempos estimados los conversamos en la primera consulta, antes de que tomes cualquier decisión.',
+  },
+  {
+    q: '¿Qué pasa si pierdo? ¿Qué riesgo tengo?',
+    a: 'Te lo decimos claro desde el inicio, aunque no sea lo que quieres oír. Conocer los riesgos te permite decidir con información y no a ciegas.',
+  },
+  {
+    q: 'Me llegó una notificación o citación, ¿qué debo hacer y qué plazo tengo?',
+    a: 'No la ignores. Los plazos pueden ser cortos y dependen del tipo de proceso. Escríbenos cuanto antes con una foto del documento y te orientamos sobre los siguientes pasos.',
+  },
+  {
+    q: '¿Puedo firmar esto o me compromete a algo?',
+    a: 'Antes de firmar un contrato, un acuerdo o cualquier documento importante, conviene que un abogado lo revise. Te explicamos qué obligaciones asumes y qué conviene cambiar.',
+  },
+  {
+    q: '¿Cómo protejo mis bienes, mi negocio o mi herencia?',
+    a: 'Hay herramientas legales para ordenar y proteger tu patrimonio, y la mejor depende de tu situación familiar y económica. Lo analizamos contigo caso por caso.',
+  },
+  {
+    q: '¿Qué necesito para este trámite y qué documentos debo llevar?',
+    a: 'Cuéntanos qué trámite necesitas y te enviamos la lista de documentos antes de la cita, para que no pierdas viajes.',
+  },
+  {
+    q: '¿Esto prescribe? ¿Todavía estoy a tiempo?',
+    a: 'Muchas acciones legales tienen plazos para ejercerse, y varían según el caso. Por eso es importante consultar pronto: revisamos tu situación y te decimos si todavía estás a tiempo.',
+  },
+  {
+    q: '¿Puedo resolverlo sin ir a juicio?',
+    a: 'Muchas veces sí: por acuerdo entre las partes, mediación o trámites notariales. Cuando hay un camino sin juicio que te conviene, te lo proponemos.',
+  },
+  {
+    q: '¿Qué pasa con mis hijos, la casa o el negocio mientras avanza el proceso?',
+    a: 'Existen medidas que protegen a tus hijos y a tus bienes mientras se resuelve el caso. Te explicamos cuáles aplican a tu situación y cómo pedirlas.',
+  },
+];
+
+// Testimonios de EJEMPLO: no son reales. Reemplázalos solo con testimonios
+// autorizados por escrito por cada cliente (la discreción es un valor del estudio).
 export const testimonials = [
   {
     quote:
-      'Llegué sin entender nada del proceso de alimentos. Me explicaron cada paso y nunca me sentí sola. [Texto de ejemplo]',
-    name: '[Nombre del cliente]',
-    matter: 'Pensión de alimentos',
+      'Me explicaron cada paso con palabras que entendí, y siempre supe con quién hablar. [Texto de ejemplo]',
+    name: '[Nombre o iniciales]',
+    matter: 'Familia',
     place: 'Ibarra',
   },
   {
     quote:
-      'Resolvimos la herencia de mis padres entre cinco hermanos sin pelearnos. Eso no tiene precio. [Texto de ejemplo]',
-    name: '[Nombre del cliente]',
-    matter: 'Posesión efectiva y partición',
+      'Me dijeron la verdad sobre mi caso desde el primer día, aunque no era lo que quería oír. [Texto de ejemplo]',
+    name: '[Nombre o iniciales]',
+    matter: 'Herencia',
     place: 'Otavalo',
   },
   {
     quote:
-      'Un divorcio de mutuo acuerdo rápido y con respeto para los dos. Siempre supimos cuánto iba a costar. [Texto de ejemplo]',
-    name: '[Nombre del cliente]',
-    matter: 'Divorcio por mutuo acuerdo',
-    place: 'Atuntaqui',
+      'Nunca tuve que llamar a preguntar cómo iba mi proceso: me llamaban ellos. [Texto de ejemplo]',
+    name: '[Nombre o iniciales]',
+    matter: 'Contratos',
+    place: 'Antonio Ante',
   },
 ];
 
-export const recognitions = [
-  { label: '[Logo de cliente o institución]' },
-  { label: '[Logo de cliente o institución]' },
-  { label: '[Logo de cliente o institución]' },
-  { label: '[Logo de cliente o institución]' },
-  { label: '[Logo de cliente o institución]' },
-  { label: '[Logo de cliente o institución]' },
-];
-
-export const awards = [
-  { title: '[Nombre del reconocimiento]', by: '[Entidad que lo otorga]', year: '[Año]' },
-  { title: '[Nombre del reconocimiento]', by: '[Entidad que lo otorga]', year: '[Año]' },
+// Fotos profesionales del equipo y del despacho (pendientes de recibir).
+export const gallery = [
+  { label: 'Foto del despacho', ratio: 'wide' },
+  { label: 'Foto de los socios', ratio: 'tall' },
+  { label: 'Foto de reunión con cliente', ratio: 'square' },
+  { label: 'Foto de la sala de espera', ratio: 'square' },
+  { label: 'Foto del edificio SAUD', ratio: 'wide' },
 ];
 
 export const waLink = (message = site.whatsappMessage) =>

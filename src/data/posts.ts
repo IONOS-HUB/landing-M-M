@@ -24,7 +24,7 @@ export const posts: Post[] = [
     slug: 'divorcio-por-mutuo-acuerdo-en-ecuador',
     title: 'Divorcio por mutuo acuerdo: cómo funciona en Ecuador',
     excerpt:
-      'Cuando los dos están de acuerdo, el divorcio puede ser más rápido y menos doloroso. Le explicamos cuándo se hace en notaría, cuándo ante un juez y qué documentos necesita.',
+      'Cuando los dos están de acuerdo, el divorcio puede ser más rápido y menos doloroso. Te explicamos cuándo se hace en notaría, cuándo ante un juez y qué documentos necesitas.',
     category: 'Familia',
     date: '2026-09-18',
     author: '[Nombre] Mira',
@@ -42,14 +42,14 @@ export const posts: Post[] = [
       ] },
       { h2: '¿Y los bienes?' },
       { p: 'El divorcio disuelve el vínculo matrimonial, pero la sociedad conyugal (los bienes adquiridos durante el matrimonio) se liquida en un trámite aparte. Es importante planificar ambos pasos desde el inicio para evitar sorpresas.' },
-      { note: 'Cada caso tiene particularidades. Antes de firmar cualquier acuerdo, revíselo con un abogado que le explique qué significa para usted y para sus hijos.' },
+      { note: 'Cada caso tiene particularidades. Antes de firmar cualquier acuerdo, revísalo con un abogado que te explique qué significa para ti y para tus hijos.' },
     ],
   },
   {
     slug: 'pension-de-alimentos-como-se-calcula',
     title: 'Pensión de alimentos: cómo se calcula y cómo pedirla',
     excerpt:
-      'La pensión no es un favor: es un derecho de sus hijos. Así se calcula con la tabla del Consejo de la Judicatura y estos son los pasos para solicitarla.',
+      'La pensión no es un favor: es un derecho de tus hijos. Así se calcula con la tabla del Consejo de la Judicatura y estos son los pasos para solicitarla.',
     category: 'Familia',
     date: '2026-09-04',
     author: '[Nombre] Mira',
@@ -60,7 +60,7 @@ export const posts: Post[] = [
       { p: 'Por eso es clave demostrar los ingresos reales del obligado: roles de pago, afiliación al IESS, declaraciones de impuestos o cualquier otra prueba de su actividad económica.' },
       { h2: 'Pasos para solicitarla' },
       { ul: [
-        'Reunir las partidas de nacimiento de los hijos y su cédula.',
+        'Reunir las partidas de nacimiento de los hijos y tu cédula.',
         'Recopilar pruebas de los ingresos de la otra parte y de los gastos de los hijos.',
         'Presentar la demanda en la Unidad Judicial de Familia.',
         'Al calificar la demanda, el juez puede fijar una pensión provisional mientras dura el proceso.',
@@ -74,7 +74,7 @@ export const posts: Post[] = [
     slug: 'posesion-efectiva-primer-paso-para-heredar',
     title: 'Posesión efectiva: el primer paso para heredar',
     excerpt:
-      'Cuando fallece un familiar, sus bienes no pasan solos a los herederos. La posesión efectiva es el trámite que lo hace posible. Le contamos cómo se realiza.',
+      'Cuando fallece un familiar, sus bienes no pasan solos a los herederos. La posesión efectiva es el trámite que lo hace posible. Te contamos cómo se realiza.',
     category: 'Civil',
     date: '2026-08-21',
     author: '[Nombre] Montesdeoca',
@@ -110,7 +110,7 @@ export const posts: Post[] = [
       { p: 'El juez no decide en función de lo que quieren los padres, sino de lo que es mejor para el hijo: su estabilidad, su bienestar emocional, su entorno escolar y familiar, y los vínculos con cada progenitor.' },
       { h2: 'La opinión del hijo cuenta' },
       { p: 'Según su edad y madurez, el niño o adolescente puede ser escuchado durante el proceso. Su opinión no es la única que pesa, pero el juez la considera.' },
-      { h2: 'Lo que ayuda a su caso' },
+      { h2: 'Lo que ayuda a tu caso' },
       { ul: [
         'Mostrar con hechos su participación en la vida del hijo: escuela, salud, rutina.',
         'Proponer un régimen de visitas realista y flexible.',
@@ -121,9 +121,9 @@ export const posts: Post[] = [
   },
   {
     slug: 'union-de-hecho-derechos-y-registro',
-    title: 'Unión de hecho: sus derechos y cómo formalizarla',
+    title: 'Unión de hecho: tus derechos y cómo formalizarla',
     excerpt:
-      'Vivir juntos sin casarse también genera derechos. Conozca qué protege la unión de hecho y por qué conviene formalizarla.',
+      'Vivir juntos sin casarse también genera derechos. Conoce qué protege la unión de hecho y por qué conviene formalizarla.',
     category: 'Familia',
     date: '2026-07-24',
     author: '[Nombre] Mira',
@@ -139,19 +139,19 @@ export const posts: Post[] = [
       { p: 'Aunque la convivencia genera derechos, probarla después, por ejemplo tras una separación o un fallecimiento, puede ser difícil. Formalizarla ante un notario o un juez y registrarla en el Registro Civil le da certeza a la pareja y a su familia.' },
       { h2: '¿Y si termina?' },
       { p: 'La unión de hecho también se termina formalmente, y los bienes comunes se liquidan, de manera similar a lo que ocurre con la sociedad conyugal en un divorcio.' },
-      { note: 'Si convive con su pareja y tienen bienes o hijos, revisar su situación legal hoy puede evitar un problema mañana.' },
+      { note: 'Si convives con tu pareja y tienen bienes o hijos, revisar tu situación legal hoy puede evitar un problema mañana.' },
     ],
   },
   {
     slug: 'antes-de-comprar-un-terreno-en-ibarra',
-    title: 'Antes de comprar un terreno: documentos que debe revisar',
+    title: 'Antes de comprar un terreno: documentos que debes revisar',
     excerpt:
-      'Comprar un terreno o una casa es una de las decisiones más grandes de una familia. Estos documentos le ayudan a evitar sorpresas antes de firmar.',
+      'Comprar un terreno o una casa es una de las decisiones más grandes de una familia. Estos documentos te ayudan a evitar sorpresas antes de firmar.',
     category: 'Civil',
     date: '2026-07-10',
     author: '[Nombre] Montesdeoca',
     body: [
-      { p: 'Un inmueble con problemas legales puede convertirse en años de juicios. Antes de entregar dinero o firmar una promesa de compraventa, revise con calma esta lista.' },
+      { p: 'Un inmueble con problemas legales puede convertirse en años de juicios. Antes de entregar dinero o firmar una promesa de compraventa, revisa con calma esta lista.' },
       { h2: 'Documentos clave' },
       { ul: [
         'Certificado de gravámenes del Registro de la Propiedad: muestra quién es el dueño y si hay hipotecas, embargos o prohibiciones.',
@@ -161,7 +161,7 @@ export const posts: Post[] = [
         'Levantamiento o plano del terreno que coincida con lo que dice la escritura.',
       ] },
       { h2: 'Señales de alerta' },
-      { p: 'Desconfíe si el vendedor no es quien figura en el Registro, si hay herederos que no han firmado, o si le piden pagar todo antes de la escritura. En esos casos, deténgase y pida asesoría.' },
+      { p: 'Desconfía si el vendedor no es quien figura en el Registro, si hay herederos que no han firmado, o si te piden pagar todo antes de la escritura. En esos casos, detente y pide asesoría.' },
       { h2: 'La firma y la inscripción' },
       { p: 'La compraventa de inmuebles se hace por escritura pública ante notario y solo queda completa cuando se inscribe en el Registro de la Propiedad. Hasta entonces, la transferencia no está terminada.' },
       { note: 'Una revisión legal antes de comprar cuesta mucho menos que un juicio después.' },

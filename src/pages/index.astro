@@ -8,19 +8,36 @@ import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
 import PostList from '../components/PostList.astro';
 import PostBody from '../components/PostBody.astro';
-import { site, partners, areas, steps, testimonials, recognitions, awards, waLink } from '../data/site';
+import { site, partners, areas, steps, values, faqs, testimonials, gallery, waLink } from '../data/site';
 import { sortedPosts, formatDate, readingTime } from '../data/posts';
 import { ph, stripBrackets } from '../lib/ph';
 
-const bbox = [site.map.lon - 0.012, site.map.lat - 0.008, site.map.lon + 0.012, site.map.lat + 0.008].join(',');
-const mapSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${site.map.lat},${site.map.lon}`;
-const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site.map.lon}#map=17/${site.map.lat}/${site.map.lon}`;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
+const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`;
+const years = new Date().getFullYear() - site.since;
 
+// Datos de negocio local para buscadores.
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: site.name,
+  foundingDate: String(site.since),
+  telephone: `+${site.whatsapp}`,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: `${site.address}, ${site.addressNote}`,
+    addressLocality: 'Ibarra',
+    addressRegion: 'Imbabura',
+    addressCountry: 'EC',
+  },
+  areaServed: site.cantons,
+};
 ---
 <Base
-  title="Abogados de familia y civil en Ibarra | Estudio Jurídico Mira & Montesdeoca"
-  description="Estudio jurídico en Ibarra, Ecuador. Divorcios, pensión de alimentos, tenencia, herencias y contratos. Escríbanos por WhatsApp y agende su consulta."
+  title="Abogados en Ibarra | Estudio Jurídico Mira & Montesdeoca"
+  description="Estudio jurídico en Ibarra desde 2016. La misma persona escucha, estudia, defiende y te explica tu caso. Primera consulta en línea gratis por WhatsApp."
 >
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
   <SiteHeader />
 
   <main id="contenido">
@@ -28,21 +45,25 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     <section class="hero indigo" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">Abogados de familia en Ibarra, a su lado en cada paso.</h1>
+          <h1 id="hero-title">La misma persona que te escucha es la que defiende tu caso.</h1>
           <p class="hero-lede">
-            Divorcios, pensión de alimentos, tenencia, herencias y contratos. Le explicamos su caso con
-            palabras claras y lo llevamos con usted, de principio a fin.
+            Estudio jurídico en Ibarra desde {site.since}. Estudiamos tu caso completo y te explicamos, sin
+            tecnicismos, qué está en juego y qué camino conviene.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+            <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-hero">
               <Icon name="whatsapp" class="ico" />
-              <span>Escríbanos por WhatsApp</span>
+              <span>Cuéntanos tu caso por WhatsApp</span>
             </a>
             <a class="link-thread" href="#consulta">
-              Agendar una consulta <Icon name="arrow" class="ico" />
+              Enviar mi consulta <Icon name="arrow" class="ico" />
             </a>
           </div>
-          <p class="hero-note" set:html={ph('Primera consulta: [condiciones por confirmar]')} />
+          <ul class="hero-facts">
+            <li><strong>{site.freeConsult}</strong> <span set:html={ph(site.freeConsultTerms)} /></li>
+            <li><strong>{years} años</strong> de experiencia</li>
+            <li><strong>Discreción absoluta</strong> en cada conversación</li>
+          </ul>
         </div>
         <div class="hero-mark" aria-hidden="true">
           <div class="woven-m"></div>
@@ -51,94 +72,14 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
       <div class="weft weft-hero" aria-hidden="true"></div>
     </section>
 
-    <!-- EL ESTUDIO -->
-    <section class="section cotton" id="estudio" aria-labelledby="estudio-title">
-      <div class="wrap estudio-grid">
-        <div class="estudio-intro">
-          <h2 id="estudio-title">Dos apellidos, una sola manera de trabajar.</h2>
-          <p class="big-p">
-            <strong>Mira &amp; Montesdeoca</strong> lleva los apellidos de sus socios fundadores. No es una
-            marca detrás de la que se esconde un equipo anónimo: en cada caso, usted sabe quién le atiende y
-            habla directamente con su abogado.
-          </p>
-          <p>
-            Nuestro símbolo une dos <em>M</em> —dos cumbres, como las que rodean Ibarra— sobre una balanza.
-            Dos personas que sostienen juntas el equilibrio de su caso.
-          </p>
-          <p class="muted" set:html={ph('Ejercemos en Imbabura desde [año de fundación].')} />
-        </div>
-        <ul class="partners">
-          {partners.map((p) => (
-            <li class="partner">
-              <div class="ghost ghost-portrait">
-                <span class="ghost-tag">Foto profesional</span>
-                <span class="ghost-label">Foto de {p.name.replace(/[[\]]/g, '')}</span>
-              </div>
-              <div class="partner-body">
-                <h3 set:html={ph(p.name)} />
-                <p class="partner-title" set:html={ph(p.title)} />
-                <p class="partner-focus">{p.focus}</p>
-                <p class="partner-reg" set:html={ph(p.registry)} />
-                <p class="partner-bio" set:html={ph(p.bio)} />
-                <a
-                  class="link-thread link-dark partner-cta"
-                  href={waLink(`Hola, quisiera agendar una consulta con ${stripBrackets(p.name)}.`)}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Escribir a {stripBrackets(p.name)} <Icon name="arrow" class="ico" />
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <div class="weft weft-thin" aria-hidden="true"></div>
-
-    <!-- ÁREAS -->
-    <section class="section cotton areas" id="areas" aria-labelledby="areas-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="areas-title">Dos áreas. Las conocemos a fondo.</h2>
-          <p>
-            Nos dedicamos al derecho de familia y al derecho civil, nada más. Así podemos darle a su caso la
-            atención y el conocimiento que necesita.
-          </p>
-        </div>
-        <div class="areas-grid">
-          {areas.map((a) => (
-            <article class="area" id={`area-${a.id}`}>
-              <h3 class="area-name">{a.name}</h3>
-              <p class="area-lead">{a.lead}</p>
-              <ul class="area-list">
-                {a.items.map((i) => <li>{i}</li>)}
-              </ul>
-              <a
-                class="link-thread link-dark"
-                href={waLink(`Hola, necesito asesoría en derecho ${a.name.toLowerCase()}.`)}
-                target="_blank"
-                rel="noopener"
-              >
-                Consultar sobre {a.name.toLowerCase()} <Icon name="arrow" class="ico" />
-              </a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <div class="weft weft-thin" aria-hidden="true"></div>
-
     <!-- CÓMO TRABAJAMOS -->
     <section class="section indigo proceso" id="proceso" aria-labelledby="proceso-title">
       <div class="wrap proceso-grid">
         <div class="proceso-copy">
-          <h2 id="proceso-title">Cómo llevamos su caso.</h2>
+          <h2 id="proceso-title">Un solo hilo, de principio a fin.</h2>
           <p class="proceso-lede">
-            Un proceso legal no debería ser una caja negra. Así trabajamos con cada cliente, hilo por hilo,
-            hasta cerrar su caso.
+            Aquí no hay departamentos que se pasan el expediente. Quien te escucha en la primera conversación
+            es quien piensa tu caso, lo defiende y te llama para contarte cómo va.
           </p>
           <ol class="steps">
             {steps.map((s, i) => (
@@ -152,9 +93,17 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
               </li>
             ))}
           </ol>
-          <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+          <dl class="values">
+            {values.map((v) => (
+              <div>
+                <dt>{v.title}</dt>
+                <dd>{v.text}</dd>
+              </div>
+            ))}
+          </dl>
+          <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-proceso">
             <Icon name="whatsapp" class="ico" />
-            <span>Empezar por el paso uno</span>
+            <span>Escríbenos por WhatsApp</span>
           </a>
         </div>
         <div class="loom-col" aria-hidden="true">
@@ -171,14 +120,97 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
 
     <div class="weft weft-thin" aria-hidden="true"></div>
 
+    <!-- SERVICIOS -->
+    <section class="section cotton servicios" id="servicios" aria-labelledby="servicios-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="servicios-title">Todas las áreas del derecho. Un caso a la vez.</h2>
+          <p>
+            Te acompañamos en conflictos y trámites que afectan tus derechos o tu patrimonio. Busca tu
+            situación o, si no sabes dónde encaja, escríbenos igual.
+          </p>
+        </div>
+        <ul class="area-index">
+          {areas.map((a) => (
+            <li class="area-row">
+              <h3 class="area-row-name">{a.name}</h3>
+              <p class="area-row-items">{a.items}</p>
+              <a
+                class="link-thread link-dark"
+                href={waLink(`Hola, vengo de la página web. Necesito asesoría en ${a.name.toLowerCase()}.`)}
+                target="_blank"
+                rel="noopener"
+                data-track="wa-area"
+                aria-label={`Consultar sobre ${a.name} por WhatsApp`}
+              >
+                Consultar <Icon name="arrow" class="ico" />
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="area-note">
+          <span class="ph">Áreas por confirmar con los socios</span> Sin precios publicados: los honorarios se
+          conversan en la primera consulta.
+        </p>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
+    <!-- NOSOTROS Y EQUIPO -->
+    <section class="section cotton" id="estudio" aria-labelledby="estudio-title">
+      <div class="wrap estudio-grid">
+        <div class="estudio-intro">
+          <h2 id="estudio-title">En Ibarra desde {site.since}.</h2>
+          <p class="big-p">
+            <strong>Mira &amp; Montesdeoca</strong> nació en {site.since}, cuando su primer socio empezó este
+            proyecto. Hoy son dos socios con un mismo método: leer tu situación completa, entenderla en su
+            contexto y hacerse cargo de ella.
+          </p>
+          <p>
+            Nuestro símbolo une dos <em>M</em>, dos cumbres como las que rodean Ibarra, sobre una balanza.
+            Atendemos en Ibarra y en los cantones vecinos: {site.cantons.slice(1).join(', ')}.
+          </p>
+          <p class="estudio-quote">«Quien nos elige no está comprando promesas; está poniendo su caso en manos de alguien que se hace cargo».</p>
+        </div>
+        <ul class="partners">
+          {partners.map((p) => (
+            <li class="partner">
+              <div class="ghost ghost-portrait">
+                <span class="ghost-tag">Foto profesional</span>
+                <span class="ghost-label">Foto de {p.name}</span>
+              </div>
+              <div class="partner-body">
+                <h3>{p.name}</h3>
+                <p class="partner-title">{p.title}</p>
+                <p class="partner-reg" set:html={ph(p.degree)} />
+                <p class="partner-bio" set:html={ph(p.bio)} />
+                <a
+                  class="link-thread link-dark partner-cta"
+                  href={waLink(`Hola, vengo de la página web. Quisiera hablar con ${p.name}.`)}
+                  target="_blank"
+                  rel="noopener"
+                  data-track="wa-socio"
+                >
+                  Escribir a {p.name.split(' ')[0]} <Icon name="arrow" class="ico" />
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
     <!-- TESTIMONIOS -->
     <section class="section cotton" id="testimonios" aria-labelledby="testimonios-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="testimonios-title">Lo que dicen nuestros clientes.</h2>
+          <h2 id="testimonios-title">Lo que dicen quienes nos eligieron.</h2>
           <p class="sample-note">
-            <span class="ph">Testimonios de ejemplo</span> Reemplazar por testimonios reales, con autorización
-            escrita de cada cliente.
+            <span class="ph">Testimonios de ejemplo</span> Se publicarán solo testimonios reales, con
+            autorización escrita de cada cliente.
           </p>
         </div>
         <div class="quotes">
@@ -196,31 +228,50 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
       </div>
     </section>
 
-    <CtaBand
-      title="¿Su situación se parece a alguna de estas?"
-      text="Cuéntenos su caso. La primera conversación es para escucharle y explicarle sus opciones."
-    />
-
-    <!-- RECONOCIMIENTOS -->
-    <section class="section cotton recon" aria-labelledby="recon-title">
-      <div class="wrap recon-grid">
-        <div>
-          <h2 id="recon-title">La confianza de quienes nos eligieron.</h2>
-          <p set:html={ph('[Familias y clientes de Imbabura] que han confiado en nosotros. [Más de N] casos acompañados desde [año].')} />
-          <ul class="awards">
-            {awards.map((a) => (
-              <li>
-                <span class="award-title" set:html={ph(a.title)} />
-                <span class="award-meta" set:html={ph(`${a.by} · ${a.year}`)} />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <ul class="logo-wall" aria-label="Clientes e instituciones (por confirmar)">
-          {recognitions.map((r) => (
-            <li class="ghost ghost-logo"><span class="ghost-label">{r.label.replace(/[[\]]/g, '')}</span></li>
+    <!-- GALERÍA -->
+    <section class="section cotton galeria" id="galeria" aria-labelledby="galeria-title">
+      <div class="wrap">
+        <h2 id="galeria-title" class="galeria-title">El despacho.</h2>
+        <ul class="gallery">
+          {gallery.map((g) => (
+            <li class={`ghost ghost-photo g-${g.ratio}`}>
+              <span class="ghost-tag">Foto profesional</span>
+              <span class="ghost-label">{g.label}</span>
+            </li>
           ))}
         </ul>
+      </div>
+    </section>
+
+    <CtaBand
+      title="¿No sabes por dónde empezar?"
+      text={`Cuéntanos tu situación por WhatsApp. ${site.freeConsult.charAt(0).toUpperCase() + site.freeConsult.slice(1).toLowerCase()}.`}
+    />
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div class="faq-intro">
+          <h2 id="faq-title">Lo que más nos preguntan.</h2>
+          <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta.</p>
+          <p class="faq-note"><span class="ph">Respuestas en borrador</span> Validar con los socios antes de publicar.</p>
+          <a class="btn btn-solid" href={waLink('Hola, vengo de la página web. Tengo una duda sobre mi caso.')} target="_blank" rel="noopener" data-track="wa-faq">
+            <Icon name="whatsapp" class="ico" />
+            <span>¿Tienes otra duda? Escríbenos</span>
+          </a>
+        </div>
+        <div class="faq-list">
+          {faqs.map((f, i) => (
+            <details class="faq-item" name="faq">
+              <summary>
+                <span class="faq-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <span class="faq-q">{f.q}</span>
+                <span class="faq-toggle" aria-hidden="true"></span>
+              </summary>
+              <p class="faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -232,7 +283,7 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
         <div class="section-head">
           <h2 id="blog-title" tabindex="-1">Guías para entender su caso.</h2>
           <p>
-            Artículos breves, en lenguaje claro, sobre las dudas que más escuchamos en la oficina. Ábralos aquí
+            Artículos breves, en palabras normales, sobre las dudas que más escuchamos en el despacho. Ábrelos aquí
             mismo, sin salir de la página.
           </p>
         </div>
@@ -291,23 +342,19 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
     <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
       <div class="wrap consulta-grid">
         <div class="consulta-copy">
-          <h2 id="consulta-title">Agende su consulta.</h2>
+          <h2 id="consulta-title">Empieza con tu primera consulta gratis.</h2>
           <p class="consulta-lede">
-            Déjenos sus datos y una frase sobre su caso. Le respondemos en horario de oficina para
-            coordinar una cita.
+            Déjanos tus datos y una frase sobre tu caso. Te respondemos para coordinar la consulta en línea.
           </p>
           <ol class="consulta-next">
-            <li><span><strong>Revisamos su mensaje</strong> y vemos qué abogado del estudio es el indicado.</span></li>
-            <li><span><strong>Le contactamos</strong> por WhatsApp o por llamada, como usted prefiera.</span></li>
-            <li><span><strong>Agendamos la cita</strong> en la oficina o en línea.</span></li>
+            <li><span><strong>Nos escribes</strong> por WhatsApp o con este formulario.</span></li>
+            <li><span><strong>Tienes tu primera consulta en línea gratis</strong> con el abogado que llevará tu caso. <span set:html={ph(site.freeConsultTerms)} /></span></li>
+            <li><span><strong>Te explicamos la estrategia</strong>, los costos y los tiempos antes de decidir.</span></li>
           </ol>
           <div class="consulta-direct">
-            <p>¿Prefiere hablar ya?</p>
-            <a class="link-thread" href={waLink()} target="_blank" rel="noopener">
-              <Icon name="whatsapp" class="ico" /> WhatsApp directo
-            </a>
-            <a class="link-thread" href={site.phoneHref}>
-              <Icon name="phone" class="ico" /> <span set:html={ph(site.phoneDisplay)} />
+            <p>¿Prefieres escribir directo?</p>
+            <a class="link-thread" href={waLink()} target="_blank" rel="noopener" data-track="wa-consulta">
+              <Icon name="whatsapp" class="ico" /> {site.whatsappDisplay}
             </a>
           </div>
         </div>
@@ -322,15 +369,11 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
       <div class="wrap ubic-grid">
         <div class="ubic-info">
           <h2 id="ubicacion-title">Estamos en el centro de Ibarra.</h2>
-          <p>Le recibimos en nuestra oficina. Para no hacerle esperar, escríbanos antes y reservamos su hora.</p>
+          <p>Te recibimos en el despacho. Para no hacerte esperar, escríbenos antes y reservamos tu hora.</p>
           <dl class="contact-list">
             <div>
               <dt><Icon name="pin" class="ico" /> Dirección</dt>
-              <dd>
-                <span set:html={ph(site.address)} /><br />
-                <span set:html={ph(site.addressNote)} /><br />
-                {site.city}
-              </dd>
+              <dd>{site.address}<br />{site.addressNote}<br />{site.city}</dd>
             </div>
             <div>
               <dt><Icon name="clock" class="ico" /> Horario</dt>
@@ -341,26 +384,25 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
               </dd>
             </div>
             <div>
-              <dt><Icon name="phone" class="ico" /> Teléfono</dt>
-              <dd><a href={site.phoneHref} set:html={ph(site.phoneDisplay)} /></dd>
+              <dt><Icon name="whatsapp" class="ico" /> WhatsApp</dt>
+              <dd><a href={waLink()} target="_blank" rel="noopener" data-track="wa-ubicacion">{site.whatsappDisplay}</a></dd>
             </div>
             <div>
               <dt><Icon name="mail" class="ico" /> Correo</dt>
               <dd><span set:html={ph(site.email)} /></dd>
             </div>
           </dl>
-          <a class="link-thread link-dark" href={mapLink} target="_blank" rel="noopener">
-            Abrir en el mapa <Icon name="arrow" class="ico" />
+          <a class="link-thread link-dark" href={mapLink} target="_blank" rel="noopener" data-track="mapa">
+            Abrir en Google Maps <Icon name="arrow" class="ico" />
           </a>
         </div>
         <div class="map-frame">
           <iframe
-            title="Mapa de la ubicación del estudio en Ibarra"
+            title="Mapa: Calle Bolívar y Oviedo, Ibarra"
             src={mapSrc}
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
-          <span class="map-tag ph">Ubicación aproximada: centro de Ibarra</span>
         </div>
       </div>
     </section>
@@ -370,13 +412,13 @@ const mapLink = `https://www.openstreetmap.org/?mlat=${site.map.lat}&mlon=${site
       <div class="weft weft-close" aria-hidden="true"></div>
       <div class="wrap close-inner">
         <Isotipo variant="light" class="close-iso" />
-        <h2 id="close-title">Cuéntenos qué está pasando. <br />Empezamos por escucharle.</h2>
-        <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener">
+        <h2 id="close-title">Un problema legal no se parece a ningún otro. <br />Tu defensa tampoco debería.</h2>
+        <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-cierre">
           <Icon name="whatsapp" class="ico" />
-          <span>Escríbanos por WhatsApp</span>
+          <span>Quiero mi primera consulta gratis</span>
         </a>
-        <a class="link-thread" href="#consulta">o llene el formulario de consulta <Icon name="arrow" class="ico" /></a>
-        <p class="close-small">Respuesta en horario de oficina. Su consulta es confidencial.</p>
+        <a class="link-thread" href="#consulta">o envía tu consulta con el formulario <Icon name="arrow" class="ico" /></a>
+        <p class="close-small">Discreción absoluta: lo que nos cuentas queda entre tú y tu abogado.</p>
       </div>
     </section>
   </main>

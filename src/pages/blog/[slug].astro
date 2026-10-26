@@ -17,7 +17,7 @@ const related = sortedPosts.filter((p) => p.slug !== post.slug && p.category ===
 const others = related.length < 2
   ? [...related, ...sortedPosts.filter((p) => p.slug !== post.slug && !related.includes(p))].slice(0, 2)
   : related;
-const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consulta sobre mi caso.`;
+const consultMsg = `Hola, vengo de la página web. Leí la guía «${post.title}» y quisiera una consulta.`;
 ---
 <Base title={`${post.title} | Blog Mira & Montesdeoca`} description={post.excerpt}>
   <SiteHeader current="/#blog" />
@@ -67,7 +67,7 @@ const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consult
       </div>
     </section>
 
-    <CtaBand title="Hablemos de su caso." text="La primera conversación es para escucharle." message={consultMsg} />
+    <CtaBand title="Hablemos de tu caso." text="La primera consulta en línea es gratis." message={consultMsg} />
   </main>
 
   <SiteFooter />

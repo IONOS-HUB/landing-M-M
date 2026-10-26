@@ -6,18 +6,20 @@ El diseño se llama **Telar de Imbabura**: fondo de algodón índigo con hilos d
 
 ## Secciones
 
-1. **Inicio**: titular, CTA de WhatsApp e isotipo tejido.
-2. **El estudio**: origen del nombre, significado del símbolo y los socios.
-3. **Áreas**: Familia y Civil, cada una con su enlace directo a WhatsApp.
-4. **Cómo trabajamos**: el proceso en 5 pasos.
-5. **Testimonios**: de ejemplo, marcados como placeholders.
-6. **Reconocimientos**: espacios para logos de clientes y premios.
-7. **Guías (blog)**: todas las guías con filtro por área. Al hacer clic, el artículo se abre dentro de la misma sección, con botón «Todas las guías» para volver, índice, CTA y guía anterior/siguiente. Cada guía tiene enlace directo (`/#guia-<slug>`) y funciona con el botón atrás del navegador.
-8. **Agende su consulta**: formulario de contacto.
-9. **Ubicación**: mapa de Ibarra, dirección, horario y contacto.
-10. **Cierre**: llamado final a WhatsApp.
+El contenido sigue el PRD del cliente (`archivos/`, fuera de git) y trata al visitante de «tú».
 
-Las guías también existen como páginas propias en `/blog/` y `/blog/<slug>/` (útiles para buscadores y para compartir); desde el lector se pueden abrir con «Abrir en página aparte».
+1. **Inicio**: titular, WhatsApp, primera consulta en línea gratis, 10 años de experiencia y discreción.
+2. **Cómo trabajamos**: la misma persona en los 5 pasos del caso (telar animado) y los tres valores.
+3. **Servicios**: todas las áreas del derecho, con una lista propuesta **por confirmar**.
+4. **Nosotros**: historia desde 2016 y los socios Alexander Mira y Melanie Montesdeoca.
+5. **Testimonios** y **galería** del despacho: placeholders hasta recibir el material.
+6. **Preguntas frecuentes**: las 10 preguntas del cliente, con respuestas en borrador.
+7. **Guías (blog)**: se abren dentro de la misma sección (también existen en `/blog/`).
+8. **Consulta**: formulario (nombre, WhatsApp, cantón, tipo de asunto y mensaje).
+9. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
+10. **Cierre**: llamado a la primera consulta gratis.
+
+Los botones de WhatsApp llevan el mensaje «Hola, vengo de la página web…» para que el despacho cuente los mensajes que llegan desde el sitio, y un atributo `data-track` para sumar analítica más adelante.
 
 ## Requisitos
 
@@ -39,16 +41,15 @@ Casi todos los datos del estudio están en **`src/data/site.ts`**:
 
 | Dato | Campo |
 |---|---|
-| Número de WhatsApp (formato `593XXXXXXXXX`, sin `+`) y mensaje inicial | `site.whatsapp`, `site.whatsappMessage` |
-| Teléfono, correo, dirección y horarios | `site.phoneDisplay`, `site.phoneHref`, `site.email`, `site.address`, `site.hours` |
-| Coordenadas del mapa | `site.map` |
-| Socios: nombre, cargo, matrícula y trayectoria | `partners` |
-| Trámites de cada área | `areas` |
-| Pasos del proceso | `steps` |
-| Testimonios | `testimonials` |
-| Logos de clientes y premios | `recognitions`, `awards` |
+| WhatsApp, mensaje inicial, correo, dirección, horarios | `site` |
+| Primera consulta gratis y sus condiciones | `site.freeConsult`, `site.freeConsultTerms` |
+| Socios: nombre, cargo, grado de estudio y trayectoria | `partners` |
+| Pasos de cómo trabajamos y valores | `steps`, `values` |
+| Áreas del derecho | `areas` |
+| Preguntas frecuentes | `faqs` |
+| Testimonios y fotos de la galería | `testimonials`, `gallery` |
 
-Unos pocos textos están directamente en **`src/pages/index.astro`**: las condiciones de la primera consulta, el año de fundación y el número de casos.
+Los titulares y textos de cada sección están en **`src/pages/index.astro`**.
 
 ### Formulario de contacto
 

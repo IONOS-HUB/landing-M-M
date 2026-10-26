@@ -1,17 +1,19 @@
 export const nav = [
-  { href: '/#estudio', label: 'El estudio' },
-  { href: '/#areas', label: 'Áreas' },
   { href: '/#proceso', label: 'Cómo trabajamos' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/#estudio', label: 'Nosotros' },
+  { href: '/#preguntas', label: 'Preguntas' },
   { href: '/#blog', label: 'Blog' },
   { href: '/#consulta', label: 'Contacto' },
 ];
 
 export const footerNav = [
-  { href: '/#estudio', label: 'El estudio' },
-  { href: '/#areas', label: 'Áreas' },
   { href: '/#proceso', label: 'Cómo trabajamos' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/#estudio', label: 'Nosotros' },
   { href: '/#testimonios', label: 'Testimonios' },
+  { href: '/#preguntas', label: 'Preguntas frecuentes' },
   { href: '/#blog', label: 'Blog' },
-  { href: '/#consulta', label: 'Agendar consulta' },
+  { href: '/#consulta', label: 'Consulta gratis' },
   { href: '/#ubicacion', label: 'Ubicación' },
 ];

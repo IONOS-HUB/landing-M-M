@@ -14,7 +14,7 @@ const { post, headingTag = 'h2', idPrefix = '' } = Astro.props;
 const H = headingTag;
 const hid = (text: string) => `${idPrefix}${slugify(text)}`;
 const toc = post.body.filter((b): b is { h2: string } => 'h2' in b).map((b) => ({ id: hid(b.h2), text: b.h2 }));
-const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consulta sobre mi caso.`;
+const consultMsg = `Hola, vengo de la página web. Leí la guía «${post.title}» y quisiera una consulta.`;
 ---
 <div class="article-grid">
   <div class="prose">
@@ -25,7 +25,7 @@ const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consult
       : <aside class="prose-note"><p>{b.note}</p></aside>
     )}
     <p class="prose-disclaimer">
-      Este artículo es información general y no reemplaza la asesoría de un abogado para su caso concreto.
+      Este artículo es información general y no reemplaza la asesoría de un abogado para tu caso concreto.
     </p>
   </div>
 
@@ -40,13 +40,13 @@ const consultMsg = `Hola, leí la guía «${post.title}» y quisiera una consult
         </nav>
       )}
       <div class="aside-cta">
-        <p class="aside-cta-title">¿Está pasando por esto?</p>
-        <p>Le explicamos qué opciones tiene en su caso.</p>
+        <p class="aside-cta-title">¿Estás pasando por esto?</p>
+        <p>Te explicamos qué opciones tienes en tu caso. La primera consulta en línea es gratis.</p>
         <a class="btn btn-solid" href={waLink(consultMsg)} target="_blank" rel="noopener">
           <Icon name="whatsapp" class="ico" />
           <span>Consultar por WhatsApp</span>
         </a>
-        <a class="link-thread link-dark" href="/#consulta" data-close-to="consulta">Agendar una consulta <Icon name="arrow" class="ico" /></a>
+        <a class="link-thread link-dark" href="/#consulta" data-close-to="consulta">Enviar mi consulta <Icon name="arrow" class="ico" /></a>
       </div>
     </div>
   </aside>

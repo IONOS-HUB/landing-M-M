@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { site } from '../data/site';
+import { site, areas } from '../data/site';
 ---
 <form
   class="cform"
@@ -19,43 +19,46 @@ import { site } from '../data/site';
         <p class="field-err" id="cf-nombre-err" data-err-for="nombre"></p>
       </div>
       <div class="field">
-        <label for="cf-telefono">Celular o teléfono</label>
+        <label for="cf-telefono">Tu WhatsApp</label>
         <input id="cf-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="099 123 4567" required aria-describedby="cf-telefono-err" />
         <p class="field-err" id="cf-telefono-err" data-err-for="telefono"></p>
       </div>
     </div>
 
-    <fieldset class="field">
-      <legend>¿Sobre qué es su consulta?</legend>
-      <div class="chips" role="radiogroup">
-        <label class="chip"><input type="radio" name="area" value="Familia" required /><span>Familia</span></label>
-        <label class="chip"><input type="radio" name="area" value="Civil" /><span>Civil</span></label>
-        <label class="chip"><input type="radio" name="area" value="No estoy seguro" /><span>No estoy seguro</span></label>
+    <div class="cform-row cform-2">
+      <div class="field">
+        <label for="cf-canton">Cantón o ciudad</label>
+        <select id="cf-canton" name="canton" required aria-describedby="cf-canton-err">
+          <option value="">Elige una opción</option>
+          {site.cantons.map((c) => <option>{c}</option>)}
+          <option>Otro</option>
+        </select>
+        <p class="field-err" id="cf-canton-err" data-err-for="canton"></p>
       </div>
-      <p class="field-err" data-err-for="area"></p>
-    </fieldset>
-
-    <div class="field">
-      <label for="cf-mensaje">Cuéntenos brevemente qué está pasando</label>
-      <textarea id="cf-mensaje" name="mensaje" rows="5" maxlength="800" required aria-describedby="cf-mensaje-hint cf-mensaje-err" placeholder="Por ejemplo: quiero pedir pensión de alimentos para mis dos hijos."></textarea>
-      <div class="field-foot">
-        <p class="field-err" id="cf-mensaje-err" data-err-for="mensaje"></p>
-        <p class="field-hint" id="cf-mensaje-hint"><span data-count>0</span>/800</p>
+      <div class="field">
+        <label for="cf-area">Tipo de asunto</label>
+        <select id="cf-area" name="area" required aria-describedby="cf-area-err">
+          <option value="">Elige una opción</option>
+          {areas.map((a) => <option>{a.name}</option>)}
+          <option>No estoy seguro</option>
+        </select>
+        <p class="field-err" id="cf-area-err" data-err-for="area"></p>
       </div>
     </div>
 
-    <fieldset class="field">
-      <legend>¿Cómo prefiere que le contactemos?</legend>
-      <div class="chips">
-        <label class="chip"><input type="radio" name="via" value="WhatsApp" checked /><span>WhatsApp</span></label>
-        <label class="chip"><input type="radio" name="via" value="Llamada" /><span>Llamada</span></label>
+    <div class="field">
+      <label for="cf-mensaje">Cuéntanos brevemente qué está pasando</label>
+      <textarea id="cf-mensaje" name="mensaje" rows="5" maxlength="800" required aria-describedby="cf-mensaje-hint cf-mensaje-err" placeholder="Por ejemplo: me llegó una citación y no sé qué plazo tengo."></textarea>
+      <div class="field-foot">
+        <p class="field-err" id="cf-mensaje-err" data-err-for="mensaje"></p>
+        <p class="field-hint" id="cf-mensaje-hint">No incluyas datos sensibles del caso; los vemos en la consulta. <span data-count>0</span>/800</p>
       </div>
-    </fieldset>
+    </div>
 
     <div class="field">
       <label class="check">
         <input type="checkbox" name="acepto" required />
-        <span>Autorizo al estudio a contactarme para responder mi consulta.</span>
+        <span>Autorizo al estudio a contactarme para responder mi consulta (<a href="#privacidad">privacidad</a>).</span>
       </label>
       <p class="field-err" data-err-for="acepto"></p>
     </div>
@@ -65,7 +68,7 @@ import { site } from '../data/site';
         <span data-label>Enviar mi consulta</span>
         <Icon name="arrow" class="ico" />
       </button>
-      <p class="cform-privacy" id="cform-privacy">Su información es confidencial y solo la usamos para responderle.</p>
+      <p class="cform-privacy" id="cform-privacy">Discreción absoluta: tu información es confidencial y solo la usamos para responderte.</p>
     </div>
 
     <div class="cform-status" role="status" aria-live="polite" data-status hidden></div>
@@ -101,16 +104,17 @@ import { site } from '../data/site';
       const tel = String(d.get('telefono') || '').replace(/[^\d+]/g, '');
       const msg = String(d.get('mensaje') || '').trim();
       const errs: Record<string, string> = {
-        nombre: nombre.length < 3 ? 'Escriba su nombre para saber cómo dirigirnos a usted.' : '',
-        telefono: tel.replace('+', '').length < 9 ? 'Escriba un número de 9 o 10 dígitos, por ejemplo 0991234567.' : '',
-        area: d.get('area') ? '' : 'Elija un área, o «No estoy seguro» si tiene dudas.',
-        mensaje: msg.length < 10 ? 'Cuéntenos su caso en al menos una frase.' : '',
-        acepto: d.get('acepto') ? '' : 'Necesitamos su autorización para poder responderle.',
+        nombre: nombre.length < 3 ? 'Escribe tu nombre para saber cómo dirigirnos a ti.' : '',
+        telefono: tel.replace('+', '').length < 9 ? 'Escribe un número de 9 o 10 dígitos, por ejemplo 0991234567.' : '',
+        canton: d.get('canton') ? '' : 'Elige tu cantón, u «Otro» si vives en otra ciudad.',
+        area: d.get('area') ? '' : 'Elige un tipo de asunto, o «No estoy seguro» si tienes dudas.',
+        mensaje: msg.length < 10 ? 'Cuéntanos tu caso en al menos una frase.' : '',
+        acepto: d.get('acepto') ? '' : 'Necesitamos tu autorización para poder responderte.',
       };
       Object.entries(errs).forEach(([k, v]) => setErr(k, v));
       const first = Object.keys(errs).find((k) => errs[k]);
       if (first) form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
-      return { ok: !first, nombre, tel, msg, area: String(d.get('area') || ''), via: String(d.get('via') || '') };
+      return { ok: !first, nombre, tel, msg, area: String(d.get('area') || ''), canton: String(d.get('canton') || '') };
     };
 
     form.addEventListener('input', (e) => {
@@ -131,13 +135,13 @@ import { site } from '../data/site';
       if (!v.ok) return;
 
       const text =
-        `Hola, soy ${v.nombre}. Quisiera una consulta sobre derecho ${v.area.toLowerCase()}.\n\n` +
-        `${v.msg}\n\nPrefiero que me contacten por ${v.via} al ${v.tel}.`;
+        `Hola, vengo de la página web. Soy ${v.nombre}, de ${v.canton}.\n` +
+        `Tipo de asunto: ${v.area}.\n\n${v.msg}\n\nMi WhatsApp: ${v.tel}.`;
       const waUrl = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
 
       if (!endpoint) {
         window.open(waUrl, '_blank', 'noopener');
-        show('ok', '<strong>Abrimos WhatsApp con su mensaje listo.</strong> Solo toque «Enviar». Si no se abrió, <a href="' + waUrl + '" target="_blank" rel="noopener">ábralo aquí</a>.');
+        show('ok', '<strong>Abrimos WhatsApp con tu mensaje listo.</strong> Solo toca «Enviar». Si no se abrió, <a href="' + waUrl + '" target="_blank" rel="noopener">ábrelo aquí</a>.');
         return;
       }
 
@@ -148,14 +152,14 @@ import { site } from '../data/site';
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ nombre: v.nombre, telefono: v.tel, area: v.area, mensaje: v.msg, via: v.via }),
+          body: JSON.stringify({ nombre: v.nombre, whatsapp: v.tel, canton: v.canton, asunto: v.area, mensaje: v.msg }),
         });
         if (!res.ok) throw new Error(String(res.status));
         form.reset();
         if (count) count.textContent = '0';
-        show('ok', '<strong>Recibimos su consulta.</strong> Le contactaremos en horario de oficina.');
+        show('ok', '<strong>Recibimos tu consulta.</strong> Te contactaremos en horario de atención.');
       } catch {
-        show('error', '<strong>No pudimos enviar el formulario.</strong> Revise su conexión e intente de nuevo, o <a href="' + waUrl + '" target="_blank" rel="noopener">envíenos el mismo mensaje por WhatsApp</a>.');
+        show('error', '<strong>No pudimos enviar el formulario.</strong> Revisa tu conexión e inténtalo de nuevo, o <a href="' + waUrl + '" target="_blank" rel="noopener">envíanos el mismo mensaje por WhatsApp</a>.');
       } finally {
         submit.disabled = false;
         submit.removeAttribute('aria-busy');
