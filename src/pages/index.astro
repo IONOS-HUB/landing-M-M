@@ -210,9 +210,9 @@ const schema = {
         <ul class="partners">
           {partners.map((p) => (
             <li class="partner">
-              <div class="ghost ghost-portrait">
-                <span class="ghost-tag">Foto profesional</span>
-                <span class="ghost-label">Foto de {p.name}</span>
+              <div class="ghost ghost-portrait has-photo">
+                <img src={p.photo} alt="" width="720" height="900" loading="lazy" decoding="async" />
+                <span class="ghost-tag">Foto de muestra</span>
               </div>
               <div class="partner-body">
                 <h3>{p.name}</h3>
@@ -270,9 +270,9 @@ const schema = {
         <h2 id="galeria-title" class="galeria-title">El despacho.</h2>
         <ul class="gallery">
           {gallery.map((g) => (
-            <li class={`ghost ghost-photo g-${g.ratio}`}>
-              <span class="ghost-tag">Foto profesional</span>
-              <span class="ghost-label">{g.label}</span>
+            <li class={`ghost ghost-photo has-photo g-${g.ratio}`}>
+              <img src={g.photo} alt="" loading="lazy" decoding="async" />
+              <span class="ghost-tag">Foto de muestra<span class="ghost-tag-what"> · {g.label.replace('Foto ', '')}</span></span>
             </li>
           ))}
         </ul>

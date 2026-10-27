@@ -30,12 +30,14 @@ export const partners = [
   {
     name: 'Alexander Mira',
     title: 'Socio',
+    photo: '/fotos-muestra/socio-alexander.webp',
     degree: '[Título, universidad y año]',
     bio: '[Breve trayectoria y áreas en las que más trabaja.]',
   },
   {
     name: 'Melanie Montesdeoca',
     title: 'Socia',
+    photo: '/fotos-muestra/socia-melanie.webp',
     degree: '[Título, universidad y año]',
     bio: '[Breve trayectoria y áreas en las que más trabaja.]',
   },
@@ -169,12 +171,14 @@ export const testimonials = [
 ];
 
 // Fotos profesionales del equipo y del despacho (pendientes de recibir).
+// Mientras tanto se muestran fotos de MUESTRA de Unsplash (public/fotos-muestra/):
+// no son del estudio. Reemplázalas por las fotos reales antes de publicar.
 export const gallery = [
-  { label: 'Foto del despacho', ratio: 'wide' },
-  { label: 'Foto de los socios', ratio: 'tall' },
-  { label: 'Foto de reunión con cliente', ratio: 'square' },
-  { label: 'Foto de la sala de espera', ratio: 'square' },
-  { label: 'Foto del edificio SAUD', ratio: 'wide' },
+  { label: 'Foto del despacho', ratio: 'wide', photo: '/fotos-muestra/despacho.webp' },
+  { label: 'Foto de los socios', ratio: 'tall', photo: '/fotos-muestra/socios.webp' },
+  { label: 'Foto de reunión con cliente', ratio: 'square', photo: '/fotos-muestra/reunion.webp' },
+  { label: 'Foto de la sala de espera', ratio: 'square', photo: '/fotos-muestra/sala-espera.webp' },
+  { label: 'Foto del edificio SAUD', ratio: 'wide', photo: '/fotos-muestra/edificio.webp' },
 ];
 
 export const waLink = (message = site.whatsappMessage) =>

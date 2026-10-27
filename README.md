@@ -63,9 +63,11 @@ Cualquier texto entre `[corchetes]` es un dato por confirmar y en la página se 
 
 > ⚠️ Los testimonios incluidos son **de ejemplo**. Reemplázalos solo por testimonios reales con autorización escrita de cada cliente.
 
-### Fotos de los socios y logos de clientes
+### Fotos de los socios y del despacho
 
-Los espacios con borde punteado son marcadores para imágenes. Coloca las imágenes en `public/` y reemplaza el bloque `.ghost` correspondiente por una etiqueta `<img>`.
+> ⚠️ Las fotos actuales son **de muestra** (banco libre [Unsplash](https://unsplash.com/license)) y llevan la etiqueta «Foto de muestra». No son del estudio: reemplázalas antes de publicar.
+
+Están en `public/fotos-muestra/`. Para poner las reales, guarda cada foto en `public/` y cambia su ruta en `src/data/site.ts` (campo `photo` de `partners` y `gallery`). Después quita la etiqueta «Foto de muestra» en `src/pages/index.astro`.
 
 ## Estructura
 
