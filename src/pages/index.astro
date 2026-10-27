@@ -6,7 +6,7 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { site, partners, areas, steps, values, faqs, testimonials, gallery, waLink } from '../data/site';
+import { site, partners, areas, steps, values, faqs, testimonials, gallery, situations, waLink } from '../data/site';
 import { ph } from '../lib/ph';
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
@@ -42,31 +42,72 @@ const schema = {
     <section class="hero indigo" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <h1 id="hero-title">La misma persona que te escucha es la que defiende tu caso.</h1>
+          <p class="hero-gift">
+            <Icon name="gift" class="ico" />
+            <span>Tu primera consulta en línea es gratis <span class="hero-gift-terms" set:html={ph(site.freeConsultTerms)} /></span>
+          </p>
+          <h1 id="hero-title">No enfrentes solo tu problema legal.</h1>
           <p class="hero-lede">
-            Estudio jurídico en Ibarra desde {site.since}. Estudiamos tu caso completo y te explicamos, sin
-            tecnicismos, qué está en juego y qué camino conviene.
+            La misma persona que te escucha estudia tu caso, te defiende y te llama para contarte cómo va.
+            En palabras normales, desde {site.since} en Ibarra.
           </p>
           <div class="hero-actions">
             <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-hero">
               <Icon name="whatsapp" class="ico" />
-              <span>Cuéntanos tu caso por WhatsApp</span>
+              <span>Quiero mi consulta gratis</span>
             </a>
-            <a class="link-thread" href="#consulta">
-              Enviar mi consulta <Icon name="arrow" class="ico" />
+            <a class="link-thread" href="#situaciones">
+              Ver si pueden ayudarme <Icon name="arrow" class="ico" />
             </a>
           </div>
           <ul class="hero-facts">
-            <li><strong>{site.freeConsult}</strong> <span set:html={ph(site.freeConsultTerms)} /></li>
-            <li><strong>{years} años</strong> de experiencia</li>
-            <li><strong>Discreción absoluta</strong> en cada conversación</li>
+            <li><Icon name="lock" class="ico" /> <strong>Discreción absoluta</strong></li>
+            <li><Icon name="check" class="ico" /> <strong>{years} años</strong> de experiencia</li>
+            <li><Icon name="pin" class="ico" /> Ibarra y cantones vecinos</li>
           </ul>
         </div>
-        <div class="hero-mark" aria-hidden="true">
-          <div class="woven-m"></div>
+        <div class="hero-mark">
+          <div class="woven-m" aria-hidden="true"></div>
+          <figure class="hero-chat" aria-label="Así empieza tu conversación por WhatsApp">
+            <figcaption class="hero-chat-head">
+              <Icon name="whatsapp" class="ico" />
+              <span><strong>Estudio Mira &amp; Montesdeoca</strong><span>Al tocar el botón, se abre así</span></span>
+            </figcaption>
+            <p class="hero-chat-bubble">{site.whatsappMessage}</p>
+          </figure>
         </div>
       </div>
       <div class="weft weft-hero" aria-hidden="true"></div>
+    </section>
+
+    <!-- ¿TE PASA ESTO? -->
+    <section class="section cotton situaciones" id="situaciones" aria-labelledby="situaciones-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="situaciones-title">¿Te pasa algo de esto?</h2>
+          <p>Toca tu situación y te abrimos WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
+        </div>
+        <ul class="sit-list">
+          {situations.map((t) => (
+            <li>
+              <a
+                class="sit-item"
+                href={waLink(`Hola, vengo de la página web. ${t}.`)}
+                target="_blank"
+                rel="noopener"
+                data-track="wa-situacion"
+              >
+                <span class="sit-text">«{t}»</span>
+                <span class="sit-cta">Escribir <Icon name="arrow" class="ico" /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="sit-more">
+          ¿No está tu caso? <a href={waLink()} target="_blank" rel="noopener" data-track="wa-situacion-otro">Cuéntanoslo igual</a>:
+          atendemos todas las áreas del derecho.
+        </p>
+      </div>
     </section>
 
     <!-- CÓMO TRABAJAMOS -->
@@ -158,7 +199,8 @@ const schema = {
     <section class="section cotton" id="estudio" aria-labelledby="estudio-title">
       <div class="wrap estudio-grid">
         <div class="estudio-intro">
-          <h2 id="estudio-title">En Ibarra desde {site.since}.</h2>
+          <p class="estudio-years" aria-hidden="true">{years}<span> años</span></p>
+          <h2 id="estudio-title">En Ibarra desde {site.since}. Nombres y rostros, no un departamento.</h2>
           <p class="big-p">
             <strong>Mira &amp; Montesdeoca</strong> nació en {site.since}, cuando su primer socio empezó este
             proyecto. Hoy son dos socios con un mismo método: leer tu situación completa, entenderla en su
@@ -204,7 +246,7 @@ const schema = {
     <section class="section cotton" id="testimonios" aria-labelledby="testimonios-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="testimonios-title">Lo que dicen quienes nos eligieron.</h2>
+          <h2 id="testimonios-title">Personas de tu cantón ya confiaron.</h2>
           <p class="sample-note">
             <span class="ph">Testimonios de ejemplo</span> Se publicarán solo testimonios reales, con
             autorización escrita de cada cliente.
@@ -249,8 +291,8 @@ const schema = {
     <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
       <div class="wrap faq-grid">
         <div class="faq-intro">
-          <h2 id="faq-title">Lo que más nos preguntan.</h2>
-          <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta.</p>
+          <h2 id="faq-title">Lo que te frena, respondido con honestidad.</h2>
+          <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta gratis.</p>
           <p class="faq-note"><span class="ph">Respuestas en borrador</span> Validar con los socios antes de publicar.</p>
           <a class="btn btn-solid" href={waLink('Hola, vengo de la página web. Tengo una duda sobre mi caso.')} target="_blank" rel="noopener" data-track="wa-faq">
             <Icon name="whatsapp" class="ico" />
@@ -278,12 +320,12 @@ const schema = {
     <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
       <div class="wrap consulta-grid">
         <div class="consulta-copy">
-          <h2 id="consulta-title">Empieza con tu primera consulta gratis.</h2>
+          <h2 id="consulta-title">Reserva tu consulta gratis.</h2>
           <p class="consulta-lede">
             Déjanos tus datos y una frase sobre tu caso. Te respondemos para coordinar la consulta en línea.
           </p>
           <ol class="consulta-next">
-            <li><span><strong>Nos escribes</strong> por WhatsApp o con este formulario.</span></li>
+            <li><span><strong>Nos escribes</strong> por WhatsApp o con este formulario. Te toma unos 2 minutos.</span></li>
             <li><span><strong>Tienes tu primera consulta en línea gratis</strong> con el abogado que llevará tu caso. <span set:html={ph(site.freeConsultTerms)} /></span></li>
             <li><span><strong>Te explicamos la estrategia</strong>, los costos y los tiempos antes de decidir.</span></li>
           </ol>

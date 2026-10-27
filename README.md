@@ -8,15 +8,18 @@ El diseño se llama **Telar de Imbabura**: fondo de algodón índigo con hilos d
 
 El contenido sigue el PRD del cliente (`archivos/`, fuera de git) y trata al visitante de «tú».
 
-1. **Inicio**: titular, WhatsApp, primera consulta en línea gratis, 10 años de experiencia y discreción.
-2. **Cómo trabajamos**: la misma persona en los 5 pasos del caso (telar animado) y los tres valores.
-3. **Servicios**: todas las áreas del derecho, con una lista propuesta **por confirmar**.
-4. **Nosotros**: historia desde 2016 y los socios Alexander Mira y Melanie Montesdeoca.
-5. **Testimonios** y **galería** del despacho: placeholders hasta recibir el material.
-6. **Preguntas frecuentes**: las 10 preguntas del cliente, con respuestas en borrador.
-7. **Consulta**: formulario (nombre, WhatsApp, cantón, tipo de asunto y mensaje).
-8. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
-9. **Cierre**: llamado a la primera consulta gratis.
+1. **Inicio**: consulta gratis antes del titular, el logo grande y una vista previa del mensaje que se abre en WhatsApp.
+2. **¿Te pasa algo de esto?**: seis situaciones en primera persona; cada una abre WhatsApp con el mensaje ya escrito.
+3. **Cómo trabajamos**: la misma persona en los 5 pasos del caso (telar animado) y los tres valores.
+4. **Servicios**: todas las áreas del derecho, con una lista propuesta **por confirmar**.
+5. **Nosotros**: historia desde 2016 y los socios Alexander Mira y Melanie Montesdeoca.
+6. **Testimonios** y **galería** del despacho: placeholders hasta recibir el material.
+7. **Preguntas frecuentes**: las 10 preguntas del cliente, con respuestas en borrador.
+8. **Consulta**: formulario en 2 pasos (primero el tipo de asunto con un toque, luego nombre, WhatsApp, cantón y mensaje).
+9. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
+10. **Cierre**: llamado a la primera consulta gratis.
+
+La página aplica principios de neuromarketing (reciprocidad, autoidentificación, micro-compromiso, prueba social y regla pico-final) sin escasez inventada ni promesas de resultado. En el celular, el botón «Quiero mi consulta gratis» queda fijo abajo.
 
 Los botones de WhatsApp llevan el mensaje «Hola, vengo de la página web…» para que el despacho cuente los mensajes que llegan desde el sitio, y un atributo `data-track` para sumar analítica más adelante.
 

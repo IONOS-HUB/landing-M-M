@@ -12,6 +12,30 @@ import { site, areas } from '../data/site';
 >
   <div class="weft weft-thin cform-weft" aria-hidden="true"></div>
   <div class="cform-body">
+    <div class="cform-progress" aria-hidden="true">
+      <p class="cform-progress-label"><span class="p1">Paso 1 de 2</span><span class="p2">Paso 2 de 2</span></p>
+      <div class="cform-progress-track"><div class="cform-progress-bar"></div></div>
+    </div>
+
+    <div class="cform-step" data-step-panel="1">
+      <fieldset class="field">
+        <legend class="cform-q">¿Qué te pasa? Toca una opción</legend>
+        <div class="chips">
+          {areas.map((a) => (
+            <label class="chip"><input type="radio" name="area" value={a.name} required /><span>{a.name}</span></label>
+          ))}
+          <label class="chip"><input type="radio" name="area" value="No estoy seguro" /><span>No estoy seguro</span></label>
+        </div>
+        <p class="field-err" data-err-for="area"></p>
+      </fieldset>
+      <button class="btn btn-solid btn-lg cform-next" type="button" data-next>
+        <span>Siguiente: tus datos</span>
+        <Icon name="arrow" class="ico" />
+      </button>
+    </div>
+
+    <div class="cform-step" data-step-panel="2">
+    <button class="cform-back" type="button" data-back><Icon name="arrow" class="ico" /> Cambiar asunto</button>
     <div class="cform-row cform-2">
       <div class="field">
         <label for="cf-nombre">Nombre y apellido</label>
@@ -25,7 +49,7 @@ import { site, areas } from '../data/site';
       </div>
     </div>
 
-    <div class="cform-row cform-2">
+    <div class="cform-row">
       <div class="field">
         <label for="cf-canton">Cantón o ciudad</label>
         <select id="cf-canton" name="canton" required aria-describedby="cf-canton-err">
@@ -34,15 +58,6 @@ import { site, areas } from '../data/site';
           <option>Otro</option>
         </select>
         <p class="field-err" id="cf-canton-err" data-err-for="canton"></p>
-      </div>
-      <div class="field">
-        <label for="cf-area">Tipo de asunto</label>
-        <select id="cf-area" name="area" required aria-describedby="cf-area-err">
-          <option value="">Elige una opción</option>
-          {areas.map((a) => <option>{a.name}</option>)}
-          <option>No estoy seguro</option>
-        </select>
-        <p class="field-err" id="cf-area-err" data-err-for="area"></p>
       </div>
     </div>
 
@@ -71,6 +86,8 @@ import { site, areas } from '../data/site';
       <p class="cform-privacy" id="cform-privacy">Discreción absoluta: tu información es confidencial y solo la usamos para responderte.</p>
     </div>
 
+    </div>
+
     <div class="cform-status" role="status" aria-live="polite" data-status hidden></div>
   </div>
 </form>
@@ -85,6 +102,27 @@ import { site, areas } from '../data/site';
     const label = form.querySelector<HTMLElement>('[data-label]')!;
     const count = form.querySelector<HTMLElement>('[data-count]');
     const mensaje = form.querySelector<HTMLTextAreaElement>('textarea[name="mensaje"]')!;
+
+    // Micro-compromiso: primero un toque (el asunto), luego los datos.
+    const setStep = (n: number) => {
+      form.dataset.step = String(n);
+      if (n === 2) form.querySelector<HTMLInputElement>('#cf-nombre')?.focus();
+      else form.querySelector<HTMLInputElement>('input[name="area"]:checked, input[name="area"]')?.focus();
+    };
+    form.dataset.step = '1';
+    form.querySelector('[data-next]')?.addEventListener('click', () => {
+      if (!form.querySelector('input[name="area"]:checked')) {
+        setErr('area', 'Elige una opción, o «No estoy seguro» si tienes dudas.');
+        form.querySelector<HTMLInputElement>('input[name="area"]')?.focus();
+        return;
+      }
+      setErr('area', '');
+      setStep(2);
+    });
+    form.querySelector('[data-back]')?.addEventListener('click', () => setStep(1));
+    form.querySelectorAll<HTMLInputElement>('input[name="area"]').forEach((r) =>
+      r.addEventListener('change', () => { setErr('area', ''); })
+    );
 
     mensaje.addEventListener('input', () => {
       if (count) count.textContent = String(mensaje.value.length);
@@ -113,6 +151,7 @@ import { site, areas } from '../data/site';
       };
       Object.entries(errs).forEach(([k, v]) => setErr(k, v));
       const first = Object.keys(errs).find((k) => errs[k]);
+      if (first === 'area') form.dataset.step = '1';
       if (first) form.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       return { ok: !first, nombre, tel, msg, area: String(d.get('area') || ''), canton: String(d.get('canton') || '') };
     };

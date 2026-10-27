@@ -71,6 +71,17 @@ export const values = [
   { title: 'Defensa preparada', text: 'Trabajamos tu caso en serio desde el primer día.' },
 ];
 
+// Situaciones en primera persona: el visitante reconoce su problema y escribe
+// con el mensaje ya armado (autoidentificación + cero fricción).
+export const situations = [
+  'Me llegó una citación y no sé qué plazo tengo',
+  'No me pagan la pensión de mis hijos',
+  'Falleció un familiar y hay bienes por repartir',
+  'Me piden firmar un contrato y tengo dudas',
+  'Me despidieron y no me liquidaron',
+  'Quiero proteger mis bienes o mi negocio',
+];
+
 // Pendiente: el cliente atiende «todas las áreas del derecho» pero no envió la
 // lista. Estas áreas son una propuesta para confirmar con los socios.
 export const areas = [
@@ -85,6 +96,10 @@ export const areas = [
 // Preguntas frecuentes tal como las dio el cliente. Las respuestas son
 // borradores generales: los socios deben validarlas antes de publicar.
 export const faqs = [
+  {
+    q: '¿Lo que cuento queda en reserva?',
+    a: 'Sí. La discreción absoluta es uno de nuestros valores: lo que nos cuentas queda entre tú y tu abogado.',
+  },
   {
     q: '¿Vale la pena demandar o mejor llego a un acuerdo?',
     a: 'Depende de lo que está en juego, de las pruebas que tengas y de lo que estés dispuesto a sostener en el tiempo. En la primera consulta revisamos tu situación y te explicamos con honestidad las ventajas y los riesgos de cada camino.',
