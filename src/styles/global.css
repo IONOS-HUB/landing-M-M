@@ -850,28 +850,11 @@ html { scrollbar-color: var(--navy) var(--cotton); }
   font-size: 0.97rem;
 }
 .hero-gift .ico { color: var(--sky); }
-.hero-gift-terms { font-weight: 400; font-size: 0.85rem; margin-left: 0.35rem; }
+.hero-gift > span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.5rem; }
+.hero-gift .ico { align-self: flex-start; margin-top: 0.1rem; }
+.hero-gift-terms { font-weight: 400; font-size: 0.85rem; }
 .hero-copy { display: flex; flex-direction: column; }
 .hero h1 { max-width: 14ch; }
-
-/* Vista previa de lo que pasa al tocar el botón: reduce la incertidumbre. */
-.hero-chat {
-  position: relative;
-  width: min(340px, 72%);
-  margin: 1.75rem 0 0;
-  background: #fff;
-  color: var(--ink);
-  padding: 1rem 1.1rem 1.1rem;
-  box-shadow: 0 24px 50px -24px rgb(0 0 0 / 0.65);
-  display: grid;
-  gap: 0.7rem;
-}
-.hero-chat-head { display: flex; gap: 0.65rem; align-items: center; }
-.hero-chat-head .ico { width: 2.1rem; height: 2.1rem; padding: 0.4rem; background: var(--navy); color: #fff; }
-.hero-chat-head > span { display: grid; line-height: 1.25; font-size: 0.82rem; color: var(--ink-soft); }
-.hero-chat-head strong { font-size: 0.95rem; color: var(--ink); }
-.hero-chat-bubble { margin: 0; padding: 0.7rem 0.85rem; background: #e3f5ec; font-size: 0.95rem; line-height: 1.45; position: relative; }
-.js .hero-chat { animation: rise 0.8s var(--ease-out) 1.1s both; }
 
 /* Autoidentificación: el visitante busca su problema. */
 .sit-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
@@ -891,14 +874,15 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 }
 .sit-list li:nth-child(even) .sit-item { padding-left: 1.75rem; padding-right: 0; }
 .sit-item:hover { background: linear-gradient(90deg, rgb(0 130 255 / 0.06), transparent 80%); }
-.sit-text { font-family: var(--display); font-size: clamp(1.25rem, 1.9vw, 1.6rem); line-height: 1.25; }
-.sit-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+.sit-text { flex: 1 1 auto; min-width: 0; font-family: var(--display); font-size: clamp(1.25rem, 1.9vw, 1.6rem); line-height: 1.25; overflow-wrap: anywhere; }
+.sit-cta { flex: none; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
 .sit-cta .ico { transition: transform 0.3s var(--ease-out); }
 .sit-item:hover .sit-cta .ico { transform: translateX(4px); }
 .sit-more { margin-top: 1.75rem; color: var(--ink-soft); }
 .sit-more a { font-weight: 700; color: var(--navy); }
 
 /* Autoridad con cifra. */
+.estudio-intro p.estudio-years { color: var(--navy); }
 .estudio-years { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(5rem, 9vw, 8rem); line-height: 0.9; letter-spacing: -0.04em; color: var(--navy); }
 .estudio-years span { font-size: 0.32em; letter-spacing: 0; }
 
@@ -923,9 +907,6 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .chips .chip span { padding: 0.8rem 1.1rem; }
 
 @media (max-width: 960px) {
-  .hero-chat { display: none; }
-  .hero-gift { flex-wrap: wrap; }
-  .hero-gift-terms { margin-left: 0; }
   .sit-list { grid-template-columns: 1fr; }
   .sit-list li:nth-child(even) { border-left: 0; }
   .sit-list li:nth-child(even) .sit-item, .sit-item { padding: 1.4rem 0; }

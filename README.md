@@ -8,7 +8,7 @@ El diseño se llama **Telar de Imbabura**: fondo de algodón índigo con hilos d
 
 El contenido sigue el PRD del cliente (`archivos/`, fuera de git) y trata al visitante de «tú».
 
-1. **Inicio**: consulta gratis antes del titular, el logo grande y una vista previa del mensaje que se abre en WhatsApp.
+1. **Inicio**: consulta gratis antes del titular, titular emocional, botón de WhatsApp y el logo grande.
 2. **¿Te pasa algo de esto?**: seis situaciones en primera persona; cada una abre WhatsApp con el mensaje ya escrito.
 3. **Cómo trabajamos**: la misma persona en los 5 pasos del caso (telar animado) y los tres valores.
 4. **Servicios**: todas las áreas del derecho, con una lista propuesta **por confirmar**.
