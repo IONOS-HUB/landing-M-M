@@ -415,6 +415,11 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .quote figcaption { display: grid; gap: 0.15rem; font-size: 0.95rem; }
 .quote-name { font-weight: 700; }
 .quote-meta { color: var(--ink-soft); }
+/* Testimonios sobre índigo: la prueba social rompe la racha de fondos claros. */
+.testimonios .section-head p, .testimonios .quote-meta { color: var(--on-indigo-soft); }
+.testimonios .quote blockquote, .testimonios .quote-name { color: var(--white); }
+.testimonios .quote-mark { color: var(--sky); }
+.testimonios .quote-2, .testimonios .quote-1 { border-color: rgb(223 232 255 / 0.16); }
 
 /* Reconocimientos */
 
