@@ -16,3 +16,8 @@ dist/
 # documentos internos del cliente (PRD, cuestionarios)
 archivos/
 capturas/
+
+# Variables locales (URL del webhook)
+.env
+.env.*
+!.env.example

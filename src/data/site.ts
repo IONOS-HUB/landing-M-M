@@ -21,9 +21,10 @@ export const site = {
   cantons: ['Ibarra', 'Antonio Ante', 'Otavalo', 'Cotacachi', 'Urcuquí'],
   freeConsult: 'Primera consulta en línea gratis',
   freeConsultTerms: '[duración y medio por confirmar]',
-  // Opcional: URL de un servicio de formularios (p. ej. https://formspree.io/f/xxxx).
+  // URL del webhook de n8n que guarda cada consulta en Google Sheets.
+  // Se define en .env como PUBLIC_FORM_WEBHOOK (ver .env.example y el README).
   // Si queda vacío, el formulario arma el mensaje y lo abre en WhatsApp.
-  formEndpoint: '',
+  formEndpoint: import.meta.env.PUBLIC_FORM_WEBHOOK ?? '',
 };
 
 export const partners = [

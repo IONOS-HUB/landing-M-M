@@ -15,7 +15,7 @@ El contenido sigue el PRD del cliente (`archivos/`, fuera de git) y trata al vis
 5. **Nosotros**: historia desde 2016 y los socios Alexander Mira y Melanie Montesdeoca.
 6. **Testimonios** y **galería** del despacho: placeholders hasta recibir el material.
 7. **Preguntas frecuentes**: las 10 preguntas del cliente, con respuestas en borrador.
-8. **Consulta**: formulario en 2 pasos (primero el tipo de asunto con un toque, luego nombre, WhatsApp, cantón y mensaje).
+8. **Consulta**: formulario de un solo paso (nombre, WhatsApp, tipo de caso, cantón y mensaje) que guarda cada consulta en Google Sheets mediante n8n.
 9. **Ubicación**: Calle Bolívar y Oviedo, Edificio SAUD, segundo piso, con mapa.
 10. **Cierre**: llamado a la primera consulta gratis.
 
@@ -55,7 +55,38 @@ Los titulares y textos de cada sección están en **`src/pages/index.astro`**.
 
 ### Formulario de contacto
 
-El formulario (`src/components/ContactForm.astro`) valida los campos y, por defecto, abre WhatsApp con el mensaje ya escrito, así que no necesita servidor. Para que los mensajes lleguen por correo, cree un formulario en un servicio como [Formspree](https://formspree.io) y pegue su URL en `site.formEndpoint` (`src/data/site.ts`). En ese caso el formulario envía los datos ahí y, si algo falla, ofrece WhatsApp como alternativa.
+El formulario (`src/components/ContactForm.astro`) es de un solo paso y envía cada consulta a un **webhook de n8n**, que la guarda como una fila en **Google Sheets**. Si el webhook no está configurado, el formulario abre WhatsApp con el mensaje ya escrito; si el envío falla, ofrece WhatsApp como alternativa.
+
+**1. Configurar la URL del webhook.** Copia `.env.example` a `.env` y pega la URL de producción del webhook:
+
+```bash
+PUBLIC_FORM_WEBHOOK=https://tu-n8n.com/webhook/consultas-mira-montesdeoca
+```
+
+`.env` está en `.gitignore`. Vuelve a ejecutar `npm run build` después de cambiarla, y en el hosting define la misma variable.
+
+**2. Armar el flujo en n8n** (3 nodos):
+
+1. **Webhook**: método `POST`, respuesta «Immediately». En *Options → Allowed Origins (CORS)* pon el dominio de la página (por ejemplo `https://tu-dominio.com`), o `*` mientras pruebas.
+2. **Google Sheets → Append Row**: elige la hoja y mapea las columnas desde `{{ $json.body.<columna> }}`.
+3. (Opcional) Un aviso por correo o WhatsApp al estudio cuando llega una consulta.
+
+**3. Columnas de la hoja** (primera fila, en este orden; los nombres coinciden con lo que envía el formulario):
+
+| Columna | Contenido |
+|---|---|
+| `fecha` | Fecha y hora del envío (ISO, UTC) |
+| `nombre` | Nombre y apellido |
+| `whatsapp` | Número tal como lo escribió, sin espacios |
+| `canton` | Cantón o ciudad |
+| `asunto` | Tipo de caso elegido |
+| `mensaje` | Descripción breve del caso |
+| `autoriza_contacto` | Siempre «Sí» (la casilla es obligatoria) |
+| `origen` | «Formulario web» |
+| `pagina` | URL desde la que se envió |
+| `utm_source`, `utm_medium`, `utm_campaign` | Campaña de origen, si el enlace las traía |
+
+El formulario envía los datos como formulario (`application/x-www-form-urlencoded`), no como JSON, para evitar la petición previa de CORS; n8n los entrega igual en `$json.body`. Incluye un campo trampa invisible (`empresa`): si un robot lo llena, el formulario simula el envío y no manda nada.
 
 ### Placeholders
 

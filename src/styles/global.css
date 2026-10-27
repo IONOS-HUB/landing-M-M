@@ -681,26 +681,6 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .field-foot { display: flex; justify-content: space-between; gap: 1rem; }
 .field-hint { margin-left: auto; font-size: 0.85rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 
-.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.chip { position: relative; cursor: pointer; }
-.chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
-.chip span {
-  display: inline-block;
-  padding: 0.6rem 1rem;
-  border: 1px solid #b9c3d6;
-  background: var(--white);
-  font-weight: 700;
-  font-size: 0.95rem;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-}
-.chip:hover span { border-color: var(--navy); }
-.chip input:checked + span {
-  background: var(--navy);
-  color: #fff;
-  border-color: var(--navy);
-}
-.chip input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
-.chip input[aria-invalid='true'] + span { border-color: #b3261e; }
 
 .check { display: grid !important; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: start; font-weight: 400 !important; cursor: pointer; }
 .check input { width: 1.3rem; height: 1.3rem; margin-top: 0.1rem; accent-color: var(--navy); }
@@ -894,25 +874,8 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .estudio-years { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(5rem, 9vw, 8rem); line-height: 0.9; letter-spacing: -0.04em; color: var(--navy); }
 .estudio-years span { font-size: 0.32em; letter-spacing: 0; }
 
-/* Formulario en dos pasos. */
-.cform-progress { display: grid; gap: 0.5rem; }
-.cform-progress-label { margin: 0; font-size: 0.88rem; font-weight: 700; color: var(--navy); }
-.cform-progress-label .p2 { display: none; }
-.cform-progress-track { height: 6px; background: var(--line); }
-.cform-progress-bar { height: 6px; width: 50%; background: linear-gradient(90deg, var(--navy), var(--blue)); transition: width 0.5s var(--ease-out); }
-.cform[data-step='2'] .cform-progress-bar { width: 100%; }
-.cform[data-step='2'] .cform-progress-label .p1 { display: none; }
-.cform[data-step='2'] .cform-progress-label .p2 { display: inline; }
-.cform:not([data-step]) .cform-progress { display: none; }
-.cform-step { display: grid; gap: 1.5rem; }
-.cform[data-step='1'] [data-step-panel='2'], .cform[data-step='2'] [data-step-panel='1'] { display: none; }
-.cform[data-step] [data-step-panel] { animation: rise 0.45s var(--ease-out) both; }
-.cform-q { font-family: var(--display); font-size: 1.5rem !important; line-height: 1.2; margin-bottom: 0.9rem !important; }
-.cform-next { justify-self: start; }
-.cform:not([data-step]) .cform-next, .cform:not([data-step]) .cform-back { display: none; }
-.cform-back { justify-self: start; display: inline-flex; align-items: center; gap: 0.45rem; background: none; border: 0; padding: 0.5rem 0; font: 700 0.95rem/1 var(--sans); color: var(--navy); cursor: pointer; }
-.cform-back .ico { transform: rotate(180deg); }
-.chips .chip span { padding: 0.8rem 1.1rem; }
+/* Formulario: trampa anti-spam invisible para personas y lectores de pantalla. */
+.cform-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 @media (max-width: 960px) {
   .sit-list { grid-template-columns: 1fr; }
