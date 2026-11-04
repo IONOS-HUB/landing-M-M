@@ -11,9 +11,8 @@ export const site = {
   whatsapp: '593968064619',
   whatsappDisplay: '+593 96 806 4619',
   // La marca «vengo de la página web» permite contar los mensajes que llegan desde el sitio.
-  whatsappMessage: 'Hola, vengo de la página web. Quisiera contarles mi caso.',
-  // Pendiente: el cliente indicó dos correos distintos (…789 y …799). Confirmar cuál se publica.
-  email: '[correo por confirmar]',
+  whatsappMessage: 'Hola, vengo de su página web. Deseo consultarles un tema legal.',
+  email: 'dealexx799@gmail.com',
   address: 'Calle Bolívar y Oviedo',
   addressNote: 'Edificio SAUD, segundo piso',
   hours: [{ days: 'Horario de atención', time: '[por confirmar]' }],
@@ -48,30 +47,30 @@ export const partners = [
 export const steps = [
   {
     title: 'Te escuchamos',
-    text: 'La primera conversación la tienes con quien va a llevar tu caso. No con una recepción ni con un departamento.',
+    text: 'La primera conversación la tienes con quien va a llevar tu caso. No con una recepción ni con un asistente.',
   },
   {
     title: 'Estudiamos tu caso completo',
-    text: 'No aplicamos recetas. Leemos tu situación en su contexto antes de proponerte nada.',
+    text: 'Analizamos tu situación y su contexto a fondo antes de proponerte una estrategia.',
   },
   {
     title: 'Te explicamos los caminos',
-    text: 'En palabras normales: qué está en juego, qué opciones hay y cuál conviene. Una decisión que no se entiende es una apuesta.',
+    text: 'Qué está en juego, qué opciones hay y cuál te conviene. Una decisión que no se entiende es una apuesta.',
   },
   {
     title: 'Te defendemos desde el primer día',
-    text: 'La estrategia se prepara en serio desde el inicio, y la misma persona la sostiene en cada trámite y audiencia.',
+    text: 'La estrategia se construye desde el inicio, y la misma persona que estudió tu caso te representará en cada trámite y audiencia.',
   },
   {
     title: 'Te contamos cómo va',
-    text: 'Te llamamos para informarte del avance. No tienes que perseguir a nadie para saber qué pasa con lo tuyo.',
+    text: 'Te contactamos para reportar los avances. No tendrás que perseguir a nadie para saber qué pasa con tu proceso.',
   },
 ];
 
 export const values = [
   { title: 'Discreción absoluta', text: 'Lo que nos cuentas queda entre tú y tu abogado.' },
-  { title: 'Honestidad', text: 'Te decimos también lo que no te conviene oír.' },
-  { title: 'Defensa preparada', text: 'Trabajamos tu caso en serio desde el primer día.' },
+  { title: 'Transparencia', text: 'Te mostramos el panorama completo, con sus riesgos y fortalezas, para que tomes la mejor decisión.' },
+  { title: 'Compromiso real', text: 'Asumimos tu caso como propio, trabajando con rigor desde el minuto cero.' },
 ];
 
 // Situaciones en primera persona: el visitante reconoce su problema y escribe

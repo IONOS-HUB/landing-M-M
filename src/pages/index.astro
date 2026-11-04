@@ -48,8 +48,7 @@ const schema = {
           </p>
           <h1 id="hero-title">No enfrentes solo tu problema legal.</h1>
           <p class="hero-lede">
-            La misma persona que te escucha estudia tu caso, te defiende y te llama para contarte cómo va.
-            En palabras normales, desde {site.since} en Ibarra.
+            Te acompañamos cuando no sabe por dónde empezar. Sin tecnicismos, estudiamos su caso a fondo para proteger lo que más le importa, desde {site.since} en Ibarra.
           </p>
           <div class="hero-actions">
             <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-hero">
@@ -78,7 +77,7 @@ const schema = {
       <div class="wrap">
         <div class="section-head">
           <h2 id="situaciones-title">¿Te pasa algo de esto?</h2>
-          <p>Toca tu situación y te abrimos WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
+          <p>Toca tu situación y se abrirá WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
         </div>
         <ul class="sit-list">
           {situations.map((t) => (
@@ -111,43 +110,32 @@ const schema = {
         <div class="proceso-copy">
           <h2 id="proceso-title">Un solo hilo, de principio a fin.</h2>
           <p class="proceso-lede">
-            Aquí no hay departamentos que se pasan el expediente. Quien te escucha en la primera conversación
-            es quien piensa tu caso, lo defiende y te llama para contarte cómo va.
+            Aquí no hay departamentos que se pasan el expediente. Quien te escucha en la primera conversación es quien piensa tu caso, lo defiende y te llama para contarte cómo va.
           </p>
-          <ol class="steps">
-            {steps.map((s, i) => (
-              <li class="step" data-step={i}>
-                <span class="step-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <span class="step-weft" aria-hidden="true" style={`--i:${i}`}></span>
-                <div>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <dl class="values">
-            {values.map((v) => (
-              <div>
-                <dt>{v.title}</dt>
-                <dd>{v.text}</dd>
-              </div>
-            ))}
-          </dl>
           <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-proceso">
             <Icon name="whatsapp" class="ico" />
             <span>Escríbenos por WhatsApp</span>
           </a>
         </div>
-        <div class="loom-col" aria-hidden="true">
-          <div class="loom">
-            {steps.map((s, i) => (
-              <div class="loom-band" data-band={i} style={`--i:${i}`}>
-                <span class="loom-label">{String(i + 1).padStart(2, '0')} · {s.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ol class="timeline" data-timeline>
+          {steps.map((s, i) => (
+            <li class="tl-item" data-step={i}>
+              <span class="tl-node" aria-hidden="true"></span>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div class="wrap">
+        <dl class="values">
+          {values.map((v) => (
+            <div>
+              <dt>{v.title}</dt>
+              <dd>{v.text}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
 
@@ -182,8 +170,6 @@ const schema = {
           ))}
         </ul>
         <p class="area-note">
-          <span class="ph">Áreas por confirmar con los socios</span> Sin precios publicados: los honorarios se
-          conversan en la primera consulta.
         </p>
       </div>
     </section>
@@ -195,17 +181,13 @@ const schema = {
       <div class="wrap estudio-grid">
         <div class="estudio-intro">
           <p class="estudio-years" aria-hidden="true">{years}<span> años</span></p>
-          <h2 id="estudio-title">En Ibarra desde {site.since}. Nombres y rostros, no un departamento.</h2>
+          <h2 id="estudio-title">Tu caso tiene nombre. Nosotros también. En Ibarra desde {site.since}.</h2>
           <p class="big-p">
             <strong>Mira &amp; Montesdeoca</strong> nació en {site.since}, cuando su primer socio empezó este
             proyecto. Hoy son dos socios con un mismo método: leer tu situación completa, entenderla en su
             contexto y hacerse cargo de ella.
           </p>
-          <p>
-            Nuestro símbolo une dos <em>M</em>, dos cumbres como las que rodean Ibarra, sobre una balanza.
-            Atendemos en Ibarra y en los cantones vecinos: {site.cantons.slice(1).join(', ')}.
-          </p>
-          <p class="estudio-quote">«Quien nos elige no está comprando promesas; está poniendo su caso en manos de alguien que se hace cargo».</p>
+          <p class="estudio-quote">«Cuando nos eliges, no estás comprando promesas. Pones tu situación en manos de alguien que asume el peso por ti.».</p>
         </div>
         <ul class="partners">
           {partners.map((p) => (
@@ -219,15 +201,6 @@ const schema = {
                 <p class="partner-title">{p.title}</p>
                 <p class="partner-reg" set:html={ph(p.degree)} />
                 <p class="partner-bio" set:html={ph(p.bio)} />
-                <a
-                  class="link-thread link-dark partner-cta"
-                  href={waLink(`Hola, vengo de la página web. Quisiera hablar con ${p.name}.`)}
-                  target="_blank"
-                  rel="noopener"
-                  data-track="wa-socio"
-                >
-                  Escribir a {p.name.split(' ')[0]} <Icon name="arrow" class="ico" />
-                </a>
               </div>
             </li>
           ))}
@@ -241,7 +214,7 @@ const schema = {
     <section class="section indigo testimonios" id="testimonios" aria-labelledby="testimonios-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="testimonios-title">Personas de tu cantón ya confiaron.</h2>
+          <h2 id="testimonios-title">Familias y negocios de Ibarra y sus alrededores ya nos han confiado sus casos.</h2>
           <p class="sample-note">
             <span class="ph">Testimonios de ejemplo</span> Se publicarán solo testimonios reales, con
             autorización escrita de cada cliente.
@@ -279,10 +252,14 @@ const schema = {
       </div>
     </section>
 
+    <div class="weft weft-thin" aria-hidden="true"></div>
+
     <CtaBand
       title="¿No sabes por dónde empezar?"
       text={`Cuéntanos tu situación por WhatsApp. ${site.freeConsult.charAt(0).toUpperCase() + site.freeConsult.slice(1).toLowerCase()}.`}
     />
+
+    <div class="weft weft-thin" aria-hidden="true"></div>
 
     <!-- PREGUNTAS FRECUENTES -->
     <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
@@ -290,7 +267,7 @@ const schema = {
         <div class="faq-intro">
           <h2 id="faq-title">Lo que te frena, respondido con honestidad.</h2>
           <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta gratis.</p>
-          <p class="faq-note"><span class="ph">Respuestas en borrador</span> Validar con los socios antes de publicar.</p>
+          <p class="faq-note"><span class="ph">Respuestas en borrador</span> </p>
           <a class="btn btn-solid" href={waLink('Hola, vengo de la página web. Tengo una duda sobre mi caso.')} target="_blank" rel="noopener" data-track="wa-faq">
             <Icon name="whatsapp" class="ico" />
             <span>¿Tienes otra duda? Escríbenos</span>
@@ -364,7 +341,7 @@ const schema = {
             </div>
             <div>
               <dt><Icon name="mail" class="ico" /> Correo</dt>
-              <dd><span set:html={ph(site.email)} /></dd>
+              <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
             </div>
           </dl>
           <a class="link-thread link-dark" href={mapLink} target="_blank" rel="noopener" data-track="mapa">
@@ -401,19 +378,23 @@ const schema = {
   <SiteFooter />
 
   <script>
-    // Telar: cada paso que entra en pantalla teje su pasada de trama.
-    const bands = document.querySelectorAll<HTMLElement>('[data-band]');
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const i = Number((entry.target as HTMLElement).dataset.step);
-          entry.target.classList.add('is-active');
-          bands.forEach((b, j) => j <= i && b.classList.add('is-woven'));
-        });
-      },
-      { rootMargin: '0px 0px -40% 0px' }
-    );
-    document.querySelectorAll('[data-step]').forEach((s) => io.observe(s));
+    // Línea de tiempo: el hilo avanza y cada paso se enciende al entrar en pantalla.
+    const tl = document.querySelector<HTMLElement>('[data-timeline]');
+    const items = document.querySelectorAll<HTMLElement>('[data-step]');
+    if (tl) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            el.classList.add('is-active');
+            const end = el.offsetTop + el.offsetHeight / 2;
+            tl.style.setProperty('--fill', `${Math.max(end, parseFloat(tl.style.getPropertyValue('--fill')) || 0)}px`);
+          });
+        },
+        { rootMargin: '0px 0px -35% 0px' }
+      );
+      items.forEach((s) => io.observe(s));
+    }
   </script>
 </Base>

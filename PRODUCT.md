@@ -36,7 +36,7 @@ La misma persona que te escucha en la primera conversación es quien piensa tu c
 - Tono: tuteo, en palabras normales, sin tecnicismos.
 - Sin precios publicados; honorarios y tiempos se conversan en la primera consulta.
 - Sin promesas de resultado ni cifras que el cliente no dio (solo «10 años de experiencia»).
-- Pendientes: correo (conflicto …789 / …799), horarios, grados de estudio de los socios, redes sociales (no mostrar íconos hasta tenerlas), dominio, responsable de mantenimiento.
+- Pendientes: horarios, grados de estudio de los socios, redes sociales (no mostrar íconos hasta tenerlas), dominio, responsable de mantenimiento.
 - Blog: fuera del sitio por ahora (fase 2, cuando haya un responsable de contenidos). La versión anterior está en el historial de git.
 
 ## Brand Commitments

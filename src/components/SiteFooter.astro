@@ -12,7 +12,7 @@ import { footerNav } from '../data/nav';
       <address class="footer-contact">
         {site.address}, {site.addressNote}<br />
         WhatsApp <a href={waLink()} target="_blank" rel="noopener">{site.whatsappDisplay}</a><br />
-        <span set:html={ph(site.email)} />
+        <a href={`mailto:${site.email}`}>{site.email}</a>
       </address>
     </div>
     <ul class="footer-nav">
