@@ -89,18 +89,22 @@ html { scrollbar-color: var(--navy) var(--cotton); }
   --from: var(--cotton);
   /* Tono de paso: el fundido cruza un azul limpio en vez del gris que da mezclar claro con índigo. */
   --via: #a9c4ec;
-  --seam-h: clamp(2rem, 3.5vw, 3rem);
+  --seam-h: clamp(1rem, 2vw, 1.5rem);
   position: relative;
   z-index: 1;
   height: var(--seam-h);
   margin-bottom: calc(-1 * var(--seam-h));
   pointer-events: none;
+  /* Curva suave (tipo ease-out) y azul de paso tenue: sin franja visible a mitad del fundido. */
   background: linear-gradient(180deg,
     var(--from) 0%,
-    color-mix(in oklab, var(--from) 55%, var(--via)) 20%,
-    color-mix(in srgb, var(--via) 62%, transparent) 46%,
-    color-mix(in srgb, var(--via) 24%, transparent) 72%,
-    color-mix(in srgb, var(--via) 6%, transparent) 90%,
+    color-mix(in oklab, var(--from) 88%, var(--via)) 10%,
+    color-mix(in srgb, color-mix(in oklab, var(--from) 62%, var(--via)) 86%, transparent) 24%,
+    color-mix(in srgb, color-mix(in oklab, var(--from) 40%, var(--via)) 62%, transparent) 40%,
+    color-mix(in srgb, var(--via) 40%, transparent) 56%,
+    color-mix(in srgb, var(--via) 22%, transparent) 71%,
+    color-mix(in srgb, var(--via) 9%, transparent) 85%,
+    color-mix(in srgb, var(--via) 2%, transparent) 95%,
     transparent 100%);
 }
 .indigo + .seam { --from: var(--indigo-800); --via: #24489a; }
