@@ -9,6 +9,8 @@
   --sky: #3abefd;
   --cotton: #f4f6f9;
   --white: #ffffff;
+  /* Gris frío apenas más oscuro que el algodón: contraste sutil entre dos secciones claras. */
+  --stone: #e6eaf0;
   --ink: #0d1733;
   --ink-soft: #3c4867;
   --line: #d9dfea;
@@ -76,28 +78,39 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 }
 .indigo-deep { background: var(--indigo-950); color: var(--on-indigo-soft); }
 .cotton { background: var(--cotton); }
-.white { background: var(--white); }
+.stone { background: var(--stone); }
 
-/* Trama: pasadas horizontales en los azules de la marca, tejidas bajo la urdimbre. */
-.weft {
-  --h: 42px;
-  height: var(--h);
-  background-color: var(--navy);
-  background-image:
-    url('/brand/weave.svg'),
-    repeating-linear-gradient(180deg, rgb(255 255 255 / 0.14) 0, transparent 5px, rgb(0 0 0 / 0.18) 14px),
-    repeating-linear-gradient(180deg, var(--navy) 0 14px, var(--blue) 14px 28px, var(--sky) 28px 42px);
-  background-size: 28px 28px, 100% 14px, 100% 42px;
-}
-/* Costura entre secciones: tres hilos parejos; el celeste brilla al centro. */
-.weft-thin {
-  --h: 6px;
+/* Hilo de tres pasadas: solo como borde superior del formulario. */
+.weft-thin { height: 6px; background: linear-gradient(180deg, var(--navy) 0 2px, var(--blue) 2px 4px, var(--sky) 4px 6px); }
+
+/* Fundido entre secciones: el color de la sección anterior se disuelve
+   sobre el inicio de la siguiente, sin corte ni banda. */
+.seam {
+  --from: var(--cotton);
+  /* Tono de paso: el fundido cruza un azul limpio en vez del gris que da mezclar claro con índigo. */
+  --via: #a9c4ec;
+  --seam-h: clamp(2rem, 3.5vw, 3rem);
   position: relative;
   z-index: 1;
-  background:
-    linear-gradient(90deg, transparent, rgb(255 255 255 / 0.35) 50%, transparent) 0 4px / 100% 2px no-repeat,
-    linear-gradient(180deg, var(--navy) 0 2px, var(--blue) 2px 4px, var(--sky) 4px 6px);
+  height: var(--seam-h);
+  margin-bottom: calc(-1 * var(--seam-h));
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    var(--from) 0%,
+    color-mix(in oklab, var(--from) 55%, var(--via)) 20%,
+    color-mix(in srgb, var(--via) 62%, transparent) 46%,
+    color-mix(in srgb, var(--via) 24%, transparent) 72%,
+    color-mix(in srgb, var(--via) 6%, transparent) 90%,
+    transparent 100%);
 }
+.indigo + .seam { --from: var(--indigo-800); --via: #24489a; }
+
+/* Gris de contraste sutil para separar dos secciones claras seguidas solo con el cambio de fondo. */
+.stone + .seam { --from: var(--stone); }
+/* Entre dos fondos claros el fundido pasa por el gris de destino, no por azul. */
+.seam.to-stone { --via: var(--stone); }
+.estudio { padding-block: clamp(6rem, 11vw, 9.5rem); }
+
 
 /* Celdas fantasma: placeholders dibujados a propósito. */
 .ph {
@@ -108,7 +121,7 @@ html { scrollbar-color: var(--navy) var(--cotton); }
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-.cotton .ph, .white .ph { background: rgb(0 130 255 / 0.09); box-shadow: inset 0 -1px 0 var(--blue); color: #0a3a8f; }
+.cotton .ph, .stone .ph { background: rgb(0 130 255 / 0.09); box-shadow: inset 0 -1px 0 var(--blue); color: #0a3a8f; }
 
 .ghost {
   position: relative;
@@ -222,7 +235,6 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .hero {
   min-height: min(100svh, 980px);
   display: grid;
-  grid-template-rows: 1fr auto;
   padding-top: clamp(7rem, 14vh, 9rem);
   overflow: hidden;
 }
@@ -250,12 +262,21 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 2rem; margin-top: 2.5rem; }
 .hero-actions .link-thread { color: #fff; }
 
-.hero-mark { position: relative; justify-self: end; width: 100%; max-width: 560px; }
+.hero-mark {
+  position: relative;
+  justify-self: end;
+  width: 112%;
+  max-width: 640px;
+  margin-right: -4%;
+}
+/* El relieve va en un envoltorio propio: el filtro actúa sobre la forma ya recortada, no sobre el halo. */
+.iso-relief { filter: url(#iso-relief) drop-shadow(0 18px 60px rgb(58 190 253 / 0.28)); }
 .woven-m {
   aspect-ratio: 880 / 680;
   width: 100%;
   background:
     linear-gradient(110deg, transparent 42%, rgb(255 255 255 / 0.7) 50%, transparent 58%) 160% 0 / 250% 100% no-repeat,
+    linear-gradient(180deg, rgb(255 255 255 / 0.22) 0%, rgb(255 255 255 / 0.06) 46%, rgb(5 20 74 / 0.1) 100%),
     linear-gradient(100deg, #f2f6ff 0%, #b9e0ff 38%, var(--sky) 66%, var(--blue) 100%);
   -webkit-mask: url('/brand/iso-mask.svg') center / contain no-repeat;
   mask: url('/brand/iso-mask.svg') center / contain no-repeat;
@@ -264,14 +285,16 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .hero-mark::before {
   content: '';
   position: absolute;
-  inset: 8% 4% 4%;
-  background: radial-gradient(closest-side, rgb(58 190 253 / 0.28), transparent);
-  filter: blur(30px);
+  inset: -14% -12% -18%;
+  background: radial-gradient(closest-side,
+    rgb(58 190 253 / 0.3),
+    rgb(0 130 255 / 0.14) 40%,
+    rgb(0 130 255 / 0.05) 72%,
+    transparent);
+  filter: blur(70px);
   z-index: -1;
 }
 
-.weft-hero { --h: 56px; }
-.js .weft-hero { animation: shuttle 1.6s var(--ease-out) 0.25s both; }
 .js .hero-copy > * { animation: rise 0.9s var(--ease-out) both; }
 .js .hero-copy > :nth-child(2) { animation-delay: 0.06s; }
 .js .hero-copy > :nth-child(3) { animation-delay: 0.12s; }
@@ -279,10 +302,9 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .js .hero-copy > :nth-child(5) { animation-delay: 0.24s; }
 .js .woven-m { animation: threads 1.4s var(--ease-out) 0.1s both, sheen 1.8s ease-in-out 1.3s both; }
 
-@keyframes shuttle { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes threads { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
-@keyframes sheen { from { background-position: 160% 0, 0 0; } to { background-position: -60% 0, 0 0; } }
+@keyframes sheen { from { background-position: 160% 0, 0 0, 0 0; } to { background-position: -60% 0, 0 0, 0 0; } }
 
 /* ---------- Secciones ---------- */
 
@@ -407,8 +429,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 .map-frame iframe { width: 100%; height: 100%; min-height: 420px; border: 0; filter: saturate(0.55) hue-rotate(-8deg) contrast(1.02); }
 
 /* Cierre */
-.close { padding-bottom: clamp(5rem, 10vw, 8rem); text-align: center; overflow: hidden; }
-.weft-close { --h: 56px; margin-bottom: clamp(4rem, 8vw, 6.5rem); }
+.close { padding-block: var(--section-y) clamp(5rem, 10vw, 8rem); text-align: center; overflow: hidden; }
 .close-inner { display: grid; justify-items: center; gap: 2rem; }
 .close-iso { width: 5.5rem; color: #f2f2f2; }
 .close h2 { font-size: clamp(2rem, 3.8vw, 3.4rem); color: #fff; max-width: 26ch; }
@@ -501,7 +522,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
   body.menu-open { overflow: hidden; }
 
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-mark { position: absolute; right: -8%; top: 12%; width: 70%; max-width: 520px; opacity: 0.14; z-index: 0; }
+  .hero-mark { position: absolute; right: -8%; top: 12%; width: 70%; max-width: 520px; margin: 0; opacity: 0.3; z-index: 0; }
   .hero-copy { position: relative; z-index: 1; }
 
   .estudio-grid,
