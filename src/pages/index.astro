@@ -65,9 +65,9 @@ const schema = {
             <Icon name="gift" class="ico" />
             <span>Tu primera consulta en línea es gratis <span class="hero-gift-terms" set:html={ph(site.freeConsultTerms)} /></span>
           </p>
-          <h1 id="hero-title">No enfrentes solo tu problema legal.</h1>
+          <h1 id="hero-title">Donde la experiencia jurídica se convierte en estrategia de defensa.</h1>
           <p class="hero-lede">
-            Te acompañamos cuando no sabe por dónde empezar. Sin tecnicismos, estudiamos su caso a fondo para proteger lo que más le importa, desde {site.since} en Ibarra.
+            No necesitas conocer la ley para tomar decisiones importantes, necesitas contar con quien sepa cómo aplicarla. Te escuchamos, estudiamos tu situación y te ofrecemos orientación jurídica clara y estratégica. A tu servicio en Ibarra desde {site.since}.
           </p>
           <div class="hero-actions">
             <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-hero">
@@ -96,7 +96,7 @@ const schema = {
     <section class="section cotton situaciones" id="situaciones" aria-labelledby="situaciones-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="situaciones-title">¿Te pasa algo de esto?</h2>
+          <h2 class="h-long" id="situaciones-title">¿Estás atravesando una situación que requiere respaldo jurídico?</h2>
           <p>Toca tu situación y se abrirá WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
         </div>
         <ul class="sit-list">
@@ -104,12 +104,12 @@ const schema = {
             <li>
               <a
                 class="sit-item"
-                href={waLink(`Hola, vengo de la página web. ${t}.`)}
+                href={waLink(`Hola, vengo de la página web. Necesito asesoría sobre esta situación: ${t.toLowerCase()}.`)}
                 target="_blank"
                 rel="noopener"
                 data-track="wa-situacion"
               >
-                <span class="sit-text">«{t}»</span>
+                <span class="sit-text">{t}</span>
                 <span class="sit-cta">Escribir <Icon name="arrow" class="ico" /></span>
               </a>
             </li>
@@ -165,7 +165,7 @@ const schema = {
     <section class="section cotton servicios" id="servicios" aria-labelledby="servicios-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="servicios-title">Todas las áreas del derecho. Un caso a la vez.</h2>
+          <h2 id="servicios-title">Todas las áreas del derecho.</h2>
           <p>
             Te acompañamos en conflictos y trámites que afectan tus derechos o tu patrimonio. Busca tu
             situación o, si no sabes dónde encaja, escríbenos igual.
@@ -201,7 +201,7 @@ const schema = {
       <div class="wrap estudio-grid">
         <div class="estudio-intro">
           <p class="estudio-years" aria-hidden="true">{years}<span> años</span></p>
-          <h2 id="estudio-title">Tu caso tiene nombre. Nosotros también. En Ibarra desde {site.since}.</h2>
+          <h2 id="estudio-title">Una trayectoria. Una identidad. Un compromiso con cada defensa.</h2>
           <p class="big-p">
             <strong>Mira &amp; Montesdeoca</strong> nació en {site.since}, cuando su primer socio empezó este
             proyecto. Hoy son dos socios con un mismo método: leer tu situación completa, entenderla en su
@@ -234,11 +234,7 @@ const schema = {
     <section class="section indigo testimonios" id="testimonios" aria-labelledby="testimonios-title">
       <div class="wrap">
         <div class="section-head">
-          <h2 id="testimonios-title">Familias y negocios de Ibarra y sus alrededores ya nos han confiado sus casos.</h2>
-          <p class="sample-note">
-            <span class="ph">Testimonios de ejemplo</span> Se publicarán solo testimonios reales, con
-            autorización escrita de cada cliente.
-          </p>
+          <h2 class="h-long" id="testimonios-title">La confianza de personas, familias y empresas de Ibarra y sus alrededores ha construido nuestra trayectoria jurídica.</h2>
         </div>
         <div class="quotes">
           {testimonials.map((t, i) => (
@@ -285,7 +281,7 @@ const schema = {
     <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
       <div class="wrap faq-grid">
         <div class="faq-intro">
-          <h2 id="faq-title">Lo que te frena, respondido con honestidad.</h2>
+          <h2 class="h-long" id="faq-title">Tus dudas merecen respuestas claras. Tus decisiones, asesoría honesta.</h2>
           <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta gratis.</p>
           <p class="faq-note"><span class="ph">Respuestas en borrador</span> </p>
           <a class="btn btn-solid" href={waLink('Hola, vengo de la página web. Tengo una duda sobre mi caso.')} target="_blank" rel="noopener" data-track="wa-faq">

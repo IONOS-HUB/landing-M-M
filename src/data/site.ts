@@ -28,18 +28,18 @@ export const site = {
 
 export const partners = [
   {
-    name: 'Alexander Mira',
+    name: 'Alexander Mira Quelal',
     title: 'Socio',
     photo: '/fotos-muestra/socio-alexander.webp',
-    degree: '[Título, universidad y año]',
-    bio: '[Breve trayectoria y áreas en las que más trabaja.]',
+    degree: 'MSc. Derecho Constitucional',
+    bio: 'Especialista en las áreas de Penal y Constitucional.',
   },
   {
-    name: 'Melanie Montesdeoca',
+    name: 'Melanie Montesdeoca Rodríguez',
     title: 'Socia',
     photo: '/fotos-muestra/socia-melanie.webp',
-    degree: '[Título, universidad y año]',
-    bio: '[Breve trayectoria y áreas en las que más trabaja.]',
+    degree: 'MSc. Derecho Constitucional con mención en Derecho Procesal',
+    bio: 'Especialista en las áreas de Violencia de Género y Civil.',
   },
 ];
 
@@ -62,8 +62,8 @@ export const steps = [
     text: 'La estrategia se construye desde el inicio, y la misma persona que estudió tu caso te representará en cada trámite y audiencia.',
   },
   {
-    title: 'Te contamos cómo va',
-    text: 'Te contactamos para reportar los avances. No tendrás que perseguir a nadie para saber qué pasa con tu proceso.',
+    title: 'Reportamos oportunamente tu caso',
+    text: 'Te contactamos para reportar los avances, para que sepas qué pasa con tu proceso.',
   },
 ];
 
@@ -73,15 +73,15 @@ export const values = [
   { title: 'Compromiso real', text: 'Asumimos tu caso como propio, trabajando con rigor desde el minuto cero.' },
 ];
 
-// Situaciones en primera persona: el visitante reconoce su problema y escribe
-// con el mensaje ya armado (autoidentificación + cero fricción).
+// Situaciones en segunda persona (redacción del cliente, 2026-11): el visitante
+// reconoce su problema y escribe con el mensaje ya armado.
 export const situations = [
-  'Me llegó una citación y no sé qué plazo tengo',
-  'No me pagan la pensión de mis hijos',
-  'Falleció un familiar y hay bienes por repartir',
-  'Me piden firmar un contrato y tengo dudas',
-  'Me despidieron y no me liquidaron',
-  'Quiero proteger mis bienes o mi negocio',
+  'Enfrentas una investigación o un proceso penal',
+  'Sufres violencia en tu entorno familiar y necesitas protección',
+  'Tienes documentos pendientes de cobro',
+  'Estuviste involucrado en un accidente de tránsito',
+  'Deseas divorciarte de manera segura',
+  'Te despidieron sin justificación o no te han pagado tu liquidación',
 ];
 
 // Pendiente: el cliente atiende «todas las áreas del derecho» pero no envió la
@@ -92,7 +92,7 @@ export const areas = [
   { name: 'Civil y contratos', items: 'Contratos, compraventa de inmuebles, deudas, arriendos' },
   { name: 'Penal', items: 'Denuncias, defensa, citaciones y notificaciones' },
   { name: 'Laboral', items: 'Despidos, liquidaciones, reclamos ante el empleador' },
-  { name: 'Negocios', items: 'Constitución de compañías, contratos comerciales, cobros' },
+  { name: 'Derecho Constitucional', items: 'Garantías jurisdiccionales, vulneración de derechos, acciones de protección y defensa constitucional' },
 ];
 
 // Preguntas frecuentes tal como las dio el cliente. Las respuestas son
@@ -144,29 +144,42 @@ export const faqs = [
   },
 ];
 
-// Testimonios de EJEMPLO: no son reales. Reemplázalos solo con testimonios
-// autorizados por escrito por cada cliente (la discreción es un valor del estudio).
+// Testimonios entregados por el estudio (2026-11), con iniciales para cuidar la reserva.
 export const testimonials = [
   {
     quote:
-      'Me explicaron cada paso con palabras que entendí, y siempre supe con quién hablar. [Texto de ejemplo]',
-    name: '[Nombre o iniciales]',
-    matter: 'Familia',
+      'Tenía valores pendientes de cobro y no sabía qué alternativas legales podía utilizar para recuperarlos. Recibí asesoría sobre las vías de reclamación y el acompañamiento necesario para gestionar el cobro de manera formal y responsable. Una atención clara y profesional.',
+    name: 'Sr. P.J.A.M.',
+    matter: 'Recuperación de cartera vencida',
     place: 'Ibarra',
   },
   {
     quote:
-      'Me dijeron la verdad sobre mi caso desde el primer día, aunque no era lo que quería oír. [Texto de ejemplo]',
-    name: '[Nombre o iniciales]',
-    matter: 'Herencia',
+      'Tenía inconvenientes relacionados con la documentación y situación legal de un inmueble. Gracias a la asesoría recibida pude comprender los pasos necesarios para proteger mis intereses y avanzar con mayor seguridad en el trámite. Destaco la claridad y responsabilidad en la atención.',
+    name: 'Sra. K.M.M.T.',
+    matter: 'Regularización y documentación de inmueble',
     place: 'Otavalo',
   },
   {
     quote:
-      'Nunca tuve que llamar a preguntar cómo iba mi proceso: me llamaban ellos. [Texto de ejemplo]',
-    name: '[Nombre o iniciales]',
-    matter: 'Contratos',
+      'Después de un accidente de tránsito no sabía cómo proceder ni cuáles eran mis derechos. Recibí asesoría oportuna, me explicaron las implicaciones legales y me ayudaron a afrontar el procedimiento con mayor seguridad y tranquilidad.',
+    name: 'Sr. J.C.Q.P.',
+    matter: 'Accidente de tránsito',
     place: 'Antonio Ante',
+  },
+  {
+    quote:
+      'Atravesar un proceso penal fue una situación muy difícil para mi familia. Desde el inicio recibimos una explicación honesta sobre nuestra situación y una defensa seria y comprometida. Siempre tuvimos información sobre el proceso y sentimos que nuestros derechos fueron tomados en cuenta.',
+    name: 'Sra. C.A.P.G.',
+    matter: 'Proceso penal',
+    place: 'Quito',
+  },
+  {
+    quote:
+      'Atravesaba una situación familiar complicada y necesitaba encontrar una solución que protegiera mis derechos y los de mi familia. Desde el primer momento recibí una atención cercana, respetuosa y profesional. Me explicaron cada paso del proceso con claridad, atendieron mis inquietudes y me brindaron el acompañamiento necesario para afrontar esta situación con mayor tranquilidad. Agradezco especialmente su sensibilidad, discreción y compromiso durante todo el proceso.',
+    name: 'Sr. A.A.T.B.',
+    matter: 'Pensión alimenticia y régimen de visitas',
+    place: 'Ibarra',
   },
 ];
 

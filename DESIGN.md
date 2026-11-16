@@ -20,9 +20,9 @@ colors:
 typography:
   display:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
-    fontSize: "clamp(2.6rem, 5.6vw, 5.25rem)"
+    fontSize: "clamp(2.25rem, 4.3vw, 4rem)"
     fontWeight: 700
-    lineHeight: 1.02
+    lineHeight: 1.04
     letterSpacing: "-0.02em"
   display-index:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
@@ -36,6 +36,12 @@ typography:
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: "-0.015em"
+  headline-long:
+    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontSize: "clamp(1.8rem, 3vw, 2.65rem)"
+    fontWeight: 700
+    lineHeight: 1.12
+    letterSpacing: "-0.015em"
   title:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
     fontSize: "1.5rem"
@@ -44,9 +50,9 @@ typography:
     letterSpacing: "-0.01em"
   quote:
     fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
-    fontSize: "clamp(1.3rem, 1.8vw, 1.55rem)"
+    fontSize: "clamp(1.2rem, 1.6vw, 1.4rem)"
     fontWeight: 400
-    lineHeight: 1.35
+    lineHeight: 1.42
   lede:
     fontFamily: "Quattrocento Sans, Gill Sans, Segoe UI, sans-serif"
     fontSize: "clamp(1.1rem, 1.5vw, 1.3rem)"
@@ -165,11 +171,13 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 **Character:** The logotype's own serif, set bold and tight for every heading, paired with its humanist sans sibling for plain-spoken reading. Brand-binding: the logotype is Quattrocento.
 
 ### Hierarchy
-- **Display** (700, clamp 2.6–5.25rem, 1.02, -0.02em): the hero headline only, max ~13ch.
+- **Display** (700, clamp 2.25–4rem, 1.04, -0.02em): the hero headline only, max ~17ch (the client's headline is a full sentence; it sets in 3 lines on desktop).
 - **Display Index** (700, clamp 3–5.75rem, 0.95, -0.03em, navy): practice-area names used as giant index words.
 - **Headline** (700, clamp 2–3.4rem, 1.08, -0.015em): section titles, balanced wrap.
+- **Headline Long** (`.h-long`, 700, clamp 1.8–2.65rem, 1.12): section titles that are full sentences (situaciones, testimonios, preguntas).
 - **Title** (700, 1.5rem): partner names, step titles (1.55rem), award titles (1.15rem).
-- **Quote** (400 display, clamp 1.3–1.55rem, 1.35): testimonials; the lead quote scales to clamp 1.8–2.75rem.
+- **Quote** (400 display, clamp 1.2–1.4rem, 1.42): testimonials; the lead quote scales to clamp 1.4–2rem so a long testimonial still reads.
+- **Secondary text floor:** captions, partner details, values and footer never go below ~1rem (legal and hints 0.9rem); the audience reaches 75 years.
 - **Lede** (400 sans, clamp 1.1–1.3rem, 1.55): hero and section intros, 32–36rem measure.
 - **Body** (400 sans, 1.0625rem, 1.6; 1rem under 680px): reading copy, pretty wrap, ~36rem measure.
 - **Label** (700 sans, 1rem, 0.01em): buttons, link-threads, ledger terms, captions' names.
@@ -181,7 +189,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ## Layout
 
-A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid (7 + 5 stacked). Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a `.seam` fade (clamp 1–1.5rem) overlapping the next section's top padding.
+A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid: lead quote 7 + one quote 5, then three quotes at 4 columns each under a 1px rule. Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a `.seam` fade (clamp 1–1.5rem) overlapping the next section's top padding.
 
 Responsive: at 960px every split collapses to one column, the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
 
