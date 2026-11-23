@@ -19,7 +19,7 @@ colors:
   on-indigo-soft: "#b3c3ec"
 typography:
   display:
-    fontFamily: "Quattrocento, Book Antiqua, Georgia, serif"
+    fontFamily: "DM Serif Display, Georgia, serif"
     fontSize: "clamp(2.25rem, 4.3vw, 4rem)"
     fontWeight: 700
     lineHeight: 1.04
@@ -122,7 +122,7 @@ components:
 
 **Creative North Star: "Telar de Imbabura"**
 
-The page is a cloth being woven. Indigo cotton is the ground of the moments that carry conviction (hero, process, close, footer); cold raw cotton is the ground of the reading sections. There are no vertical warp lines and no checkered weft bands: sections dissolve into each other through a soft vertical fade (`.seam`) that carries the previous ground's color over the start of the next, so the page reads as one continuous cloth. The three-thread weft (navy, blue, sky) survives only as the top edge of the contact form. Every fade is a straight horizontal band, short and eased (clamp 1–1.5rem), passing faintly through a clean blue (`--via`: #a9c4ec from light grounds, #24489a from indigo) instead of the gray that mixing cotton and indigo would produce. Servicios (cotton) and Nosotros sit back to back, so Nosotros takes Stone (#e6eaf0), a cool gray one step darker than cotton: the change of ground alone marks the transition, with no line or divider, and Nosotros gets a wide symmetric vertical padding (clamp 6–9.5rem) so the gray block breathes. The hero isotipo carries a fine, even bevel (SVG filter: 1.6px light edge upper left, soft navy edge lower right) that never washes the gradient, plus a satin finish (gloss on top, matte below), inside a wide, very diffuse sky glow.
+The page is a cloth being woven. Indigo cotton is the ground of the moments that carry conviction (hero, process, close, footer); cold raw cotton is the ground of the reading sections. There are no vertical warp lines and no checkered weft bands: sections meet in a clean, straight horizontal cut (no fade, no divider): the change of ground is the transition. The three-thread weft (navy, blue, sky) survives only as the top edge of the contact form. Servicios (cotton) and Nosotros sit back to back, so Nosotros takes Stone (#e6eaf0), a cool gray one step darker than cotton: the change of ground alone marks the transition, with no line or divider, and Nosotros gets a wide symmetric vertical padding (clamp 6–9.5rem) so the gray block breathes. The hero isotipo carries a fine, even bevel (SVG filter: 1.6px light edge upper left, soft navy edge lower right) that never washes the gradient, plus a satin finish (gloss on top, matte below), inside a wide, very diffuse sky glow.
 
 Density is calm and editorial: generous section padding, asymmetric two-column splits, long ruled lists instead of cards. Everything is square-cornered and thread-thin: 1px rules, 1px dashed outlines, a 14px base pitch, with the weave tile drawn at 28px so the checker stays large and sparse. Missing data is shown honestly as drawn ghost cells and highlighted placeholder text, never disguised as real content.
 
@@ -131,8 +131,8 @@ Motion is the loom at work: bands reveal by clipping left to right like a shuttl
 **Key Characteristics:**
 - Two grounds only: indigo cotton and raw cotton, with white for the CTA and framed media.
 - Warp threads at the wrap edges and quarter lines on every indigo section.
-- Weft bands in the five brand blues as section seams.
-- Quattrocento bold for every heading; Quattrocento Sans for everything read.
+- Sections meet in a clean straight cut; no fades between them.
+- DM Serif Display for the hero headline only; Quattrocento bold for every other heading; Quattrocento Sans for everything read.
 - Zero radius on buttons, cells and frames; 1px rules and dashed thread outlines carry structure.
 - Placeholders are visible, labeled, and part of the weave.
 
@@ -171,7 +171,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 **Character:** The logotype's own serif, set bold and tight for every heading, paired with its humanist sans sibling for plain-spoken reading. Brand-binding: the logotype is Quattrocento.
 
 ### Hierarchy
-- **Display** (700, clamp 2.25–4rem, 1.04, -0.02em): the hero headline only, max ~17ch (the client's headline is a full sentence; it sets in 3 lines on desktop).
+- **Display** (700, clamp 2.25–4rem, 1.04, -0.02em): the hero headline only, max ~22ch (the client's headline is a full sentence; it sets in 3 lines on desktop). Set in DM Serif Display 400 (its only weight; already heavy), all white, max ~22ch: the heavy high-contrast serif makes the promise the loudest line on the page while its hairlines stay sturdy on screen. This is the only heading outside Quattrocento.
 - **Display Index** (700, clamp 3–5.75rem, 0.95, -0.03em, navy): practice-area names used as giant index words.
 - **Headline** (700, clamp 2–3.4rem, 1.08, -0.015em): section titles, balanced wrap.
 - **Headline Long** (`.h-long`, 700, clamp 1.8–2.65rem, 1.12): section titles that are full sentences (situaciones, testimonios, preguntas).
@@ -189,7 +189,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ## Layout
 
-A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid: lead quote 7 + one quote 5, then three quotes at 4 columns each under a 1px rule. Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a `.seam` fade (clamp 1–1.5rem) overlapping the next section's top padding.
+A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid: lead quote 7 + one quote 5, then three quotes at 4 columns each under a 1px rule. Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a straight cut between grounds.
 
 Responsive: at 960px every split collapses to one column, the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
 
@@ -246,7 +246,7 @@ Pending content is drawn, not faked. Ghost cells: square, 1px dashed navy border
 
 ### Do:
 - **Do** keep every section on one of the two grounds: indigo-800 cotton with warp, or raw cotton (#f4f6f9).
-- **Do** separate sections with the 8px three-thread seam and open or close indigo moments with a full (42–56px) woven band.
+- **Do** let sections meet in a straight cut; don't add fades or gradient bands between them.
 - **Do** draw warp threads only on the edges and quarter lines of the 1240px wrap.
 - **Do** show the hero isotipo whole: solid brand gradient, sky halo and a single load sheen; never striped or masked by threads.
 - **Do** set every heading in Quattrocento 700 with tight negative tracking; keep reading text in Quattrocento Sans.

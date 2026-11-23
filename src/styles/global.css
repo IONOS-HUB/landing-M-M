@@ -83,36 +83,6 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 /* Hilo de tres pasadas: solo como borde superior del formulario. */
 .weft-thin { height: 6px; background: linear-gradient(180deg, var(--navy) 0 2px, var(--blue) 2px 4px, var(--sky) 4px 6px); }
 
-/* Fundido entre secciones: el color de la sección anterior se disuelve
-   sobre el inicio de la siguiente, sin corte ni banda. */
-.seam {
-  --from: var(--cotton);
-  /* Tono de paso: el fundido cruza un azul limpio en vez del gris que da mezclar claro con índigo. */
-  --via: #a9c4ec;
-  --seam-h: clamp(1rem, 2vw, 1.5rem);
-  position: relative;
-  z-index: 1;
-  height: var(--seam-h);
-  margin-bottom: calc(-1 * var(--seam-h));
-  pointer-events: none;
-  /* Curva suave (tipo ease-out) y azul de paso tenue: sin franja visible a mitad del fundido. */
-  background: linear-gradient(180deg,
-    var(--from) 0%,
-    color-mix(in oklab, var(--from) 88%, var(--via)) 10%,
-    color-mix(in srgb, color-mix(in oklab, var(--from) 62%, var(--via)) 86%, transparent) 24%,
-    color-mix(in srgb, color-mix(in oklab, var(--from) 40%, var(--via)) 62%, transparent) 40%,
-    color-mix(in srgb, var(--via) 40%, transparent) 56%,
-    color-mix(in srgb, var(--via) 22%, transparent) 71%,
-    color-mix(in srgb, var(--via) 9%, transparent) 85%,
-    color-mix(in srgb, var(--via) 2%, transparent) 95%,
-    transparent 100%);
-}
-.indigo + .seam { --from: var(--indigo-800); --via: #24489a; }
-
-/* Gris de contraste sutil para separar dos secciones claras seguidas solo con el cambio de fondo. */
-.stone + .seam { --from: var(--stone); }
-/* Entre dos fondos claros el fundido pasa por el gris de destino, no por azul. */
-.seam.to-stone { --via: var(--stone); }
 .estudio { padding-block: clamp(6rem, 11vw, 9.5rem); }
 
 
@@ -249,12 +219,16 @@ html { scrollbar-color: var(--navy) var(--cotton); }
   align-items: center;
   padding-bottom: clamp(3rem, 7vh, 5rem);
 }
+/* Titular de portada: DM Serif Display, solo aquí, para que la promesa destaque.
+   Solo existe en 400 (su trazo ya es grueso): pedir 700 daría negrita falsa. */
 .hero h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
   font-size: clamp(2.25rem, 4.3vw, 4rem);
   line-height: 1.04;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: #fff;
-  max-width: 17ch;
+  max-width: 22ch;
 }
 .hero-lede {
   margin-top: 1.75rem;
@@ -808,7 +782,6 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 .hero-gift .ico { color: var(--sky); }
 .hero-gift > span { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.5rem; }
 .hero-gift .ico { align-self: flex-start; margin-top: 0.1rem; }
-.hero-gift-terms { font-weight: 400; font-size: 0.9rem; }
 .hero-copy { display: flex; flex-direction: column; }
 
 /* Autoidentificación: el visitante busca su problema. */

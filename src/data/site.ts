@@ -18,8 +18,6 @@ export const site = {
   hours: [{ days: 'Horario de atención', time: '[por confirmar]' }],
   mapQuery: 'Calle Bolívar y Oviedo, Ibarra, Ecuador',
   cantons: ['Ibarra', 'Antonio Ante', 'Otavalo', 'Cotacachi', 'Urcuquí'],
-  freeConsult: 'Primera consulta en línea gratis',
-  freeConsultTerms: '[duración y medio por confirmar]',
   // URL del webhook de n8n que guarda cada consulta en Google Sheets.
   // Se define en .env como PUBLIC_FORM_WEBHOOK (ver .env.example y el README).
   // Si queda vacío, el formulario arma el mensaje y lo abre en WhatsApp.

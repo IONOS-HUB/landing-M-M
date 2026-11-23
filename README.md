@@ -44,7 +44,6 @@ Casi todos los datos del estudio están en **`src/data/site.ts`**:
 | Dato | Campo |
 |---|---|
 | WhatsApp, mensaje inicial, correo, dirección, horarios | `site` |
-| Primera consulta gratis y sus condiciones | `site.freeConsult`, `site.freeConsultTerms` |
 | Socios: nombre, cargo, grado de estudio y trayectoria | `partners` |
 | Pasos de cómo trabajamos y valores | `steps`, `values` |
 | Áreas del derecho | `areas` |

@@ -32,7 +32,7 @@ const schema = {
 ---
 <Base
   title="Abogados en Ibarra | Estudio Jurídico Mira & Montesdeoca"
-  description="Estudio jurídico en Ibarra desde 2016. La misma persona escucha, estudia, defiende y te explica tu caso. Primera consulta en línea gratis por WhatsApp."
+  description="Estudio jurídico en Ibarra desde 2016. La misma persona escucha, estudia, defiende y te explica tu caso. Primera consulta gratis por WhatsApp."
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
   <SiteHeader />
@@ -63,9 +63,9 @@ const schema = {
         <div class="hero-copy">
           <p class="hero-gift">
             <Icon name="gift" class="ico" />
-            <span>Tu primera consulta en línea es gratis <span class="hero-gift-terms" set:html={ph(site.freeConsultTerms)} /></span>
+            <span>Primera consulta gratis por WhatsApp.</span>
           </p>
-          <h1 id="hero-title">Donde la experiencia jurídica se convierte en estrategia de defensa.</h1>
+          <h1 id="hero-title">Donde la experiencia jurídica se convierte en estrategia de defensa</h1>
           <p class="hero-lede">
             No necesitas conocer la ley para tomar decisiones importantes, necesitas contar con quien sepa cómo aplicarla. Te escuchamos, estudiamos tu situación y te ofrecemos orientación jurídica clara y estratégica. A tu servicio en Ibarra desde {site.since}.
           </p>
@@ -89,8 +89,6 @@ const schema = {
         </div>
       </div>
     </section>
-
-    <div class="seam" aria-hidden="true"></div>
 
     <!-- ¿TE PASA ESTO? -->
     <section class="section cotton situaciones" id="situaciones" aria-labelledby="situaciones-title">
@@ -121,8 +119,6 @@ const schema = {
         </p>
       </div>
     </section>
-
-    <div class="seam" aria-hidden="true"></div>
 
     <!-- CÓMO TRABAJAMOS -->
     <section class="section indigo proceso" id="proceso" aria-labelledby="proceso-title">
@@ -159,8 +155,6 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
     <!-- SERVICIOS -->
     <section class="section cotton servicios" id="servicios" aria-labelledby="servicios-title">
       <div class="wrap">
@@ -194,8 +188,6 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam to-stone" aria-hidden="true"></div>
-
     <!-- NOSOTROS Y EQUIPO -->
     <section class="section stone estudio" id="estudio" aria-labelledby="estudio-title">
       <div class="wrap estudio-grid">
@@ -228,8 +220,6 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
     <!-- TESTIMONIOS -->
     <section class="section indigo testimonios" id="testimonios" aria-labelledby="testimonios-title">
       <div class="wrap">
@@ -251,8 +241,6 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
     <!-- GALERÍA -->
     <section class="section cotton galeria" id="galeria" aria-labelledby="galeria-title">
       <div class="wrap">
@@ -268,14 +256,10 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
     <CtaBand
       title="¿No sabes por dónde empezar?"
-      text={`Cuéntanos tu situación por WhatsApp. ${site.freeConsult.charAt(0).toUpperCase() + site.freeConsult.slice(1).toLowerCase()}.`}
+      text="Escríbenos por WhatsApp. Tu primera consulta es gratis y te respondemos por mensaje."
     />
-
-    <div class="seam" aria-hidden="true"></div>
 
     <!-- PREGUNTAS FRECUENTES -->
     <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
@@ -304,19 +288,17 @@ const schema = {
       </div>
     </section>
 
-    <div class="seam" aria-hidden="true"></div>
-
     <!-- CONSULTA -->
     <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
       <div class="wrap consulta-grid">
         <div class="consulta-copy">
           <h2 id="consulta-title">Reserva tu consulta gratis.</h2>
           <p class="consulta-lede">
-            Déjanos tus datos y una frase sobre tu caso. Te respondemos para coordinar la consulta en línea.
+            Déjanos tus datos y una frase sobre tu caso. Te escribimos por WhatsApp para atender tu consulta.
           </p>
           <ol class="consulta-next">
             <li><span><strong>Nos escribes</strong> por WhatsApp o con este formulario. Te toma unos 2 minutos.</span></li>
-            <li><span><strong>Tienes tu primera consulta en línea gratis</strong> con el abogado que llevará tu caso. <span set:html={ph(site.freeConsultTerms)} /></span></li>
+            <li><span><strong>Recibes tu primera consulta gratis por mensaje</strong>, respondida por el abogado que llevará tu caso.</span></li>
             <li><span><strong>Te explicamos la estrategia</strong>, los costos y los tiempos antes de decidir.</span></li>
           </ol>
           <div class="consulta-direct">
@@ -329,8 +311,6 @@ const schema = {
         <ContactForm />
       </div>
     </section>
-
-    <div class="seam" aria-hidden="true"></div>
 
     <!-- UBICACIÓN -->
     <section class="section cotton" id="ubicacion" aria-labelledby="ubicacion-title">
@@ -376,7 +356,6 @@ const schema = {
     </section>
 
     <!-- CIERRE -->
-    <div class="seam" aria-hidden="true"></div>
 
     <section class="close indigo" aria-labelledby="close-title">
       <div class="wrap close-inner">
