@@ -91,13 +91,11 @@ El formulario envía los datos como formulario (`application/x-www-form-urlencod
 
 Cualquier texto entre `[corchetes]` es un dato por confirmar y en la página se muestra resaltado en celeste. Al poner el dato real, quita los corchetes.
 
-> ⚠️ Los testimonios incluidos son **de ejemplo**. Reemplázalos solo por testimonios reales con autorización escrita de cada cliente.
+Los testimonios son los reales que envió el estudio (`testimonials` en `src/data/site.ts`). Publica solo testimonios con autorización de cada cliente.
 
 ### Fotos de los socios y del despacho
 
-> ⚠️ Las fotos actuales son **de muestra** (banco libre [Unsplash](https://unsplash.com/license)) y llevan la etiqueta «Foto de muestra». No son del estudio: reemplázalas antes de publicar.
-
-Están en `public/fotos-muestra/`. Para poner las reales, guarda cada foto en `public/` y cambia su ruta en `src/data/site.ts` (campo `photo` de `partners` y `gallery`). Después quita la etiqueta «Foto de muestra» en `src/pages/index.astro`.
+Son las fotos reales del estudio, convertidas a WebP en `public/fotos/` (los originales están en `archivos/`). Para cambiar una, guarda la nueva en `public/fotos/` y cambia su ruta en `src/data/site.ts` (campo `photo` de `partners` y `gallery`; en la galería, también su `alt`). La primera foto de `gallery` es la grande.
 
 ## Estructura
 

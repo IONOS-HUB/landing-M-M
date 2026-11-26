@@ -107,18 +107,6 @@ html { scrollbar-color: var(--navy) var(--cotton); }
   text-align: center;
   padding: 1rem;
 }
-.ghost-tag {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--navy);
-}
-.ghost-label { font-size: 0.92rem; }
-.ghost-label .ph { background: none; box-shadow: none; padding: 0; }
 
 /* ---------- Botones y enlaces ---------- */
 
@@ -224,20 +212,23 @@ html { scrollbar-color: var(--navy) var(--cotton); }
 .hero h1 {
   font-family: 'DM Serif Display', Georgia, serif;
   font-weight: 400;
-  font-size: clamp(2.25rem, 4.3vw, 4rem);
+  /* El término en vh encoge el titular en pantallas bajas (laptops) para que la portada entre completa. */
+  font-size: clamp(2.25rem, min(5.3vw, 9.4vh), 4rem);
   line-height: 1.04;
   letter-spacing: -0.01em;
   color: #fff;
   max-width: 22ch;
 }
 .hero-lede {
-  margin-top: 1.75rem;
+  margin-top: clamp(1.1rem, 2.8vh, 1.75rem);
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   line-height: 1.55;
   max-width: 34rem;
   color: var(--on-indigo-soft);
 }
-.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 2rem; margin-top: 2.5rem; }
+/* Laptops (pantalla baja y ancha): el párrafo se abre una línea más ancho para ganar altura. */
+@media (min-width: 1081px) and (max-height: 820px) { .hero-lede { max-width: 40rem; } }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem 2rem; margin-top: clamp(1.5rem, 4vh, 2.5rem); }
 .hero-actions .link-thread { color: #fff; }
 
 .hero-mark {
@@ -369,7 +360,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 .quote { margin: 0; display: grid; gap: 1.25rem; align-content: start; }
 .quote-0 { grid-column: 1 / span 7; padding-right: clamp(0rem, 3vw, 3rem); }
 .quote-1 { grid-column: 8 / span 5; padding-top: 0.5rem; }
-.quote-2, .quote-3, .quote-4 { grid-column: span 4; border-top: 1px solid var(--line); padding-top: 2rem; }
+.quote-2, .quote-3 { grid-column: span 6; border-top: 1px solid var(--line); padding-top: 2rem; }
 .quote-mark { width: 2.5rem; height: 2.5rem; color: var(--blue); }
 .quote blockquote { margin: 0; font-family: var(--display); font-size: clamp(1.2rem, 1.6vw, 1.4rem); line-height: 1.42; }
 .quote-0 blockquote { font-size: clamp(1.4rem, 2.3vw, 2rem); line-height: 1.3; letter-spacing: -0.005em; }
@@ -381,7 +372,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 .testimonios .section-head p, .testimonios .quote-meta { color: var(--on-indigo-soft); }
 .testimonios .quote blockquote, .testimonios .quote-name { color: var(--white); }
 .testimonios .quote-mark { color: var(--sky); }
-.testimonios .quote-1, .testimonios .quote-2, .testimonios .quote-3, .testimonios .quote-4 { border-color: rgb(223 232 255 / 0.16); }
+.testimonios .quote-1, .testimonios .quote-2, .testimonios .quote-3 { border-color: rgb(223 232 255 / 0.16); }
 
 /* Reconocimientos */
 
@@ -513,7 +504,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
   .proceso-copy { position: static; }
 
   .quotes { grid-template-columns: 1fr; }
-  .quote-0, .quote-1, .quote-2, .quote-3, .quote-4 { grid-column: auto; grid-row: auto; padding-right: 0; }
+  .quote-0, .quote-1, .quote-2, .quote-3 { grid-column: auto; grid-row: auto; padding-right: 0; }
   .quote-1 { border-top: 1px solid var(--line); padding-top: 2rem; }
 }
 
@@ -652,7 +643,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 
 /* ---------- Contenido del PRD ---------- */
 
-.hero-facts { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.75rem; color: var(--on-indigo-soft); font-size: 1rem; }
+.hero-facts { margin-top: clamp(1.25rem, 3vh, 2rem); display: flex; flex-wrap: wrap; gap: 0.6rem 1.75rem; color: var(--on-indigo-soft); font-size: 1rem; }
 .hero-facts li { display: inline-flex; align-items: center; gap: 0.45rem; }
 .hero-facts .ico { color: var(--sky); width: 1.05em; height: 1.05em; }
 .hero-facts strong { color: #fff; }
@@ -680,18 +671,26 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
 
 .estudio-quote { font-family: var(--display); font-size: 1.3rem; line-height: 1.4; color: var(--navy); padding-left: 1.25rem; border-left: 2px solid var(--blue); }
 
-.galeria-title { margin-bottom: 1.75rem; }
-.gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(9rem, 14vw, 13rem); gap: 0.75rem; }
-.ghost-photo { min-height: 0; }
-/* Fotos de muestra: llenan la celda y conservan una etiqueta que avisa que no son del estudio. */
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+.ghost-photo { min-height: 0; aspect-ratio: 4 / 5; }
+/* Las fotos del equipo son verticales: la primera (los dos socios) ocupa 2×2 y las demás quedan en 4:5. */
+.gallery li:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
 .ghost.has-photo { border: 0; overflow: hidden; background: var(--indigo-800); }
 .ghost.has-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.ghost.has-photo .ghost-tag { z-index: 1; text-align: left; max-width: calc(100% - 1.5rem); line-height: 1.35; padding: 0.3rem 0.55rem; background: rgb(5 15 51 / 0.78); color: var(--white); }
-.g-wide { grid-column: span 7; }
-.g-tall { grid-column: span 5; grid-row: span 2; }
-.g-square { grid-column: span 3; }
-.gallery .g-square + .g-square { grid-column: span 4; }
-.gallery li:last-child { grid-column: 1 / -1; }
+/* Pie de foto sobre un velo índigo que solo oscurece el borde inferior, para que la foto siga mandando. */
+.gallery-cap {
+  position: absolute; inset: auto 0 0; z-index: 1;
+  padding: 3rem 1.1rem 1rem;
+  background: linear-gradient(to top, rgb(5 15 51 / 0.88), rgb(5 15 51 / 0.55) 55%, transparent);
+  color: #fff; font-size: 1rem; line-height: 1.35; text-align: left;
+}
+.gallery li:first-child .gallery-cap { padding: 5rem 1.5rem 1.4rem; font-family: var(--display); font-size: clamp(1.15rem, 1.6vw, 1.45rem); }
+/* En el celular las fotos pequeñas no tienen sitio para el velo: el pie va debajo, en tinta. */
+@media (max-width: 680px) {
+  .gallery li:not(:first-child) { aspect-ratio: auto; display: block; padding: 0; background: none; overflow: visible; }
+  .gallery li:not(:first-child) img { position: static; aspect-ratio: 4 / 5; height: auto; }
+  .gallery li:not(:first-child) .gallery-cap { position: static; padding: 0.55rem 0 0; background: none; color: var(--ink-soft); font-size: 0.97rem; }
+}
 
 .faq-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
 .faq-intro { position: sticky; top: 6.5rem; display: grid; gap: 1.1rem; justify-items: start; }
@@ -742,9 +741,8 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
   .area-row-items { grid-column: 1 / -1; grid-row: 2; }
   .faq-grid { grid-template-columns: 1fr; }
   .faq-intro { position: static; }
-  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 9rem; }
-  .gallery li, .gallery .g-square + .g-square, .gallery li:last-child { grid-column: span 1; grid-row: span 1; }
-  .gallery .g-wide { grid-column: span 2; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery li:first-child { grid-row: auto; aspect-ratio: 4 / 5; }
 }
 @media (max-width: 680px) {
   .faq-a { padding: 0 0 1.25rem 3.25rem; }
@@ -772,7 +770,7 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
   gap: 0.6rem;
   align-self: start;
   justify-self: start;
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 2.4vh, 1.5rem);
   padding: 0.55rem 0.9rem;
   border: 1px solid rgb(58 190 253 / 0.6);
   color: #fff;
@@ -842,8 +840,4 @@ html:not(.js) .tl-node { background: var(--sky); border-color: var(--sky); box-s
   .site-footer { padding-bottom: 6rem; }
 }
 
-@media (max-width: 680px) {
-  .ghost-tag-what { display: none; }
-  .ghost.has-photo .ghost-tag { top: 0.5rem; left: 0.5rem; font-size: 0.66rem; }
-}
 .ghost-portrait.has-photo img { object-position: 50% 15%; }

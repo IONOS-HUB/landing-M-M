@@ -20,7 +20,7 @@ colors:
 typography:
   display:
     fontFamily: "DM Serif Display, Georgia, serif"
-    fontSize: "clamp(2.25rem, 4.3vw, 4rem)"
+    fontSize: "clamp(2.25rem, min(5.3vw, 9.4vh), 4rem)"
     fontWeight: 700
     lineHeight: 1.04
     letterSpacing: "-0.02em"
@@ -171,7 +171,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 **Character:** The logotype's own serif, set bold and tight for every heading, paired with its humanist sans sibling for plain-spoken reading. Brand-binding: the logotype is Quattrocento.
 
 ### Hierarchy
-- **Display** (700, clamp 2.25–4rem, 1.04, -0.02em): the hero headline only, max ~22ch (the client's headline is a full sentence; it sets in 3 lines on desktop). Set in DM Serif Display 400 (its only weight; already heavy), all white, max ~22ch: the heavy high-contrast serif makes the promise the loudest line on the page while its hairlines stay sturdy on screen. This is the only heading outside Quattrocento.
+- **Display** (700, clamp 2.25–4rem, 1.04, -0.02em): the hero headline only, max ~22ch (the client's headline is a full sentence; it sets in 3 lines on desktop). Set in DM Serif Display 400 (its only weight; already heavy), all white, max ~22ch: the heavy high-contrast serif makes the promise the loudest line on the page while its hairlines stay sturdy on screen. This is the only heading outside Quattrocento. Its size and the hero gaps also scale with viewport height (vh terms) so the whole first view, down to the trust facts line, fits on short laptop screens.
 - **Display Index** (700, clamp 3–5.75rem, 0.95, -0.03em, navy): practice-area names used as giant index words.
 - **Headline** (700, clamp 2–3.4rem, 1.08, -0.015em): section titles, balanced wrap.
 - **Headline Long** (`.h-long`, 700, clamp 1.8–2.65rem, 1.12): section titles that are full sentences (situaciones, testimonios, preguntas).
@@ -189,7 +189,7 @@ A monochrome blue world: deep indigos for ground, the logo's navy-to-sky gradien
 
 ## Layout
 
-A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid: lead quote 7 + one quote 5, then three quotes at 4 columns each under a 1px rule. Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a straight cut between grounds.
+A centered 1240px wrap with fluid gutter (clamp 1–3rem). Indigo sections are a plain indigo ground with a soft radial glow; no rules, no fiber texture. Sections split asymmetrically: 5/7 or 6/5 fractions (intro left, evidence right), section heads in a 1.1/1 split with the paragraph bottom-aligned to the heading. Testimonials sit on an explicit 12-column grid: lead quote 7 + one quote 5, then two quotes at 6 columns each under a 1px rule. The gallery is a 4-column grid of vertical 4:5 photos with the partners' portrait spanning 2×2 (2 columns on mobile, the lead photo full width). The gallery opens with a standard section head (title + one short paragraph) and every photo carries a one-line caption on a bottom indigo scrim; on mobile the small photos drop the scrim and set the caption below in ink-soft. Vertical rhythm is the section padding (clamp 5–8.5rem); every section change is a straight cut between grounds.
 
 Responsive: at 960px every split collapses to one column, the nav becomes a full-screen indigo sheet with display-serif links, the hero isotipo becomes a 22%-opacity watermark behind the copy, and the sticky loom is replaced by a thin weft bar under each step. At 680px the header CTA drops to icon-only and primary CTAs go full width.
 

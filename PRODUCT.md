@@ -48,7 +48,7 @@ La misma persona que te escucha en la primera conversación es quien piensa tu c
 ## Evidence on Hand
 
 - Fuente: `archivos/` (PRD y cuestionario del cliente, 2026-10-25; fuera de git).
-- El cliente dice tener testimonios, títulos y fotos profesionales, pero aún no los envió. Testimonios, galería y grados se muestran como placeholders etiquetados.
+- Testimonios, títulos y fotos profesionales ya son los reales que envió el estudio.
 - Discreción: no publicar nombres de clientes ni detalles de casos sin autorización escrita.
 
 ## Product Principles

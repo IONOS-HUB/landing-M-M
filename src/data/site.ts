@@ -28,14 +28,14 @@ export const partners = [
   {
     name: 'Alexander Mira Quelal',
     title: 'Socio',
-    photo: '/fotos-muestra/socio-alexander.webp',
+    photo: '/fotos/socio-alexander.webp',
     degree: 'MSc. Derecho Constitucional',
     bio: 'Especialista en las áreas de Penal y Constitucional.',
   },
   {
     name: 'Melanie Montesdeoca Rodríguez',
     title: 'Socia',
-    photo: '/fotos-muestra/socia-melanie.webp',
+    photo: '/fotos/socia-melanie.webp',
     degree: 'MSc. Derecho Constitucional con mención en Derecho Procesal',
     bio: 'Especialista en las áreas de Violencia de Género y Civil.',
   },
@@ -146,50 +146,41 @@ export const faqs = [
 export const testimonials = [
   {
     quote:
-      'Tenía valores pendientes de cobro y no sabía qué alternativas legales podía utilizar para recuperarlos. Recibí asesoría sobre las vías de reclamación y el acompañamiento necesario para gestionar el cobro de manera formal y responsable. Una atención clara y profesional.',
-    name: 'Sr. P.J.A.M.',
+      'Tenía valores pendientes de cobro y no sabía qué alternativas legales usar para recuperarlos. Recibí asesoría sobre las vías de reclamación y el acompañamiento para gestionar el cobro de forma formal y responsable. Una atención clara y profesional.',
+    name: 'P.J.A.M.',
     matter: 'Recuperación de cartera vencida',
     place: 'Ibarra',
   },
   {
     quote:
-      'Tenía inconvenientes relacionados con la documentación y situación legal de un inmueble. Gracias a la asesoría recibida pude comprender los pasos necesarios para proteger mis intereses y avanzar con mayor seguridad en el trámite. Destaco la claridad y responsabilidad en la atención.',
-    name: 'Sra. K.M.M.T.',
-    matter: 'Regularización y documentación de inmueble',
-    place: 'Otavalo',
-  },
-  {
-    quote:
       'Después de un accidente de tránsito no sabía cómo proceder ni cuáles eran mis derechos. Recibí asesoría oportuna, me explicaron las implicaciones legales y me ayudaron a afrontar el procedimiento con mayor seguridad y tranquilidad.',
-    name: 'Sr. J.C.Q.P.',
+    name: 'J.C.Q.P.',
     matter: 'Accidente de tránsito',
     place: 'Antonio Ante',
   },
   {
     quote:
-      'Atravesar un proceso penal fue una situación muy difícil para mi familia. Desde el inicio recibimos una explicación honesta sobre nuestra situación y una defensa seria y comprometida. Siempre tuvimos información sobre el proceso y sentimos que nuestros derechos fueron tomados en cuenta.',
-    name: 'Sra. C.A.P.G.',
+      'Atravesar un proceso penal fue muy difícil para mi familia. Desde el inicio recibimos una explicación honesta de nuestra situación y una defensa seria y comprometida. Siempre tuvimos información sobre el proceso y sentimos que nuestros derechos fueron tomados en cuenta.',
+    name: 'C.A.P.G.',
     matter: 'Proceso penal',
     place: 'Quito',
   },
   {
     quote:
-      'Atravesaba una situación familiar complicada y necesitaba encontrar una solución que protegiera mis derechos y los de mi familia. Desde el primer momento recibí una atención cercana, respetuosa y profesional. Me explicaron cada paso del proceso con claridad, atendieron mis inquietudes y me brindaron el acompañamiento necesario para afrontar esta situación con mayor tranquilidad. Agradezco especialmente su sensibilidad, discreción y compromiso durante todo el proceso.',
-    name: 'Sr. A.A.T.B.',
+      'Atravesaba una situación familiar complicada y necesitaba una solución que protegiera mis derechos y los de mi familia. Desde el primer momento recibí una atención cercana y profesional. Me explicaron cada paso con claridad, atendieron mis inquietudes y me acompañaron con mayor tranquilidad. Agradezco su sensibilidad, discreción y compromiso.',
+    name: 'A.A.T.B.',
     matter: 'Pensión alimenticia y régimen de visitas',
     place: 'Ibarra',
   },
 ];
 
-// Fotos profesionales del equipo y del despacho (pendientes de recibir).
-// Mientras tanto se muestran fotos de MUESTRA de Unsplash (public/fotos-muestra/):
-// no son del estudio. Reemplázalas por las fotos reales antes de publicar.
+// Fotos del equipo en el despacho (public/fotos/). La primera es la grande.
 export const gallery = [
-  { label: 'Foto del despacho', ratio: 'wide', photo: '/fotos-muestra/despacho.webp' },
-  { label: 'Foto de los socios', ratio: 'tall', photo: '/fotos-muestra/socios.webp' },
-  { label: 'Foto de reunión con cliente', ratio: 'square', photo: '/fotos-muestra/reunion.webp' },
-  { label: 'Foto de la sala de espera', ratio: 'square', photo: '/fotos-muestra/sala-espera.webp' },
-  { label: 'Foto del edificio SAUD', ratio: 'wide', photo: '/fotos-muestra/edificio.webp' },
+  { photo: '/fotos/socios.webp', caption: 'Atención directa de socios.', alt: 'Alexander Mira Quelal y Melanie Montesdeoca Rodríguez en su despacho' },
+  { photo: '/fotos/estudio-caso.webp', caption: 'Estudio técnico de cada expediente.', alt: 'Melanie Montesdeoca revisa un expediente junto a una estatua de la justicia' },
+  { photo: '/fotos/firma.webp', caption: 'Estrategia y transparencia.', alt: 'Revisión y firma de un documento junto al portátil' },
+  { photo: '/fotos/justicia.webp', caption: 'Ética y rigor profesional.', alt: 'Estatua de la justicia sobre el escritorio del despacho' },
+  { photo: '/fotos/constitucion.webp', caption: 'Sustento jurídico.', alt: 'Códigos y la Constitución de 2008 en la biblioteca del estudio' },
 ];
 
 export const waLink = (message = site.whatsappMessage) =>

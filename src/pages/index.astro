@@ -1,13 +1,24 @@
 ---
-import Base from '../layouts/Base.astro';
-import Isotipo from '../components/Isotipo.astro';
-import Icon from '../components/Icon.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import CtaBand from '../components/CtaBand.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { site, partners, areas, steps, values, faqs, testimonials, gallery, situations, waLink } from '../data/site';
-import { ph } from '../lib/ph';
+import Base from "../layouts/Base.astro";
+import Isotipo from "../components/Isotipo.astro";
+import Icon from "../components/Icon.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import CtaBand from "../components/CtaBand.astro";
+import ContactForm from "../components/ContactForm.astro";
+import {
+  site,
+  partners,
+  areas,
+  steps,
+  values,
+  faqs,
+  testimonials,
+  gallery,
+  situations,
+  waLink,
+} from "../data/site";
+import { ph } from "../lib/ph";
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`;
 const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery)}`;
@@ -15,44 +26,70 @@ const years = new Date().getFullYear() - site.since;
 
 // Datos de negocio local para buscadores.
 const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'LegalService',
+  "@context": "https://schema.org",
+  "@type": "LegalService",
   name: site.name,
   foundingDate: String(site.since),
   telephone: `+${site.whatsapp}`,
   address: {
-    '@type': 'PostalAddress',
+    "@type": "PostalAddress",
     streetAddress: `${site.address}, ${site.addressNote}`,
-    addressLocality: 'Ibarra',
-    addressRegion: 'Imbabura',
-    addressCountry: 'EC',
+    addressLocality: "Ibarra",
+    addressRegion: "Imbabura",
+    addressCountry: "EC",
   },
   areaServed: site.cantons,
 };
 ---
+
 <Base
   title="Abogados en Ibarra | Estudio Jurídico Mira & Montesdeoca"
   description="Estudio jurídico en Ibarra desde 2016. La misma persona escucha, estudia, defiende y te explica tu caso. Primera consulta gratis por WhatsApp."
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schema)}
+  />
   <SiteHeader />
 
   <!-- Relieve del isotipo: bisel fino y parejo (luz arriba a la izquierda, sombra abajo a la derecha) sin lavar el degradado. -->
   <svg class="sr-only" aria-hidden="true" focusable="false">
-    <filter id="iso-relief" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <filter
+      id="iso-relief"
+      x="-5%"
+      y="-5%"
+      width="110%"
+      height="110%"
+      color-interpolation-filters="sRGB"
+    >
       <feOffset in="SourceAlpha" dx="1.6" dy="1.6" result="down" />
-      <feComposite in="SourceAlpha" in2="down" operator="out" result="litEdge" />
+      <feComposite
+        in="SourceAlpha"
+        in2="down"
+        operator="out"
+        result="litEdge"
+      />
       <feGaussianBlur in="litEdge" stdDeviation="0.7" result="litSoft" />
       <feFlood flood-color="#ffffff" flood-opacity="0.75" />
       <feComposite in2="litSoft" operator="in" />
       <feComposite in2="SourceAlpha" operator="in" result="lit" />
       <feOffset in="SourceAlpha" dx="-1.6" dy="-1.6" result="up" />
-      <feComposite in="SourceAlpha" in2="up" operator="out" result="shadeEdge" />
+      <feComposite
+        in="SourceAlpha"
+        in2="up"
+        operator="out"
+        result="shadeEdge"
+      />
       <feGaussianBlur in="shadeEdge" stdDeviation="0.7" result="shadeSoft" />
       <feFlood flood-color="#0a2a7a" flood-opacity="0.5" />
       <feComposite in2="shadeSoft" operator="in" />
       <feComposite in2="SourceAlpha" operator="in" result="shade" />
-      <feMerge><feMergeNode in="SourceGraphic" /><feMergeNode in="lit" /><feMergeNode in="shade" /></feMerge>
+      <feMerge>
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="lit" />
+        <feMergeNode in="shade" />
+      </feMerge>
     </filter>
   </svg>
 
@@ -63,14 +100,25 @@ const schema = {
         <div class="hero-copy">
           <p class="hero-gift">
             <Icon name="gift" class="ico" />
-            <span>Primera consulta gratis por WhatsApp.</span>
+            <span>Analizamos tu caso sin costo. Escríbenos por WhatsApp.</span>
           </p>
-          <h1 id="hero-title">Donde la experiencia jurídica se convierte en estrategia de defensa</h1>
+          <h1 id="hero-title">
+            Donde la experiencia jurídica se convierte en estrategia de defensa
+          </h1>
           <p class="hero-lede">
-            No necesitas conocer la ley para tomar decisiones importantes, necesitas contar con quien sepa cómo aplicarla. Te escuchamos, estudiamos tu situación y te ofrecemos orientación jurídica clara y estratégica. A tu servicio en Ibarra desde {site.since}.
+            No necesitas conocer la ley para tomar decisiones importantes,
+            necesitas contar con quien sepa cómo aplicarla. Te escuchamos,
+            estudiamos tu situación y te ofrecemos orientación jurídica clara y
+            estratégica. A tu servicio en Ibarra desde {site.since}.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-hero">
+            <a
+              class="btn btn-wa btn-lg"
+              href={waLink()}
+              target="_blank"
+              rel="noopener"
+              data-track="wa-hero"
+            >
               <Icon name="whatsapp" class="ico" />
               <span>Quiero mi consulta gratis</span>
             </a>
@@ -79,56 +127,99 @@ const schema = {
             </a>
           </div>
           <ul class="hero-facts">
-            <li><Icon name="lock" class="ico" /> <strong>Discreción absoluta</strong></li>
-            <li><Icon name="check" class="ico" /> <strong>{years} años de experiencia</strong></li>
-            <li><Icon name="pin" class="ico" /> <strong>{site.city}</strong></li>
+            <li>
+              <Icon name="lock" class="ico" />{" "}
+              <strong>Discreción absoluta</strong>
+            </li>
+            <li>
+              <Icon name="check" class="ico" />{" "}
+              <strong>{years} años de experiencia</strong>
+            </li>
+            <li>
+              <Icon name="pin" class="ico" /> <strong>{site.city}</strong>
+            </li>
           </ul>
         </div>
         <div class="hero-mark" aria-hidden="true">
-          <div class="iso-relief"><div class="woven-m"></div></div>
+          <div class="iso-relief">
+            <div class="woven-m"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ¿TE PASA ESTO? -->
-    <section class="section cotton situaciones" id="situaciones" aria-labelledby="situaciones-title">
+    <section
+      class="section cotton situaciones"
+      id="situaciones"
+      aria-labelledby="situaciones-title"
+    >
       <div class="wrap">
         <div class="section-head">
-          <h2 class="h-long" id="situaciones-title">¿Estás atravesando una situación que requiere respaldo jurídico?</h2>
-          <p>Toca tu situación y se abrirá WhatsApp con el mensaje ya escrito. Solo tienes que enviarlo.</p>
+          <h2 class="h-long" id="situaciones-title">
+            ¿Estás atravesando una situación que requiere respaldo jurídico?
+          </h2>
+          <p>
+            Toca tu situación y se abrirá WhatsApp con el mensaje ya escrito.
+            Solo tienes que enviarlo.
+          </p>
         </div>
         <ul class="sit-list">
           {situations.map((t) => (
             <li>
               <a
                 class="sit-item"
-                href={waLink(`Hola, vengo de la página web. Necesito asesoría sobre esta situación: ${t.toLowerCase()}.`)}
+                href={waLink(
+                  `Hola, vengo de la página web. Necesito asesoría sobre esta situación: ${t.toLowerCase()}.`,
+                )}
                 target="_blank"
                 rel="noopener"
                 data-track="wa-situacion"
               >
                 <span class="sit-text">{t}</span>
-                <span class="sit-cta">Escribir <Icon name="arrow" class="ico" /></span>
+                <span class="sit-cta">
+                  Escribir <Icon name="arrow" class="ico" />
+                </span>
               </a>
             </li>
           ))}
         </ul>
         <p class="sit-more">
-          ¿No está tu caso? <a href={waLink()} target="_blank" rel="noopener" data-track="wa-situacion-otro">Cuéntanoslo igual</a>:
-          atendemos todas las áreas del derecho.
+          ¿No está tu caso?{" "}
+          <a
+            href={waLink()}
+            target="_blank"
+            rel="noopener"
+            data-track="wa-situacion-otro"
+          >
+            Cuéntanoslo igual
+          </a>
+          : atendemos todas las áreas del derecho.
         </p>
       </div>
     </section>
 
     <!-- CÓMO TRABAJAMOS -->
-    <section class="section indigo proceso" id="proceso" aria-labelledby="proceso-title">
+    <section
+      class="section indigo proceso"
+      id="proceso"
+      aria-labelledby="proceso-title"
+    >
       <div class="wrap proceso-grid">
         <div class="proceso-copy">
-          <h2 id="proceso-title">Un solo hilo, de principio a fin.</h2>
+          <h2 id="proceso-title">Detrás de cada caso, un equipo completo.</h2>
           <p class="proceso-lede">
-            Aquí no hay departamentos que se pasan el expediente. Quien te escucha en la primera conversación es quien piensa tu caso, lo defiende y te llama para contarte cómo va.
+            Aquí no hay departamentos que se pasan el expediente. Quien te
+            escucha en la primera conversación es quien piensa tu caso, lo
+            defiende y te llama para contarte cómo va.
           </p>
-          <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-proceso">
+          <a
+            class="btn btn-wa btn-lg"
+            href={waLink()}
+            target="_blank"
+            rel="noopener"
+            data-track="wa-proceso"
+          >
             <Icon name="whatsapp" class="ico" />
             <span>Escríbenos por WhatsApp</span>
           </a>
@@ -156,13 +247,18 @@ const schema = {
     </section>
 
     <!-- SERVICIOS -->
-    <section class="section cotton servicios" id="servicios" aria-labelledby="servicios-title">
+    <section
+      class="section cotton servicios"
+      id="servicios"
+      aria-labelledby="servicios-title"
+    >
       <div class="wrap">
         <div class="section-head">
           <h2 id="servicios-title">Todas las áreas del derecho.</h2>
           <p>
-            Te acompañamos en conflictos y trámites que afectan tus derechos o tu patrimonio. Busca tu
-            situación o, si no sabes dónde encaja, escríbenos igual.
+            Te acompañamos en conflictos y trámites que afectan tus derechos o
+            tu patrimonio. Busca tu situación o, si no sabes dónde encaja,
+            escríbenos igual.
           </p>
         </div>
         <ul class="area-index">
@@ -172,7 +268,9 @@ const schema = {
               <p class="area-row-items">{a.items}</p>
               <a
                 class="link-thread link-dark"
-                href={waLink(`Hola, vengo de la página web. Necesito asesoría en ${a.name.toLowerCase()}.`)}
+                href={waLink(
+                  `Hola, vengo de la página web. Necesito asesoría en ${a.name.toLowerCase()}.`,
+                )}
                 target="_blank"
                 rel="noopener"
                 data-track="wa-area"
@@ -183,30 +281,48 @@ const schema = {
             </li>
           ))}
         </ul>
-        <p class="area-note">
-        </p>
+        <p class="area-note"></p>
       </div>
     </section>
 
     <!-- NOSOTROS Y EQUIPO -->
-    <section class="section stone estudio" id="estudio" aria-labelledby="estudio-title">
+    <section
+      class="section stone estudio"
+      id="estudio"
+      aria-labelledby="estudio-title"
+    >
       <div class="wrap estudio-grid">
         <div class="estudio-intro">
-          <p class="estudio-years" aria-hidden="true">{years}<span> años</span></p>
-          <h2 id="estudio-title">Una trayectoria. Una identidad. Un compromiso con cada defensa.</h2>
+          <p class="estudio-years" aria-hidden="true">
+            {years}
+            <span> años</span>
+          </p>
+          <h2 id="estudio-title">
+            Una trayectoria. Una identidad. Un compromiso con cada defensa.
+          </h2>
           <p class="big-p">
-            <strong>Mira &amp; Montesdeoca</strong> nació en {site.since}, cuando su primer socio empezó este
-            proyecto. Hoy son dos socios con un mismo método: leer tu situación completa, entenderla en su
+            <strong>Mira &amp; Montesdeoca</strong> nació en {site.since},
+            cuando su primer socio empezó este proyecto. Hoy son dos socios con
+            un mismo método: leer tu situación completa, entenderla en su
             contexto y hacerse cargo de ella.
           </p>
-          <p class="estudio-quote">«Cuando nos eliges, no estás comprando promesas. Pones tu situación en manos de alguien que asume el peso por ti.».</p>
+          <p class="estudio-quote">
+            «Cuando nos eliges, no estás comprando promesas. Pones tu situación
+            en manos de alguien que asume el peso por ti.».
+          </p>
         </div>
         <ul class="partners">
           {partners.map((p) => (
             <li class="partner">
               <div class="ghost ghost-portrait has-photo">
-                <img src={p.photo} alt="" width="720" height="900" loading="lazy" decoding="async" />
-                <span class="ghost-tag">Foto de muestra</span>
+                <img
+                  src={p.photo}
+                  alt={`Retrato de ${p.name}`}
+                  width="900"
+                  height="1351"
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               <div class="partner-body">
                 <h3>{p.name}</h3>
@@ -221,10 +337,17 @@ const schema = {
     </section>
 
     <!-- TESTIMONIOS -->
-    <section class="section indigo testimonios" id="testimonios" aria-labelledby="testimonios-title">
+    <section
+      class="section indigo testimonios"
+      id="testimonios"
+      aria-labelledby="testimonios-title"
+    >
       <div class="wrap">
         <div class="section-head">
-          <h2 class="h-long" id="testimonios-title">La confianza de personas, familias y empresas de Ibarra y sus alrededores ha construido nuestra trayectoria jurídica.</h2>
+          <h2 class="h-long" id="testimonios-title">
+            La confianza de personas, familias y empresas de Ibarra y sus
+            alrededores ha construido nuestra trayectoria jurídica.
+          </h2>
         </div>
         <div class="quotes">
           {testimonials.map((t, i) => (
@@ -233,7 +356,9 @@ const schema = {
               <blockquote set:html={ph(t.quote)} />
               <figcaption>
                 <span class="quote-name" set:html={ph(t.name)} />
-                <span class="quote-meta">{t.matter} · {t.place}</span>
+                <span class="quote-meta">
+                  {t.matter} · {t.place}
+                </span>
               </figcaption>
             </figure>
           ))}
@@ -242,14 +367,27 @@ const schema = {
     </section>
 
     <!-- GALERÍA -->
-    <section class="section cotton galeria" id="galeria" aria-labelledby="galeria-title">
+    <section
+      class="section cotton galeria"
+      id="galeria"
+      aria-labelledby="galeria-title"
+    >
       <div class="wrap">
-        <h2 id="galeria-title" class="galeria-title">El despacho.</h2>
+        <div class="section-head">
+          <h2 id="galeria-title">
+            Respaldo jurídico real, directo y transparente.
+          </h2>
+          <p>
+            Tu caso nunca pasa de mano en mano. Desde nuestro despacho en
+            Ibarra, evaluamos cada detalle con rigor técnico y ejecutamos tu
+            defensa hasta el cierre del proceso.
+          </p>
+        </div>
         <ul class="gallery">
           {gallery.map((g) => (
-            <li class={`ghost ghost-photo has-photo g-${g.ratio}`}>
-              <img src={g.photo} alt="" loading="lazy" decoding="async" />
-              <span class="ghost-tag">Foto de muestra<span class="ghost-tag-what"> · {g.label.replace('Foto ', '')}</span></span>
+            <li class="ghost ghost-photo has-photo">
+              <img src={g.photo} alt={g.alt} loading="lazy" decoding="async" />
+              <p class="gallery-cap">{g.caption}</p>
             </li>
           ))}
         </ul>
@@ -262,13 +400,33 @@ const schema = {
     />
 
     <!-- PREGUNTAS FRECUENTES -->
-    <section class="section cotton faq" id="preguntas" aria-labelledby="faq-title">
+    <section
+      class="section cotton faq"
+      id="preguntas"
+      aria-labelledby="faq-title"
+    >
       <div class="wrap faq-grid">
         <div class="faq-intro">
-          <h2 class="h-long" id="faq-title">Tus dudas merecen respuestas claras. Tus decisiones, asesoría honesta.</h2>
-          <p>Respuestas generales para orientarte. Tu caso concreto lo revisamos contigo en la primera consulta gratis.</p>
-          <p class="faq-note"><span class="ph">Respuestas en borrador</span> </p>
-          <a class="btn btn-solid" href={waLink('Hola, vengo de la página web. Tengo una duda sobre mi caso.')} target="_blank" rel="noopener" data-track="wa-faq">
+          <h2 class="h-long" id="faq-title">
+            Tus dudas merecen respuestas claras. Tus decisiones, asesoría
+            honesta.
+          </h2>
+          <p>
+            Respuestas generales para orientarte. Tu caso concreto lo revisamos
+            contigo en la primera consulta gratis.
+          </p>
+          <p class="faq-note">
+            <span class="ph">Respuestas en borrador</span>
+          </p>
+          <a
+            class="btn btn-solid"
+            href={waLink(
+              "Hola, vengo de la página web. Tengo una duda sobre mi caso.",
+            )}
+            target="_blank"
+            rel="noopener"
+            data-track="wa-faq"
+          >
             <Icon name="whatsapp" class="ico" />
             <span>¿Tienes otra duda? Escríbenos</span>
           </a>
@@ -277,7 +435,9 @@ const schema = {
           {faqs.map((f, i) => (
             <details class="faq-item" name="faq">
               <summary>
-                <span class="faq-n" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <span class="faq-n" aria-hidden="true">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
                 <span class="faq-q">{f.q}</span>
                 <span class="faq-toggle" aria-hidden="true"></span>
               </summary>
@@ -289,21 +449,47 @@ const schema = {
     </section>
 
     <!-- CONSULTA -->
-    <section class="section indigo consulta" id="consulta" aria-labelledby="consulta-title">
+    <section
+      class="section indigo consulta"
+      id="consulta"
+      aria-labelledby="consulta-title"
+    >
       <div class="wrap consulta-grid">
         <div class="consulta-copy">
           <h2 id="consulta-title">Reserva tu consulta gratis.</h2>
           <p class="consulta-lede">
-            Déjanos tus datos y una frase sobre tu caso. Te escribimos por WhatsApp para atender tu consulta.
+            Déjanos tus datos y una frase sobre tu caso. Te escribimos por
+            WhatsApp para atender tu consulta.
           </p>
           <ol class="consulta-next">
-            <li><span><strong>Nos escribes</strong> por WhatsApp o con este formulario. Te toma unos 2 minutos.</span></li>
-            <li><span><strong>Recibes tu primera consulta gratis por mensaje</strong>, respondida por el abogado que llevará tu caso.</span></li>
-            <li><span><strong>Te explicamos la estrategia</strong>, los costos y los tiempos antes de decidir.</span></li>
+            <li>
+              <span>
+                <strong>Nos escribes</strong> por WhatsApp o con este
+                formulario. Te toma unos 2 minutos.
+              </span>
+            </li>
+            <li>
+              <span>
+                <strong>Recibes tu primera consulta gratis por mensaje</strong>,
+                respondida por el abogado que llevará tu caso.
+              </span>
+            </li>
+            <li>
+              <span>
+                <strong>Te explicamos la estrategia</strong>, los costos y los
+                tiempos antes de decidir.
+              </span>
+            </li>
           </ol>
           <div class="consulta-direct">
             <p>¿Prefieres escribir directo?</p>
-            <a class="link-thread" href={waLink()} target="_blank" rel="noopener" data-track="wa-consulta">
+            <a
+              class="link-thread"
+              href={waLink()}
+              target="_blank"
+              rel="noopener"
+              data-track="wa-consulta"
+            >
               <Icon name="whatsapp" class="ico" /> {site.whatsappDisplay}
             </a>
           </div>
@@ -313,34 +499,74 @@ const schema = {
     </section>
 
     <!-- UBICACIÓN -->
-    <section class="section cotton" id="ubicacion" aria-labelledby="ubicacion-title">
+    <section
+      class="section cotton"
+      id="ubicacion"
+      aria-labelledby="ubicacion-title"
+    >
       <div class="wrap ubic-grid">
         <div class="ubic-info">
           <h2 id="ubicacion-title">Estamos en el centro de Ibarra.</h2>
-          <p>Te recibimos en el despacho. Para no hacerte esperar, escríbenos antes y reservamos tu hora.</p>
+          <p>
+            Te recibimos en el despacho. Para no hacerte esperar, escríbenos
+            antes y reservamos tu hora.
+          </p>
           <dl class="contact-list">
             <div>
-              <dt><Icon name="pin" class="ico" /> Dirección</dt>
-              <dd>{site.address}<br />{site.addressNote}<br />{site.city}</dd>
+              <dt>
+                <Icon name="pin" class="ico" /> Dirección
+              </dt>
+              <dd>
+                {site.address}
+                <br />
+                {site.addressNote}
+                <br />
+                {site.city}
+              </dd>
             </div>
             <div>
-              <dt><Icon name="clock" class="ico" /> Horario</dt>
+              <dt>
+                <Icon name="clock" class="ico" /> Horario
+              </dt>
               <dd>
                 {site.hours.map((h) => (
-                  <span class="hour-row"><span>{h.days}</span> <span set:html={ph(h.time)} /></span>
+                  <span class="hour-row">
+                    <span>{h.days}</span> <span set:html={ph(h.time)} />
+                  </span>
                 ))}
               </dd>
             </div>
             <div>
-              <dt><Icon name="whatsapp" class="ico" /> WhatsApp</dt>
-              <dd><a href={waLink()} target="_blank" rel="noopener" data-track="wa-ubicacion">{site.whatsappDisplay}</a></dd>
+              <dt>
+                <Icon name="whatsapp" class="ico" /> WhatsApp
+              </dt>
+              <dd>
+                <a
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener"
+                  data-track="wa-ubicacion"
+                >
+                  {site.whatsappDisplay}
+                </a>
+              </dd>
             </div>
             <div>
-              <dt><Icon name="mail" class="ico" /> Correo</dt>
-              <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+              <dt>
+                <Icon name="mail" class="ico" /> Correo
+              </dt>
+              <dd>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </dd>
             </div>
           </dl>
-          <a class="link-thread link-dark" href={mapLink} target="_blank" rel="noopener" data-track="mapa">
+          <a
+            class="link-thread link-dark"
+            href={mapLink}
+            target="_blank"
+            rel="noopener"
+            data-track="mapa"
+          >
             Abrir en Google Maps <Icon name="arrow" class="ico" />
           </a>
         </div>
@@ -360,13 +586,27 @@ const schema = {
     <section class="close indigo" aria-labelledby="close-title">
       <div class="wrap close-inner">
         <Isotipo variant="light" class="close-iso" />
-        <h2 id="close-title">Un problema legal no se parece a ningún otro. <br />Tu defensa tampoco debería.</h2>
-        <a class="btn btn-wa btn-lg" href={waLink()} target="_blank" rel="noopener" data-track="wa-cierre">
+        <h2 id="close-title">
+          Un problema legal no se parece a ningún otro. <br />
+          Tu defensa tampoco debería.
+        </h2>
+        <a
+          class="btn btn-wa btn-lg"
+          href={waLink()}
+          target="_blank"
+          rel="noopener"
+          data-track="wa-cierre"
+        >
           <Icon name="whatsapp" class="ico" />
           <span>Quiero mi primera consulta gratis</span>
         </a>
-        <a class="link-thread" href="#consulta">o envía tu consulta con el formulario <Icon name="arrow" class="ico" /></a>
-        <p class="close-small">Discreción absoluta: lo que nos cuentas queda entre tú y tu abogado.</p>
+        <a class="link-thread" href="#consulta">
+          o envía tu consulta con el formulario{" "}
+          <Icon name="arrow" class="ico" />
+        </a>
+        <p class="close-small">
+          Discreción absoluta: lo que nos cuentas queda entre tú y tu abogado.
+        </p>
       </div>
     </section>
   </main>
@@ -375,20 +615,23 @@ const schema = {
 
   <script>
     // Línea de tiempo: el hilo avanza y cada paso se enciende al entrar en pantalla.
-    const tl = document.querySelector<HTMLElement>('[data-timeline]');
-    const items = document.querySelectorAll<HTMLElement>('[data-step]');
+    const tl = document.querySelector<HTMLElement>("[data-timeline]");
+    const items = document.querySelectorAll<HTMLElement>("[data-step]");
     if (tl) {
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
             const el = entry.target as HTMLElement;
-            el.classList.add('is-active');
+            el.classList.add("is-active");
             const end = el.offsetTop + el.offsetHeight / 2;
-            tl.style.setProperty('--fill', `${Math.max(end, parseFloat(tl.style.getPropertyValue('--fill')) || 0)}px`);
+            tl.style.setProperty(
+              "--fill",
+              `${Math.max(end, parseFloat(tl.style.getPropertyValue("--fill")) || 0)}px`,
+            );
           });
         },
-        { rootMargin: '0px 0px -35% 0px' }
+        { rootMargin: "0px 0px -35% 0px" },
       );
       items.forEach((s) => io.observe(s));
     }
